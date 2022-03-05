@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">APOP Shared Book</string>
+    <string name="img_user_profile">The photos for user profile</string>
+    <string name="txt_user_name">amiewill428</string>
+    <string name="txt_user_item">2 items in the bookshelf</string>
+    <string name="txt_search_bar">Search a book name or address</string>
+    <string name="img_add_book">The icon of add book</string>
+    <string name="img_update_book">The icon of update book</string>
+    <string name="img_borrow_book">The icon of borrow book</string>
+    <string name="img_reading_tracker">The icon of reading tracker</string>
+    <string name="img_message_icon">The icon of message</string>
+    <string name="test_message_context1">You have a book request from y612352</string>
+    <string name="test_message_datetime1">2020-02-07 11:25 AM</string>
+    <string name="test_message_context2">mary23112a send you a message</string>
+    <string name="test_message_datetime2">2020-02-03 07:15 AM</string>
+    <string name="string_img_message_nav" />
+</resources>
