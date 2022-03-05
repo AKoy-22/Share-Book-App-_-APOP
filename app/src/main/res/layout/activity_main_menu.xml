@@ -9,7 +9,7 @@
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
-    tools:context=".MainActivity"
+    tools:context=".MainMenu"
     tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck">
 
     <!-- Tool Bar -->

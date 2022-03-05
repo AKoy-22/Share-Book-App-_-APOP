@@ -10,7 +10,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APOPShareBook">
         <activity
-            android:name=".MainActivity"
+            android:name=".AccountInfo"
+            android:exported="false" />
+        <activity
+            android:name=".ReadingTracker"
+            android:exported="false" />
+        <activity
+            android:name=".BorrowBook"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateBook"
+            android:exported="false" />
+        <activity
+            android:name=".AddBook"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".MainMenu"
+            android:exported="false" />
+        <activity
+            android:name=".Welcome"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
