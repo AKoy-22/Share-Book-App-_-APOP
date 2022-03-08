@@ -20,5 +20,6 @@
     <string name="emailHint">Enter email</string>
     <string name="passHint">Enter password</string>
     <string name="WelcomeBack">WELCOME\nBACK</string>
+    <string name="CrateAccount">CREATE\nACCOUNT</string>
     <string name="register">REGISTER</string>
 </resources>
