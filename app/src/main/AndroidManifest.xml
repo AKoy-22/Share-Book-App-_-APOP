@@ -10,6 +10,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APOPShareBook">
         <activity
+            android:name=".AddBookTracker"
+            android:exported="false" />
+        <activity
+            android:name=".CurrentLoan"
+            android:exported="false" />
+        <activity
+            android:name=".RequestHistory"
+            android:exported="false" />
+        <activity
+            android:name=".ReadingHistory"
+            android:exported="false" />
+        <activity
+            android:name=".EditAccount"
+            android:exported="false" />
+        <activity
+            android:name=".UserAccount"
+            android:exported="false" />
+        <activity
+            android:name=".Message"
+            android:exported="false" />
+        <activity
             android:name=".CreateAccount"
             android:exported="false" />
         <activity

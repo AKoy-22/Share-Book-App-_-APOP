@@ -9,7 +9,7 @@
     tools:context=".Login">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtWelcome"
         android:layout_width="239dp"
         android:layout_height="0dp"
         android:layout_marginStart="13dp"
@@ -21,7 +21,7 @@
         android:textColor="@color/white"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -64,17 +64,17 @@
         app:layout_constraintVertical_bias="0.632" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnLogin1"
         android:layout_width="195dp"
         android:layout_height="0dp"
         android:layout_marginBottom="77dp"
-        android:background="#000000"
+        android:background="#FF000000"
         android:text="@string/login"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

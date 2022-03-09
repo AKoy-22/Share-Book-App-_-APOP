@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/light_background"
+    android:orientation="vertical"
+    tools:context=".RequestHistoryPage">
+
+    <!-- Tool Bar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green_light"
+        android:elevation="10dp">
+        <!-- back page icon -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/ic_arrow_left"
+            android:contentDescription="@string/imgMessageIcon"
+            android:minWidth="24dp"
+            android:minHeight="24dp"
+            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+        <!-- page title -->
+        <TextView
+            android:id="@+id/txtToolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/txtRequestHistory"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_gray" />
+        <!-- message icon -->
+        <ImageButton
+            android:id="@+id/btnMessageIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/ic_message_icon"
+            android:contentDescription="@string/imgMessageIcon"
+            android:minWidth="24dp"
+            android:minHeight="24dp"
+            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- the context of book 1 -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/rounded_button_white"
+            android:elevation="4dp"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="5dp">
+            <!-- book title -->
+            <TextView
+                android:id="@+id/txtBookTitle1"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/txtBookTitle1"
+                android:textColor="@color/dark_gray"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <!-- book status -->
+            <TextView
+                android:id="@+id/txtBookStatus1"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/border_btn_white"
+                android:paddingStart="5dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="2dp"
+                android:text="@string/txtRequestTypeG"
+                android:textAlignment="center"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                tools:ignore="TextContrastCheck" />
+            <!-- user borrowing -->
+            <TextView
+                android:id="@+id/book_owner1"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="47dp"
+                android:text="@string/txtBookOwner1"
+                android:textColor="@color/dark_blue"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_person"
+                tools:ignore="TextContrastCheck" />
+            <!-- borrowing time -->
+            <TextView
+                android:id="@+id/txtBorrowBookDate"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/txtBorrowBookDate"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/gray"
+                android:textSize="13sp"
+                tools:ignore="TextContrastCheck" />
+            <!-- agree button -->
+            <ImageButton
+                android:id="@+id/btnRequestCheck1"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="230dp"
+                android:layout_marginTop="27dp"
+                android:background="@drawable/ic_check"
+                android:backgroundTint="@color/blue_green"
+                android:contentDescription="@string/imgRequestCheck"
+                tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,DuplicateSpeakableTextCheck" />
+            <!-- reject button -->
+            <ImageButton
+                android:id="@+id/btnRequestCancel1"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="300dp"
+                android:layout_marginTop="27dp"
+                android:background="@drawable/ic_cancel"
+                android:backgroundTint="@color/red"
+                android:contentDescription="@string/imgRequestCancel"
+                tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- the context of book 2 -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/rounded_button_white"
+            android:elevation="4dp"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="5dp">
+            <!-- book title -->
+            <TextView
+                android:id="@+id/txtBookTitle2"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/txtBookTitle2"
+                android:textColor="@color/dark_gray"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <!-- book status -->
+            <TextView
+                android:id="@+id/txtBookStatus2"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/border_btn_white"
+                android:paddingStart="5dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="2dp"
+                android:text="@string/txtRequestTypeB"
+                android:textAlignment="center"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                tools:ignore="TextContrastCheck" />
+            <!-- user borrowing -->
+            <TextView
+                android:id="@+id/book_owner2"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="47dp"
+                android:text="@string/txtBookOwner2"
+                android:textColor="@color/dark_blue"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_person"
+                tools:ignore="TextContrastCheck" />
+            <!-- borrowing time -->
+            <TextView
+                android:id="@+id/txtBorrowBookDate2"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/txtBorrowBookDate2"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/gray"
+                android:textSize="13sp"
+                tools:ignore="TextContrastCheck" />
+            <!-- agree button -->
+            <ImageButton
+                android:id="@+id/btnRequestCheck2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="230dp"
+                android:layout_marginTop="27dp"
+                android:background="@drawable/ic_check"
+                android:backgroundTint="@color/blue_green"
+                android:contentDescription="@string/imgRequestCheck"
+                tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+            <!-- reject button -->
+            <ImageButton
+                android:id="@+id/btnRequestCancel2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="300dp"
+                android:layout_marginTop="27dp"
+                android:background="@drawable/ic_cancel"
+                android:backgroundTint="@color/red"
+                android:contentDescription="@string/imgRequestCancel"
+                tools:ignore="TouchTargetSizeCheck" />
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- the context of book 3 -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/rounded_button_white"
+            android:elevation="4dp"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="5dp">
+            <!-- book title -->
+            <TextView
+                android:id="@+id/txtBookTitle3"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/txtBookTitle3"
+                android:textColor="@color/dark_gray"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <!-- book status -->
+            <TextView
+                android:id="@+id/txtBookStatus3"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/border_btn_white"
+                android:paddingStart="5dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="2dp"
+                android:text="@string/txtRequestTypeB"
+                android:textAlignment="center"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                tools:ignore="TextContrastCheck" />
+            <!-- user borrowing -->
+            <TextView
+                android:id="@+id/book_owner3"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="47dp"
+                android:text="@string/txtBookOwner3"
+                android:textColor="@color/dark_blue"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_person"
+                tools:ignore="TextContrastCheck" />
+            <!-- borrowing time -->
+            <TextView
+                android:id="@+id/txtBorrowBookDate3"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/txtBorrowBookDate3"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/gray"
+                android:textSize="13sp"
+                tools:ignore="TextContrastCheck" />
+            <!-- agree button -->
+            <ImageButton
+                android:id="@+id/btnRequestCheck3"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="230dp"
+                android:layout_marginTop="27dp"
+                android:background="@drawable/ic_check"
+                android:backgroundTint="@color/blue_green"
+                android:contentDescription="@string/imgRequestCheck"
+                tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+            <!-- reject button -->
+            <ImageButton
+                android:id="@+id/btnRequestCancel3"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="300dp"
+                android:layout_marginTop="27dp"
+                android:background="@drawable/ic_cancel"
+                android:backgroundTint="@color/red"
+                android:contentDescription="@string/imgRequestCancel"
+                tools:ignore="TouchTargetSizeCheck" />
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- the bottom menu bar -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom">
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_menu"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/nav_bg"
+                android:elevation="4dp"
+                app:fabCradleVerticalOffset="10dp"
+                app:itemIconSize="18dp"
+                app:itemIconTint="@color/bright_blue"
+                app:itemTextColor="@color/bright_blue"
+                app:labelVisibilityMode="unlabeled"
+                app:menu="@menu/bottom_menu" />
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

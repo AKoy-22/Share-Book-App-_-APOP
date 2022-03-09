@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/light_background"
+    android:orientation="vertical"
+    tools:context=".ReadingHistoryPage">
+
+    <!-- Tool Bar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green_light"
+        android:elevation="10dp">
+        <!-- back page icon -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/ic_arrow_left"
+            android:contentDescription="@string/imgMessageIcon"
+            android:minWidth="24dp"
+            android:minHeight="24dp"
+            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+        <!-- page title -->
+        <TextView
+            android:id="@+id/txtToolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/txtReadingHistory"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_gray" />
+        <!-- message icon -->
+        <ImageButton
+            android:id="@+id/btnMessageIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/ic_message_icon"
+            android:contentDescription="@string/imgMessageIcon"
+            android:minWidth="24dp"
+            android:minHeight="24dp"
+            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- the context of book 1 -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:background="@drawable/rounded_button_white"
+            android:elevation="4dp">
+            <!-- book cover -->
+            <ImageView
+                android:id="@+id/imgBookCover1"
+                android:layout_width="70dp"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="0dp"
+                android:contentDescription="@string/imgBookCover"
+                android:elevation="4dp"
+                android:src="@drawable/book_cover_1" />
+            <!-- book title -->
+            <TextView
+                android:id="@+id/txtBookTitle1"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:text="@string/txtBookTitle1"
+                android:textColor="@color/dark_gray"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <!-- book author -->
+            <TextView
+                android:id="@+id/txtBookAuthor"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/txtBookAuthor1"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                tools:ignore="TextContrastCheck" />
+            <!-- book publisher / year -->
+            <TextView
+                android:id="@+id/txtBookPublisher"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/txtBookPublisher1"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                tools:ignore="TextContrastCheck" />
+            <!-- book category -->
+            <TextView
+                android:id="@+id/txtBookCategory"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="62dp"
+                android:background="@drawable/border_btn_white"
+                android:paddingStart="5dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="2dp"
+                android:text="@string/txtBookFiction"
+                android:textAlignment="center"
+                android:textColor="@color/navy"
+                android:textSize="14sp"
+                tools:ignore="TextContrastCheck" />
+            <!-- borrowing from -->
+            <TextView
+                android:id="@+id/txtBorrowFrom"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="87dp"
+                android:text="@string/txtBorrowFromUser"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+            <!-- borrowing time -->
+            <TextView
+                android:id="@+id/txtBorrowBookDate"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/txtBorrowBookDate"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/gray"
+                android:textSize="13sp"
+                tools:ignore="TextContrastCheck" />
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- the context of book 2 -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:background="@drawable/rounded_button_white"
+            android:elevation="4dp">
+            <!-- book cover -->
+            <ImageView
+                android:id="@+id/imgBookCover2"
+                android:layout_width="70dp"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="0dp"
+                android:contentDescription="@string/imgBookCover"
+                android:elevation="4dp"
+                android:src="@drawable/book_cover_2" />
+            <!-- book title -->
+            <TextView
+                android:id="@+id/txtBookTitle2"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:text="@string/txtBookTitle2"
+                android:textColor="@color/dark_gray"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <!-- book author -->
+            <TextView
+                android:id="@+id/txtBookAuthor2"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/txtBookAuthor2"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                tools:ignore="TextContrastCheck" />
+            <!-- book publisher / year -->
+            <TextView
+                android:id="@+id/txtBookPublisher2"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/txtBookPublisher2"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                tools:ignore="TextContrastCheck" />
+            <!-- book category -->
+            <TextView
+                android:id="@+id/txtBookCategory2"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="62dp"
+                android:background="@drawable/border_btn_white"
+                android:paddingStart="5dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="2dp"
+                android:text="@string/txtBookNonFiction"
+                android:textAlignment="center"
+                android:textColor="@color/navy"
+                android:textSize="14sp" />
+            <!-- borrowing from -->
+            <TextView
+                android:id="@+id/txtBorrowFrom2"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="87dp"
+                android:text="@string/txtBorrowFromUser2"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+            <!-- borrowing time -->
+            <TextView
+                android:id="@+id/txtBorrowBookDate2"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/txtBorrowBookDate2"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/gray"
+                android:textSize="13sp"
+                tools:ignore="TextContrastCheck" />
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <!-- the context of book 3 -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:background="@drawable/rounded_button_white"
+            android:elevation="4dp">
+            <!-- book cover -->
+            <ImageView
+                android:id="@+id/imgBookCover3"
+                android:layout_width="70dp"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="0dp"
+                android:contentDescription="@string/imgBookCover"
+                android:elevation="4dp"
+                android:src="@drawable/book_cover_3"
+                tools:ignore="ImageContrastCheck" />
+            <!-- book title -->
+            <TextView
+                android:id="@+id/txtBookTitle3"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:text="@string/txtBookTitle3"
+                android:textColor="@color/dark_gray"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <!-- book author -->
+            <TextView
+                android:id="@+id/txtBookAuthor3"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/txtBookAuthor3"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                tools:ignore="TextContrastCheck" />
+            <!-- book publisher / year -->
+            <TextView
+                android:id="@+id/txtBookPublisher3"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/txtBookPublisher3"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                tools:ignore="TextContrastCheck" />
+            <!-- book category -->
+            <TextView
+                android:id="@+id/txtBookCategory3"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="62dp"
+                android:background="@drawable/border_btn_white"
+                android:paddingStart="5dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="2dp"
+                android:text="@string/txtBookFiction"
+                android:textAlignment="center"
+                android:textColor="@color/navy"
+                android:textSize="14sp" />
+            <!-- borrowing from -->
+            <TextView
+                android:id="@+id/txtBorrowFrom3"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="87dp"
+                android:text="@string/txtBorrowFromUser3"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+            <!-- borrowing time -->
+            <TextView
+                android:id="@+id/txtBorrowBookDate3"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/txtBorrowBookDate3"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/gray"
+                android:textSize="13sp"
+                tools:ignore="TextContrastCheck" />
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- the bottom menu bar -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom">
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_menu"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/nav_bg"
+                android:elevation="4dp"
+                app:fabCradleVerticalOffset="10dp"
+                app:itemIconSize="18dp"
+                app:itemIconTint="@color/bright_blue"
+                app:itemTextColor="@color/bright_blue"
+                app:labelVisibilityMode="unlabeled"
+                app:menu="@menu/bottom_menu" />
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

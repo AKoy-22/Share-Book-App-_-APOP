@@ -14,4 +14,7 @@
     <color name="navy">#0D1B48</color>
     <color name="bright_blue">#2C5BF2</color>
     <color name="dark_blue">#1D3B9D</color>
+    <color name="nav_bg">#F2F2F2</color>
+    <color name="light_gray">#E9E9E9</color>
+    <color name="red">#FF5656</color>
 </resources>

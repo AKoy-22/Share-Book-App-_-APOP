@@ -1,19 +1,6 @@
 <resources>
     <string name="app_name">APOP Shared Book</string>
-    <string name="img_user_profile">The photos for user profile</string>
-    <string name="txt_user_name">amiewill428</string>
-    <string name="txt_user_item">2 items in the bookshelf</string>
-    <string name="txt_search_bar">Search a book name or address</string>
-    <string name="img_add_book">The icon of add book</string>
-    <string name="img_update_book">The icon of update book</string>
-    <string name="img_borrow_book">The icon of borrow book</string>
-    <string name="img_reading_tracker">The icon of reading tracker</string>
-    <string name="img_message_icon">The icon of message</string>
-    <string name="test_message_context1">You have a book request from y612352</string>
-    <string name="test_message_datetime1">2020-02-07 11:25 AM</string>
-    <string name="test_message_context2">mary23112a send you a message</string>
-    <string name="test_message_datetime2">2020-02-03 07:15 AM</string>
-    <string name="string_img_message_nav" />
+    <!--Welcome and Login Page -->
     <string name="imgDesc">img 1</string>
     <string name="login">LOGIN</string>
     <string name="signUp">SIGN UP</string>
@@ -22,4 +9,161 @@
     <string name="WelcomeBack">WELCOME\nBACK</string>
     <string name="CrateAccount">CREATE\nACCOUNT</string>
     <string name="register">REGISTER</string>
+
+    <!-- Main Menu -->
+    <string name="imgUserProfile">The photos for user profile</string>
+    <string name="txtUserName">amiewill428</string>
+    <string name="txtUserItem">2 items in the bookshelf</string>
+    <string name="txt_search_bar">Search a book name or address</string>
+    <string name="imgAddBook">The icon of add book</string>
+    <string name="imgUpdateBook">The icon of update book</string>
+    <string name="imgBorrowBook">The icon of borrow book</string>
+    <string name="imgReadingTracker">The icon of reading tracker</string>
+    <string name="imgMessageIcon">The icon of message</string>
+    <string name="txtMessage1">You have a book request from y612352</string>
+    <string name="txtMessageDay1">2020/02/07 11:25 AM</string>
+    <string name="txtMessage2">mary23112a send you a message</string>
+    <string name="txtMessageDay2">2020/02/03 07:15 AM</string>
+    <string name="string_img_message_nav" />
+
+    <!-- page title -->
+    <string name="txtAddBookPage">Add Book</string>
+    <string name="txtUpdateBookPage">Update Book</string>
+    <string name="txtBorrowBookPage">Borrow Book</string>
+    <string name="txtReadingTrackerPage">Reading Tracker</string>
+    <string name="txtUserAccountPage">User Account</string>
+    <string name="txtMessagePage">Message</string>
+    <string name="txtEditAccountPage">Edit User Information</string>
+    <string name="txtReadingHistory">Reading History</string>
+    <string name="txtCurrentLoan">Current Loan</string>
+    <string name="txtRequestHistory">Request History</string>
+    <string name="txtAddBookTrackerPage">Add A Book Tracker</string>
+
+    <!-- bottom menu bar -->
+    <string name="menu_add">ADD</string>
+    <string name="menu_update">UPDATE</string>
+    <string name="menu_borrow">BORROW</string>
+    <string name="menu_tracker">TRACKER</string>
+    <string name="menu_user">USER</string>
+
+    <!-- Add book -->
+    <string name="txtAddBookTitle">Enter the book of the title</string>
+    <string name="txtAddBookISBN">Enter the ISBN-13 number</string>
+    <string name="txtAddBookAuthor">Enter the book of author</string>
+    <string name="txtAddBookPublisher">Enter the book of publisher</string>
+    <string name="txtAddBookYear">Enter the publication year</string>
+    <string name="btnBookSubmit">Add the book</string>
+    <string name="btnUpdateImage">Update the book image</string>
+    <string name="rdShareBook">Share Book</string>
+    <string name="rdGiveAwayBook">Give Away Book</string>
+    <string name="txtBookCategoryPrompt">Choose the book of category</string>
+    <string-array name="txtBookCategory">
+        <item>Fiction</item>
+        <item>NonFiction</item>
+    </string-array>
+
+    <!-- Borrow book -->
+    <string name="imgBookCover">image of book</string>
+    <string name="btnBorrow">Borrow</string>
+    <string name="txtBookPrice">$1</string>
+    <string name="txtBookTitle1">The Midnight of Library</string>
+    <string name="txtBookTitle2">The Martian</string>
+    <string name="txtBookTitle3">Ready Player One</string>
+    <string name="txtBookAuthor1">Matt Haig</string>
+    <string name="txtBookAuthor2">Andy Weir</string>
+    <string name="txtBookAuthor3">Ernest Cline</string>
+    <string name="txtBookFiction">Fiction</string>
+    <string name="txtBookNonFiction">NonFiction</string>
+    <string name="txtBookPublisher1">Viking / 2020</string>
+    <string name="txtBookPublisher2">Crown / 2011</string>
+    <string name="txtBookPublisher3">Crown Publishers / 2011</string>
+    <string name="txtBookOwner1">Mary Williams</string>
+    <string name="txtBookOwner2">Tom Low</string>
+    <string name="txtBookOwner3">Jessica Blackthon</string>
+    <string name="txtBookISBN">9781443455879</string>
+
+    <!-- Edit account -->
+    <string name="editUserPassword">Enter your new password</string>
+    <string name="editUserName">Enter your full name</string>
+    <string name="editUserEmail">Enter your email</string>
+    <string name="editUserAddress">Enter your address</string>
+    <string name="editUserInterest">Enter your interest</string>
+    <string name="editUserAgePrompt">Enter your age</string>
+    <string-array name="editUserInterest">
+        <item>Fiction</item>
+        <item>NonFiction</item>
+    </string-array>
+    <string name="btnSubmit">Submit changes</string>
+    <string name="labelEditPassword">Your Password</string>
+    <string name="labelEditName">Your Full Name</string>
+    <string name="labelEditEmail">Your Email</string>
+    <string name="labelEditAddress">Your Address</string>
+    <string name="labelEditInterested">Your Interested Book</string>
+    <string name="labelEditAge">Your Current Age</string>
+    <string name="txtUserNameInfo">Amie Williams</string>
+    <string name="txtUserPasswordInfo">amie1234</string>
+    <string name="txtUserAddressInfo">700 Royal Avenue,New Westminster,BC V3M 5Z5</string>
+    <string name="txtUserEmailInfo">amiewill428@gmail.com</string>
+    <string name="txtUserAgeInfo">22</string>
+    <string name="txtUserCateInfo">Fiction</string>
+    <string name="imgEditAccount">icon of editing user account</string>
+
+    <!-- user account page -->
+    <string name="labelTitleUserName">Name</string>
+    <string name="labelTitleUserAge">Age</string>
+    <string name="labelTitleUserEmail">Email</string>
+    <string name="labelTitleUserInterested">Interest</string>
+    <string name="labelTitleUserAddress">Address</string>
+    <string name="btnReadingHistory">Reading History</string>
+    <string name="btnCurrentLoan">Current Loan</string>
+    <string name="btnRequestHistory">Request History</string>
+    <string name="btnSignOut">Sign Out</string>
+
+    <!-- reading history -->
+    <string name="txtBorrowFromUser">Borrow from mary12345</string>
+    <string name="txtBorrowFromUser2">Borrow from sami8o82</string>
+    <string name="txtBorrowFromUser3">Borrow from 1qaz2wsx</string>
+    <string name="txtBorrowBookDate">2022/01/02</string>
+    <string name="txtBorrowBookDate2">2022/02/23</string>
+    <string name="txtBorrowBookDate3">2022/03/02</string>
+
+    <!-- current loan -->
+    <string name="txtBorrowRemainDate">2 day remaining</string>
+    <string name="txtBorrowRemainDate2">4 day remaining</string>
+    <string name="txtBorrowRemainDate3">6 day remaining</string>
+    <string name="btnBorrowExtend">Extend</string>
+
+    <!-- request history -->
+    <string name="txtRequestTypeG">Give Away</string>
+    <string name="txtRequestTypeB">Borrow</string>
+    <string name="imgRequestCheck">icon for accepting requests</string>
+    <string name="imgRequestCancel">icon for rejecting requests</string>
+
+    <!-- update book -->
+    <string name="btnDelete">Delete</string>
+    <string name="btnShare">Share</string>
+    <string name="btnGiveAway">Give Away</string>
+    <string name="btnEdit">Edit</string>
+
+    <!-- edit book -->
+    <string name="labelBookTitle">Book\'s title</string>
+    <string name="labelBookISBN">ISBN-13</string>
+    <string name="labelBookAuthor">Book\'s author</string>
+    <string name="labelBookPublisher">Book\'s publisher</string>
+    <string name="labelBookCategory">Book\'s category</string>
+    <string name="labelBookYear">The publication year</string>
+    <string name="txtBookPublisherOnly">Viking</string>
+    <string name="txtBookYear">2020</string>
+
+    <!-- reading tracker -->
+    <string name="btnAddTrackerBook">Add a book</string>
+    <string name="EditReadingPage">Enter the page of reading</string>
+    <string name="btnSave">Save</string>
+    <string name="txtTrackerMessage1">You have been read page 20 already.</string>
+    <string name="labelBookPage">Reading page</string>
+    <string name="editBookPage">Enter reading page</string>
+    <string name="btnAddTracker">Add the book tracker</string>
+
+    <!-- message -->
+    <string name="imgArrow">image of arrow icon</string>
 </resources>
