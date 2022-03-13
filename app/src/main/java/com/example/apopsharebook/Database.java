@@ -1,5 +1,6 @@
 package com.example.apopsharebook;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -9,7 +10,7 @@ import androidx.annotation.Nullable;
 public class Database extends SQLiteOpenHelper  {
 
     final static String DATABASE_NAME="APOP.db";
-    final static int DATABASE_VERSION=2;
+    final static int DATABASE_VERSION=3;
     //USER TABLE
     final static String U_TABLE="User_table";
     final static String U_UserId="UserId"; //PK - email
@@ -80,7 +81,7 @@ public class Database extends SQLiteOpenHelper  {
                 +U_LName+" text,"+U_Address+" text,"+U_UserType+" text)";
         sqLiteDatabase.execSQL(createTableQuery);
         //create Book Table
-        createTableQuery=" CREATE TABLE "+B_TABLE+ "("+ B_BookId+ " integer,"+ B_ISBN+" integer,"+B_Title+" text,"
+        createTableQuery=" CREATE TABLE "+B_TABLE+ "("+ B_BookId+ " integer ,"+ B_ISBN+" integer,"+B_Title+" text,"
                 +B_Genre+" text,"+B_Author+" text,"+B_OwnerId+" text,"+B_Status+" text,"+
                 "PRIMARY KEY ("+ B_BookId+ "), FOREIGN KEY ("+B_OwnerId+") REFERENCES "+U_TABLE+" ("+U_UserId+"))";
         sqLiteDatabase.execSQL(createTableQuery);
@@ -117,4 +118,40 @@ public class Database extends SQLiteOpenHelper  {
         onCreate(sqLiteDatabase);
 
     }
+    public boolean addUser(){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues value = new ContentValues();
+        value.put(U_UserId,"prabh@xzy.com");
+        value.put(U_Address,"2212 22nd Street, Surrey");
+        value.put(U_Pw,"abcd");
+        value.put(U_FName,"Prabhjit");
+        value.put(U_LName,"Singh");
+        value.put(U_UserType,"user");
+
+        long r = sqLiteDatabase.insert(U_TABLE,null,value);
+        if(r>0)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean addBook(int isbn,String title,String genre,String Author,String OwnerId
+    ,String status){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues value = new ContentValues();
+        value.put(B_ISBN,isbn);
+        value.put(B_Title,title);
+        value.put(B_Genre,genre);
+        value.put(B_Author,Author);
+        value.put(B_OwnerId,OwnerId);
+        value.put(B_Status,status);
+
+        long r = sqLiteDatabase.insert(B_TABLE,null,value);
+        if(r>0)
+            return true;
+        else
+            return false;
+    }
+
+
 }
