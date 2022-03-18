@@ -31,6 +31,8 @@ public class AddBook extends AppCompatActivity {
         EditText inpTitle = findViewById(R.id.editBookTitle);
         EditText inpIsbn = findViewById(R.id.editBookISBN);
         EditText inpAuthor = findViewById(R.id.editBookAuthor);
+        EditText inpPublisher=findViewById(R.id.editBookPublisher);
+        EditText inpPubYear=findViewById(R.id.editBookYear);
         Spinner genre = findViewById(R.id.editBookCategory);
         RadioGroup rGroup = findViewById(R.id.rd_group1);
         //button event for go back main page
@@ -60,7 +62,7 @@ public class AddBook extends AppCompatActivity {
             public void onClick(View view) {
                 isInserted = db.addBook(Integer.parseInt(inpIsbn.getText().toString()),
                         inpTitle.getText().toString(),genre.getSelectedItem().toString(),
-                        inpAuthor.getText().toString(),"prabh@xzy.com","For rent");
+                        inpAuthor.getText().toString(),inpPublisher.getText().toString(),Integer.parseInt(inpPubYear.getText().toString()),"prabh@xzy.com","For rent");
                 if(isInserted){
                     Toast.makeText(AddBook.this,
                             Html.fromHtml("<big>Data is added</big>"),

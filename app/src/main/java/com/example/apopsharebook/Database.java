@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 public class Database extends SQLiteOpenHelper  {
 
     final static String DATABASE_NAME="APOP.db";
-    final static int DATABASE_VERSION=3;
+    final static int DATABASE_VERSION=4;
     //USER TABLE
     final static String U_TABLE="User_table";
     final static String U_UserId="UserId"; //PK - email
@@ -27,6 +27,8 @@ public class Database extends SQLiteOpenHelper  {
     final static String B_Title="Title";
     final static String B_Genre="Genre";
     final static String B_Author="Author";
+    final static String B_Publisher="Publisher";
+    final static String B_PubYear="PubYear";
     final static String B_OwnerId="OwnerId"; //one of UserIds FK
     final static String B_Status="Status"; //on Loan or Available
 
@@ -81,8 +83,8 @@ public class Database extends SQLiteOpenHelper  {
                 +U_LName+" text,"+U_Address+" text,"+U_UserType+" text)";
         sqLiteDatabase.execSQL(createTableQuery);
         //create Book Table
-        createTableQuery=" CREATE TABLE "+B_TABLE+ "("+ B_BookId+ " integer ,"+ B_ISBN+" integer,"+B_Title+" text,"
-                +B_Genre+" text,"+B_Author+" text,"+B_OwnerId+" text,"+B_Status+" text,"+
+        createTableQuery=" CREATE TABLE "+B_TABLE+ "("+ B_BookId+ " integer,"+ B_ISBN+" integer,"+B_Title+" text,"
+                +B_Genre+" text,"+B_Author+" text,"+B_Publisher+" text,"+B_PubYear+" integer,"+B_OwnerId+" text,"+B_Status+" text,"+
                 "PRIMARY KEY ("+ B_BookId+ "), FOREIGN KEY ("+B_OwnerId+") REFERENCES "+U_TABLE+" ("+U_UserId+"))";
         sqLiteDatabase.execSQL(createTableQuery);
         //create Loan Table
@@ -135,7 +137,7 @@ public class Database extends SQLiteOpenHelper  {
             return false;
     }
 
-    public boolean addBook(int isbn,String title,String genre,String Author,String OwnerId
+    public boolean addBook(int isbn,String title,String genre,String Author, String Publisher, int PubYear,String OwnerId
     ,String status){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();
@@ -143,6 +145,8 @@ public class Database extends SQLiteOpenHelper  {
         value.put(B_Title,title);
         value.put(B_Genre,genre);
         value.put(B_Author,Author);
+        value.put(B_Publisher, Publisher);
+        value.put(B_PubYear,PubYear);
         value.put(B_OwnerId,OwnerId);
         value.put(B_Status,status);
 
