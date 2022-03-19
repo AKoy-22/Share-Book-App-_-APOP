@@ -18,6 +18,7 @@ public class Welcome extends AppCompatActivity {
         Button signUp = findViewById(R.id.btnSignUp);
         try {
             db.addUser();
+            //db.manuallyAddBook();
         }
         catch (Exception e){
             e.getStackTrace();

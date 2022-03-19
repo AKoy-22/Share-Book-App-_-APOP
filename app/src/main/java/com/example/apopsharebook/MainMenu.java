@@ -39,7 +39,7 @@ public class MainMenu extends AppCompatActivity {
         btnUserArrow.setOnClickListener(v -> startActivity(new Intent(MainMenu.this,UserAccount.class)));
         btnAddBook.setOnClickListener(v -> startActivity(new Intent(MainMenu.this,AddBook.class)));
         btnUpdateBook.setOnClickListener(v -> startActivity(new Intent(MainMenu.this,UpdateBook.class)));
-        btnBorrowBook.setOnClickListener(v -> startActivity(new Intent(MainMenu.this,BorrowBook.class)));
+        btnBorrowBook.setOnClickListener(v -> startActivity(new Intent(MainMenu.this,BorrowBook2.class)));
         btnReadingTracker.setOnClickListener(v -> startActivity(new Intent(MainMenu.this,ReadingTracker.class)));
     }
 }

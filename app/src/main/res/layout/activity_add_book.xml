@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/light_background"
     android:orientation="vertical"
-    tools:context=".AddBookPage">
+    tools:context=".AddBook">
 
     <!-- Tool Bar -->
     <androidx.appcompat.widget.Toolbar

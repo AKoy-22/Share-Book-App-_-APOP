@@ -2,15 +2,16 @@ package com.example.apopsharebook;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
 public class Database extends SQLiteOpenHelper  {
-
+    SQLiteDatabase sqLiteDatabase;
     final static String DATABASE_NAME="APOP.db";
-    final static int DATABASE_VERSION=4;
+    final static int DATABASE_VERSION=6;
     //USER TABLE
     final static String U_TABLE="User_table";
     final static String U_UserId="UserId"; //PK - email
@@ -29,6 +30,7 @@ public class Database extends SQLiteOpenHelper  {
     final static String B_Author="Author";
     final static String B_Publisher="Publisher";
     final static String B_PubYear="PubYear";
+    final static String B_Location="Location";
     final static String B_OwnerId="OwnerId"; //one of UserIds FK
     final static String B_Status="Status"; //on Loan or Available
 
@@ -84,7 +86,7 @@ public class Database extends SQLiteOpenHelper  {
         sqLiteDatabase.execSQL(createTableQuery);
         //create Book Table
         createTableQuery=" CREATE TABLE "+B_TABLE+ "("+ B_BookId+ " integer,"+ B_ISBN+" integer,"+B_Title+" text,"
-                +B_Genre+" text,"+B_Author+" text,"+B_Publisher+" text,"+B_PubYear+" integer,"+B_OwnerId+" text,"+B_Status+" text,"+
+                +B_Genre+" text,"+B_Author+" text,"+B_Publisher+" text,"+B_PubYear+" integer,"+B_OwnerId+" text,"+B_Status+" text,"+B_Location+" text,"+
                 "PRIMARY KEY ("+ B_BookId+ "), FOREIGN KEY ("+B_OwnerId+") REFERENCES "+U_TABLE+" ("+U_UserId+"))";
         sqLiteDatabase.execSQL(createTableQuery);
         //create Loan Table
@@ -138,8 +140,8 @@ public class Database extends SQLiteOpenHelper  {
     }
 
     public boolean addBook(int isbn,String title,String genre,String Author, String Publisher, int PubYear,String OwnerId
-    ,String status){
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    ,String status, String location){
+        sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();
         value.put(B_ISBN,isbn);
         value.put(B_Title,title);
@@ -149,6 +151,7 @@ public class Database extends SQLiteOpenHelper  {
         value.put(B_PubYear,PubYear);
         value.put(B_OwnerId,OwnerId);
         value.put(B_Status,status);
+        value.put(B_Location,location);
 
         long r = sqLiteDatabase.insert(B_TABLE,null,value);
         if(r>0)
@@ -157,5 +160,28 @@ public class Database extends SQLiteOpenHelper  {
             return false;
     }
 
+    //searching book by pickup location - Borrow Book Activity -- NOT WORKING
+    public Cursor searchBookByLocation(){
+        sqLiteDatabase=this.getWritableDatabase();
+        String query="SELECT Title FROM Book_table";
+        Cursor c=sqLiteDatabase.rawQuery(query,null);
+        return c;
+    }
+    //for testing purpose
+    public void manuallyAddBook(){
+        sqLiteDatabase = this.getWritableDatabase();
+        ContentValues value = new ContentValues();
+        value.put(B_ISBN,987654321);
+        value.put(B_Title,"The Ride of a Lifetime");
+        value.put(B_Genre,"Business");
+        value.put(B_Author,"Robert Iger");
+        value.put(B_Publisher,  "Random House");
+        value.put(B_PubYear,2019);
+        value.put(B_OwnerId,"prabh@xzy.com");
+        value.put(B_Status,"available");
+        value.put(B_Location,"Surrey");
+
+        long r = sqLiteDatabase.insert(B_TABLE,null,value);
+    }
 
 }

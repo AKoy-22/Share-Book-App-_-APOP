@@ -62,7 +62,7 @@ public class AddBook extends AppCompatActivity {
             public void onClick(View view) {
                 isInserted = db.addBook(Integer.parseInt(inpIsbn.getText().toString()),
                         inpTitle.getText().toString(),genre.getSelectedItem().toString(),
-                        inpAuthor.getText().toString(),inpPublisher.getText().toString(),Integer.parseInt(inpPubYear.getText().toString()),"prabh@xzy.com","For rent");
+                        inpAuthor.getText().toString(),inpPublisher.getText().toString(),Integer.parseInt(inpPubYear.getText().toString()),"prabh@xzy.com","For rent","Location");
                 if(isInserted){
                     Toast.makeText(AddBook.this,
                             Html.fromHtml("<big>Data is added</big>"),
