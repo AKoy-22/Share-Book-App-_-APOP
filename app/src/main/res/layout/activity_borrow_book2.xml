@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/light_background"
+    android:orientation="vertical"
+    tools:context=".BorrowBook2">
+
+    <!-- Tool Bar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green_light"
+        android:elevation="10dp">
+        <!-- back page icon -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/ic_arrow_left"
+            android:contentDescription="@string/imgMessageIcon"
+            android:minWidth="24dp"
+            android:minHeight="24dp"
+            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+        <!-- page title -->
+        <TextView
+            android:id="@+id/txtToolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/txtBorrowBookPage"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_gray" />
+        <!-- message icon -->
+        <ImageButton
+            android:id="@+id/btnMessageIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/ic_message_icon"
+            android:contentDescription="@string/imgMessageIcon"
+            android:minWidth="24dp"
+            android:minHeight="24dp"
+            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- search bar -->
+
+    <EditText
+        android:id="@+id/editTxtSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hintSearch"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnSearch" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:autofillHints="name"
+        android:background="@drawable/rounded_button_white"
+        android:elevation="4dp"
+        android:gravity="bottom|end"
+        android:queryBackground="@android:color/transparent"
+        app:defaultQueryHint="@string/txt_search_bar"
+        tools:ignore="TouchTargetSizeCheck"
+        tools:layout_centerHorizontal="true"
+        tools:layout_centerVertical="true"
+        tools:layout_marginRight="20dp" >
+
+    </androidx.appcompat.widget.SearchView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- the context of book 1 -->
+
+    <!-- the context of book 2 -->
+
+    <!-- the context of book 3 -->
+
+    <!-- the bottom menu bar -->
+
+</LinearLayout>
