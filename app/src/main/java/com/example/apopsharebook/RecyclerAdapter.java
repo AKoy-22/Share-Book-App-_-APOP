@@ -10,24 +10,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter{
  //Class level variables
     private LayoutInflater layoutInflator;
     private int image;
-    private String [] titleArr;
+    /*private String [] titleArr;
     private String [] authorArr;
-    private String [] genreArr;
+    private String [] genreArr;*/
+    ArrayList<String> titlesList;
     private ItemClickListener iClickListener; //interface object
 
   //Constructor
-    public RecyclerAdapter(Context context,int img, String [] titles, String [] authors, String [] genres){
+    public RecyclerAdapter(Context context,int img, ArrayList<String> titles /*String [] authors, String [] genres*/){
         layoutInflator= LayoutInflater.from(context);
         image=img;
-        titleArr=titles;
-        authorArr=authors;
-        genreArr=genres;
+        titlesList=new ArrayList<String>();
+        titlesList=titles;
+
+       /* authorArr=authors;
+        genreArr=genres;*/
     }
 
     @NonNull
@@ -44,14 +48,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
         TextView title=holder.itemView.findViewById(R.id.bTitle);
         TextView author=holder.itemView.findViewById(R.id.bAuthor);
         TextView genre=holder.itemView.findViewById(R.id.bGenre);
-        title.setText(titleArr[position]);
+        title.setText(titlesList.get(position)) ;
+        /*title.setText(titleArr[position]);
         author.setText(authorArr[position]);
-        genre.setText(genreArr[position]);
+        genre.setText(genreArr[position]);*/
     }
 
     @Override
     public int getItemCount() {
-        return titleArr.length;
+        return titlesList.size();
     }
     //setClickListener
     public void setClickListener(ItemClickListener iClickListener){

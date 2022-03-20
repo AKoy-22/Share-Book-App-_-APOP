@@ -162,9 +162,10 @@ public class Database extends SQLiteOpenHelper  {
 
     //searching book by pickup location - Borrow Book Activity -- NOT WORKING
     public Cursor searchBookByLocation(){
-        sqLiteDatabase=this.getWritableDatabase();
-        String query="SELECT Title FROM Book_table";
-        Cursor c=sqLiteDatabase.rawQuery(query,null);
+        SQLiteDatabase sqdb=this.getWritableDatabase();
+        //sqLiteDatabase=this.getWritableDatabase();
+        String query="SELECT Title, Author, Genre FROM "+B_TABLE+" WHERE Location='Burnaby'";
+        Cursor c=sqdb.rawQuery(query,null);
         return c;
     }
     //for testing purpose
@@ -179,7 +180,7 @@ public class Database extends SQLiteOpenHelper  {
         value.put(B_PubYear,2019);
         value.put(B_OwnerId,"prabh@xzy.com");
         value.put(B_Status,"available");
-        value.put(B_Location,"Surrey");
+        value.put(B_Location,"Burnaby");
 
         long r = sqLiteDatabase.insert(B_TABLE,null,value);
     }
