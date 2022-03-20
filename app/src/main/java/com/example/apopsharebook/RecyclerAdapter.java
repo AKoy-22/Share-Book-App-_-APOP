@@ -21,14 +21,20 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
     private String [] authorArr;
     private String [] genreArr;*/
     ArrayList<String> titlesList;
+    ArrayList<String> authorsList;
+    ArrayList<String> genreList;
     private ItemClickListener iClickListener; //interface object
 
   //Constructor
-    public RecyclerAdapter(Context context,int img, ArrayList<String> titles /*String [] authors, String [] genres*/){
+    public RecyclerAdapter(Context context,int img, ArrayList<String> titles, ArrayList<String> authors, ArrayList<String> genre){
         layoutInflator= LayoutInflater.from(context);
         image=img;
         titlesList=new ArrayList<String>();
         titlesList=titles;
+        authorsList=new ArrayList<String>();
+        authorsList=authors;
+        genreList=new ArrayList<String>();
+        genreList=genre;
 
        /* authorArr=authors;
         genreArr=genres;*/
@@ -48,7 +54,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
         TextView title=holder.itemView.findViewById(R.id.bTitle);
         TextView author=holder.itemView.findViewById(R.id.bAuthor);
         TextView genre=holder.itemView.findViewById(R.id.bGenre);
-        title.setText(titlesList.get(position)) ;
+        title.setText(titlesList.get(position));
+        author.setText(authorsList.get(position));
+        genre.setText(genreList.get(position));
         /*title.setText(titleArr[position]);
         author.setText(authorArr[position]);
         genre.setText(genreArr[position]);*/

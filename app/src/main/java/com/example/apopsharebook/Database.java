@@ -161,10 +161,10 @@ public class Database extends SQLiteOpenHelper  {
     }
 
     //searching book by pickup location - Borrow Book Activity -- NOT WORKING
-    public Cursor searchBookByLocation(){
+    public Cursor searchBookByLocation(String loc){
         SQLiteDatabase sqdb=this.getWritableDatabase();
         //sqLiteDatabase=this.getWritableDatabase();
-        String query="SELECT Title, Author, Genre FROM "+B_TABLE+" WHERE Location='Burnaby'";
+        String query="SELECT Title, Author, Genre FROM "+B_TABLE+" WHERE Location='"+loc+"'";
         Cursor c=sqdb.rawQuery(query,null);
         return c;
     }

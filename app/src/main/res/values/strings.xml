@@ -82,6 +82,7 @@
     <string name="txtBookOwner3">Jessica Blackthon</string>
     <string name="txtBookISBN">9781443455879</string>
     <string name="btnSearch">Search</string>
+    <string name="hintSearch">Enter Preferred Pickup Location</string>
 
     <!-- Edit account -->
     <string name="editUserPassword">Enter your new password</string>
