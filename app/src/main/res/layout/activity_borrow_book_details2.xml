@@ -8,61 +8,53 @@
 
     <TextView
         android:id="@+id/txtBDetailPublisher"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtBDetailPubYear"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtBDetailGenre"
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBDetailGenre" />
 
     <TextView
         android:id="@+id/txtBDetailGenre"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="19dp"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtBDetailPublisher"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtBDetailAuthor"
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBDetailAuthor" />
 
     <TextView
         android:id="@+id/txtBDetailPubYear"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="8dp"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtBDetailOwner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtBDetailPublisher"
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBDetailPublisher" />
 
     <TextView
         android:id="@+id/txtBDetailOwner"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtBDetailPubYear"
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBDetailPubYear" />
 
     <TextView
         android:id="@+id/txtBDetailAuthor"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtBDetailGenre"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtBDetailTitle"
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBDetailTitle" />
 
     <Button
@@ -72,7 +64,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginBottom="180dp"
         android:background="@drawable/border_btn_white"
         android:backgroundTint="@color/bright_blue"
         android:foreground="?android:attr/selectableItemBackground"
@@ -80,29 +72,33 @@
         android:textColor="@color/white"
         android:textSize="15sp"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnMessage"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBDetailStatus"
+        app:layout_constraintVertical_bias="0.985"
         tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
 
     <Button
         android:id="@+id/btnMessage"
         android:layout_width="150dp"
-        android:layout_height="36dp"
+        android:layout_height="35dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="172dp"
+        android:layout_marginBottom="180dp"
         android:background="@drawable/border_btn_white"
+
         android:backgroundTint="@color/navy"
         android:padding="0dp"
         android:text="@string/btnSendMessage"
         android:textColor="@color/white"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
-
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
-        app:layout_constraintStart_toEndOf="@+id/btnBorrow"
+        app:layout_constraintTop_toBottomOf="@+id/txtBDetailStatus"
+        app:layout_constraintVertical_bias="0.985"
         tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
 
     <Button
@@ -112,28 +108,31 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="48dp"
-        android:layout_marginBottom="172dp"
+        android:layout_marginBottom="180dp"
         android:background="@drawable/border_btn_white"
         android:backgroundTint="@color/navy"
         android:padding="0dp"
         android:text="@string/btnGiveAway"
+
         android:textColor="@color/white"
         android:textSize="15sp"
-
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnMessage"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBDetailStatus"
+        app:layout_constraintVertical_bias="0.992"
         tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/txtBDetailTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="36dp"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtBDetailAuthor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintHorizontal_bias="0.248"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
 
@@ -141,25 +140,21 @@
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginTop="36dp"
         android:text="@string/txtTitle"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtBDetailTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtBDetailStatus"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16sp"
-        android:layout_marginEnd="2dp"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/btnMessage"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtBDetailPublisher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBDetailOwner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
