@@ -8,10 +8,17 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Database extends SQLiteOpenHelper  {
+    List<Books> booksList = new ArrayList<>();
     SQLiteDatabase sqLiteDatabase;
     final static String DATABASE_NAME="APOP.db";
-    final static int DATABASE_VERSION=6;
+    final static int DATABASE_VERSION=7;
+
+    //----------------------------------------CREATING TABLE STRUCTURES---------------------------------------
+
     //USER TABLE
     final static String U_TABLE="User_table";
     final static String U_UserId="UserId"; //PK - email
@@ -62,6 +69,9 @@ public class Database extends SQLiteOpenHelper  {
     final static String M_BookId="BookId"; //FK integer
     final static String M_MsgDate="MsgDate";
 
+    //----------------------------------------------------------------------------------------------
+
+
 
 
     public Database(@Nullable Context context) {
@@ -78,38 +88,59 @@ public class Database extends SQLiteOpenHelper  {
         }
     }
 
+
+    //----------------------------------------CREATING TABLES---------------------------------------
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+
         //create User Table
-       String createTableQuery=" CREATE TABLE "+U_TABLE+"("+ U_UserId+ " text PRIMARY KEY,"+ U_Pw+" text,"+U_FName+" text,"
+       String createTableQuery=" CREATE TABLE "+U_TABLE+"("+ U_UserId+ " text PRIMARY KEY,"+ U_Pw+
+               " text,"+U_FName+" text,"
                 +U_LName+" text,"+U_Address+" text,"+U_UserType+" text)";
         sqLiteDatabase.execSQL(createTableQuery);
+
         //create Book Table
-        createTableQuery=" CREATE TABLE "+B_TABLE+ "("+ B_BookId+ " integer,"+ B_ISBN+" integer,"+B_Title+" text,"
-                +B_Genre+" text,"+B_Author+" text,"+B_Publisher+" text,"+B_PubYear+" integer,"+B_OwnerId+" text,"+B_Status+" text,"+B_Location+" text,"+
-                "PRIMARY KEY ("+ B_BookId+ "), FOREIGN KEY ("+B_OwnerId+") REFERENCES "+U_TABLE+" ("+U_UserId+"))";
+        createTableQuery=" CREATE TABLE "+B_TABLE+ "("+ B_BookId+ " integer,"+ B_ISBN+" integer,"+
+                B_Title+" text,"
+                +B_Genre+" text,"+B_Author+" text,"+B_Publisher+" text,"+B_PubYear+" integer,"+
+                B_OwnerId+" text,"+B_Status+" text,"+B_Location+" text,"+
+                "PRIMARY KEY ("+ B_BookId+ "), FOREIGN KEY ("+B_OwnerId+") REFERENCES "+U_TABLE+
+                " ("+U_UserId+"))";
         sqLiteDatabase.execSQL(createTableQuery);
+
         //create Loan Table
-        createTableQuery=" CREATE TABLE "+L_TABLE+ "("+ L_LoanId+ " integer,"+ L_BookId+" integer,"+L_BorrowerId+" text,"
+        createTableQuery=" CREATE TABLE "+L_TABLE+ "("+ L_LoanId+ " integer,"+ L_BookId+" integer,"+
+                L_BorrowerId+" text,"
                 +L_StartDate+" text,"+L_ReturnDate+" text,"+L_Price+" text,"+
-                "PRIMARY KEY ("+ L_LoanId+ "), FOREIGN KEY ("+L_BookId+") REFERENCES "+B_TABLE+" ("+B_BookId+"),  " +
+                "PRIMARY KEY ("+ L_LoanId+ "), FOREIGN KEY ("+L_BookId+") REFERENCES "+B_TABLE+" ("+
+                B_BookId+"),  " +
                 "FOREIGN KEY ("+L_BorrowerId+") REFERENCES "+U_TABLE+" ("+U_UserId+"))";
         sqLiteDatabase.execSQL(createTableQuery);
+
         //create Preference Table
         createTableQuery=" CREATE TABLE "+P_TABLE+ "("+ P_UserId+ " text,"+ P_Preference+" text,"+
-                "PRIMARY KEY ("+ P_UserId+ ","+P_Preference+"), FOREIGN KEY ("+P_UserId+") REFERENCES "+U_TABLE+" ("+U_UserId+"))";
+                "PRIMARY KEY ("+ P_UserId+ ","+P_Preference+"), FOREIGN KEY ("+P_UserId+") " +
+                "REFERENCES "+U_TABLE+" ("+U_UserId+"))";
         sqLiteDatabase.execSQL(createTableQuery);
+
         //create Reading History Table
-        createTableQuery=" CREATE TABLE "+R_TABLE+ "("+ R_UserId+ " text,"+ R_BookId+" integer,"+ R_Note+" text,"+
-                "PRIMARY KEY ("+ R_UserId+ ","+R_BookId+"), FOREIGN KEY ("+R_UserId+") REFERENCES "+U_TABLE+" ("+U_UserId+"))";
+        createTableQuery=" CREATE TABLE "+R_TABLE+ "("+ R_UserId+ " text,"+ R_BookId+" integer,"+
+                R_Note+" text,"+
+                "PRIMARY KEY ("+ R_UserId+ ","+R_BookId+"), FOREIGN KEY ("+R_UserId+") REFERENCES "+
+                U_TABLE+" ("+U_UserId+"))";
         sqLiteDatabase.execSQL(createTableQuery);
+
         //create Message Table
-        createTableQuery=" CREATE TABLE "+M_TABLE+ "("+ M_MessageId+ " integer,"+ M_SenderId+" integer,"+ M_ReceiverId+" text,"+M_BookId+" integer,"+ M_MsgDate+" text,"+
-                "PRIMARY KEY ("+M_MessageId+"), FOREIGN KEY ("+M_SenderId+") REFERENCES "+U_TABLE+" ("+U_UserId+"), " +
+        createTableQuery=" CREATE TABLE "+M_TABLE+ "("+ M_MessageId+ " integer,"+ M_SenderId+
+                " integer,"+ M_ReceiverId+" text,"+M_BookId+" integer,"+ M_MsgDate+" text,"+
+                "PRIMARY KEY ("+M_MessageId+"), FOREIGN KEY ("+M_SenderId+") REFERENCES "+U_TABLE+
+                " ("+U_UserId+"), " +
                 "FOREIGN KEY ("+M_ReceiverId+") REFERENCES "+U_TABLE+" ("+U_UserId+"))";
         sqLiteDatabase.execSQL(createTableQuery);
 
     }
+    //----------------------------------------------------------------------------------------------
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
@@ -122,6 +153,9 @@ public class Database extends SQLiteOpenHelper  {
         onCreate(sqLiteDatabase);
 
     }
+
+    //----------------------------------------MANUALLY ADD USER METHOD------------------------------
+
     public boolean addUser(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();
@@ -138,8 +172,11 @@ public class Database extends SQLiteOpenHelper  {
         else
             return false;
     }
+    //-----------------------------------------ADD BOOK METHOD--------------------------------------
 
-    public boolean addBook(int isbn,String title,String genre,String Author, String Publisher, int PubYear,String OwnerId
+
+    public boolean addBook(int isbn,String title,String genre,String Author, String Publisher,
+                           String PubYear,String OwnerId
     ,String status, String location){
         sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();
@@ -159,6 +196,7 @@ public class Database extends SQLiteOpenHelper  {
         else
             return false;
     }
+    //----------------------------------------SEARCH BOOKS BY LOCATION------------------------------
 
     //searching book by pickup location - Borrow Book Activity -- NOT WORKING
     public Cursor searchBookByLocation(String loc){
@@ -168,21 +206,52 @@ public class Database extends SQLiteOpenHelper  {
         Cursor c=sqdb.rawQuery(query,null);
         return c;
     }
-    //for testing purpose
-    public void manuallyAddBook(){
-        sqLiteDatabase = this.getWritableDatabase();
-        ContentValues value = new ContentValues();
-        value.put(B_ISBN,987654321);
-        value.put(B_Title,"The Ride of a Lifetime");
-        value.put(B_Genre,"Business");
-        value.put(B_Author,"Robert Iger");
-        value.put(B_Publisher,  "Random House");
-        value.put(B_PubYear,2019);
-        value.put(B_OwnerId,"prabh@xzy.com");
-        value.put(B_Status,"available");
-        value.put(B_Location,"Burnaby");
+    //----------------------------------------------------------------------------------------------
 
-        long r = sqLiteDatabase.insert(B_TABLE,null,value);
+    public List<Books> viewBooks(){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT Title,Author,Genre,Status,PubYear,FName,ISBN,Publisher,BookId FROM " + B_TABLE+","+
+                U_TABLE +" WHERE Book_table.OwnerId = User_table.UserId";
+        Cursor c =sqLiteDatabase.rawQuery(query,null);
+        try{
+            while(c.moveToNext()){
+                String title = c.getString(0);
+                String Author = c.getString(1);
+                String Genre = c.getString(2);
+                String status = c.getString(3);
+                String year = c.getString(4);
+                String owner = c.getString(5);
+                String isbn = c.getString(6);
+                String publisher = c.getString(7);
+                String bookId = c.getString(8);
+                Books book = new Books(title,Author,Genre,status,owner,year,isbn,publisher,bookId);
+                booksList.add(book);
+            }
+
+        }
+        catch (Exception e){
+            e.getStackTrace();
+        }
+        return booksList;
+    }
+
+    public boolean updateRec(String title, String author, String genre, String status,
+                             String year, String isbn,String publisher,String id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(B_Title,title);
+        values.put(B_Author,author);
+        values.put(B_Genre,genre);
+        values.put(B_Status,status);
+        values.put(B_PubYear,year);
+        values.put(B_ISBN,isbn);
+        values.put(B_Publisher,publisher);
+        int u = sqLiteDatabase.update(B_TABLE,values,"BookId=?",
+                new String[]{id});
+        if(u>0)
+            return true;
+        else
+            return false;
     }
 
 }

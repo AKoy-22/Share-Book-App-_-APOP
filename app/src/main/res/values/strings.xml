@@ -48,6 +48,7 @@
 
     <!-- Add book -->
     <string name="txtAddBookTitle">Enter the book of the title</string>
+    <string name="txtUpdateBook">UPDATE BOOK</string>
     <string name="txtAddBookISBN">Enter the ISBN-13 number</string>
     <string name="txtAddBookAuthor">Enter the book of author</string>
     <string name="txtAddBookPublisher">Enter the book of publisher</string>
@@ -60,6 +61,11 @@
     <string-array name="txtBookCategory">
         <item>Fiction</item>
         <item>NonFiction</item>
+    </string-array>
+    <string-array name="bookStatus">
+        <item>Share</item>
+        <item>Give-away</item>
+        <item>Rent-out</item>
     </string-array>
 
     <!-- Borrow book -->
@@ -168,4 +174,5 @@
 
     <!-- message -->
     <string name="imgArrow">image of arrow icon</string>
+    <string name="btnUpdateBook">UPDATE CHANGES</string>
 </resources>

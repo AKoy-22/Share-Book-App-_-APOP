@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/APOP/app/src/main/res/layout/activity_add_book.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/APOP/app/src/main/res/layout/activity_update_book.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/APOP/app/src/main/res/layout/activity_update_book2.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/APOP/app/src/main/res/layout/activity_update_page.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/APOP/app/src/main/res/layout/recycler_item.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/APOP/app/src/main/res/layout/recyclerview.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/akiko/AndroidStudioProjects/APOPShareBook/app/src/main/res/layout/activity_account_info.xml" value="0.25" />
         <entry key="..\:/Users/akiko/AndroidStudioProjects/APOPShareBook/app/src/main/res/layout/activity_add_book.xml" value="0.264" />
         <entry key="..\:/Users/akiko/AndroidStudioProjects/APOPShareBook/app/src/main/res/layout/activity_borrow_book.xml" value="0.25" />

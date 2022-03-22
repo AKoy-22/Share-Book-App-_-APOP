@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APOPShareBook">
         <activity
+            android:name=".UpdatePage"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateBook2"
+            android:exported="false" />
+        <activity
             android:name=".BorrowBook2"
             android:exported="false" />
         <activity

@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -27,14 +26,14 @@ public class AddBook extends AppCompatActivity {
         ImageButton go_back = findViewById(R.id.btnBack);
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
         ImageButton btnMessage = findViewById(R.id.btnMessageIcon);
-        Button btnAddBook = findViewById(R.id.btnBookSubmit);
+        Button btnAddBook = findViewById(R.id.btnUpdateChanges);
         EditText inpTitle = findViewById(R.id.editBookTitle);
         EditText inpIsbn = findViewById(R.id.editBookISBN);
         EditText inpAuthor = findViewById(R.id.editBookAuthor);
         EditText inpPublisher=findViewById(R.id.editBookPublisher);
         EditText inpPubYear=findViewById(R.id.editBookYear);
         Spinner genre = findViewById(R.id.editBookCategory);
-        RadioGroup rGroup = findViewById(R.id.rd_group1);
+        Spinner status = findViewById(R.id.chooseBookStatus);
         //button event for go back main page
         go_back.setOnClickListener(v -> startActivity(new Intent(AddBook.this,MainMenu.class)));
         btnMessage.setOnClickListener(v -> startActivity(new Intent(AddBook.this,Message.class)));
@@ -60,9 +59,10 @@ public class AddBook extends AppCompatActivity {
             boolean isInserted;
             @Override
             public void onClick(View view) {
+
                 isInserted = db.addBook(Integer.parseInt(inpIsbn.getText().toString()),
                         inpTitle.getText().toString(),genre.getSelectedItem().toString(),
-                        inpAuthor.getText().toString(),inpPublisher.getText().toString(),Integer.parseInt(inpPubYear.getText().toString()),"prabh@xzy.com","For rent","Location");
+                        inpAuthor.getText().toString(),inpPublisher.getText().toString(),inpPubYear.getText().toString(),"prabh@xzy.com",status.getSelectedItem().toString(),"Location");
                 if(isInserted){
                     Toast.makeText(AddBook.this,
                             Html.fromHtml("<big>Data is added</big>"),
