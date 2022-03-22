@@ -90,6 +90,10 @@
     <string name="btnSearch">Search</string>
     <string name="hintSearch">Enter Preferred Pickup Location</string>
 
+    <!-- Borrow book -->
+    <string name="btnSendMessage">Send Message</string>
+    <string name="txtTitle">Book Information</string>
+
     <!-- Edit account -->
     <string name="editUserPassword">Enter your new password</string>
     <string name="editUserName">Enter your full name</string>

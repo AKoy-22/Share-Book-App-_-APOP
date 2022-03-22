@@ -27,8 +27,11 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
     RecyclerAdapter adapter;
     Database database;
     Cursor c;
-    String inpLoc;
-    ArrayList<String> bTitles, bAuthors, bGenres;
+    String inpLoc, title, author, genre, pub, pubYear, owner, status;
+    //Integer bookId; ??
+    ArrayList<String> bTitles, bAuthors, bGenres, bPub, bPubYear, bOwner, bStatus;
+    ArrayList<Integer> bId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,12 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
                 bTitles=new ArrayList<String>();
                 bAuthors=new ArrayList<String >();
                 bGenres=new ArrayList<String>();
+                bPub=new ArrayList<String>();
+                bPubYear=new ArrayList<String>();
+                bOwner=new ArrayList<String>();
+                bStatus=new ArrayList<String>();
+                bId=new ArrayList<Integer>();
+
                 inpLoc=editTxtSearch.getText().toString();
                 c=database.searchBookByLocation(inpLoc);
 
@@ -56,6 +65,11 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
                         bTitles.add(c.getString(0));
                         bAuthors.add(c.getString(1));
                         bGenres.add(c.getString(2));
+                        bPub.add(c.getString(3));
+                        bPubYear.add(c.getString(4));
+                        bOwner.add(c.getString(5));
+                        bStatus.add(c.getString(6));
+                       // bId.add(c.getInt(7));
                     }
                 }
 
@@ -94,6 +108,27 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
 
     @Override
     public void onItemClick(View view, int position) {
+        //startActivity(new Intent(BorrowBook2.this,BorrowBookDetails2.class));
+        title=bTitles.get(position);
+        author=bAuthors.get(position);
+        genre=bGenres.get(position);
+        pub=bPub.get(position);
+        pubYear=bPubYear.get(position);
+        owner=bOwner.get(position);
+        status=bStatus.get(position);
+       // bookId=bId.get(position);
+        Intent i = new Intent(BorrowBook2.this, BorrowBookDetails2.class);
+        i.putExtra("title",title);
+        i.putExtra("author", author);
+        i.putExtra("genre",genre);
+        i.putExtra("pub",pub);
+        i.putExtra("pubYear",pubYear);
+        i.putExtra("owner",owner);
+        i.putExtra("status",status);
+        //i.putExtra("bookId",bookId);
+        startActivity(i);
+
+
 
     }
 }

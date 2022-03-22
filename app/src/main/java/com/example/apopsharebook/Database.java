@@ -202,7 +202,7 @@ public class Database extends SQLiteOpenHelper  {
     public Cursor searchBookByLocation(String loc){
         SQLiteDatabase sqdb=this.getWritableDatabase();
         //sqLiteDatabase=this.getWritableDatabase();
-        String query="SELECT Title, Author, Genre FROM "+B_TABLE+" WHERE Location='"+loc+"'";
+        String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId FROM "+B_TABLE+" WHERE Location='"+loc+"'";
         Cursor c=sqdb.rawQuery(query,null);
         return c;
     }
