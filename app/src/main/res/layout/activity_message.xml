@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".MessagePage">
+    tools:context=".Message">
 
     <!-- Tool Bar -->
     <androidx.appcompat.widget.Toolbar
@@ -39,152 +39,34 @@
             android:textColor="@color/dark_gray" />
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- the first context-->
-    <androidx.core.widget.NestedScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true">
-        <RelativeLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- list View -->
+        <ListView
+            android:id="@+id/CureentLoanListView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:elevation="5dp">
+            android:layout_marginBottom="50dp"
+            android:padding="5dp" />
 
-            <ImageView
-                android:id="@+id/imgMessageIcon1"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:layout_alignParentStart="false"
-                android:contentDescription="@string/imgMessageIcon"
-                android:src="@drawable/message_gray_icon" />
-
-            <TextView
-                android:id="@+id/txtMessage1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="5dp"
-                android:text="@string/txtMessage1"
-                android:textAlignment="viewStart"
-                android:textColor="@color/dark_gray"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtMessageDate1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="25dp"
-                android:text="@string/txtMessageDay1"
-                android:textColor="@color/gray"
-                android:textSize="12sp"
-                tools:ignore="TextContrastCheck" />
-            <!-- button to enter -->
-            <ImageButton
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/ic_arrow_right"
-                android:contentDescription="@string/imgArrow"
-                tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
-            <!-- line -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="55dp"
-                android:background="@color/light_gray" />
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
-
-    <!-- the second context -->
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true">
-
-        <RelativeLayout
+        <!-- bottom menu -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_menu"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:elevation="5dp">
-
-            <ImageView
-                android:id="@+id/imgMessageIcon2"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:layout_alignParentStart="false"
-                android:contentDescription="@string/txtMessage2"
-                android:src="@drawable/message_gray_icon" />
-
-            <TextView
-                android:id="@+id/txtMessage2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="55dp"
-                android:text="@string/txtMessage2"
-                android:textAlignment="viewStart"
-                android:textColor="@color/dark_gray"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtMessageDate2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/txtMessageDay2"
-                android:textColor="@color/gray"
-                android:textSize="12sp"
-                tools:ignore="TextContrastCheck" />
-
-            <!-- button to enter -->
-            <ImageButton
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentEnd="true"
-                android:background="@drawable/ic_arrow_right"
-                android:contentDescription="@string/imgArrow"
-                tools:ignore="TouchTargetSizeCheck" />
-            <!-- line -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="55dp"
-                android:background="@color/light_gray" />
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
-
-    <!-- the bottom menu bar -->
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom">
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_menu"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/nav_bg"
-                android:elevation="4dp"
-                app:fabCradleVerticalOffset="10dp"
-                app:itemIconSize="18dp"
-                app:itemIconTint="@color/bright_blue"
-                app:itemTextColor="@color/bright_blue"
-                app:labelVisibilityMode="unlabeled"
-                app:menu="@menu/bottom_menu" />
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="-2dp"
+            android:background="@color/nav_bg"
+            android:elevation="4dp"
+            app:fabCradleVerticalOffset="10dp"
+            app:itemIconSize="18dp"
+            app:itemIconTint="@color/bright_blue"
+            app:itemTextColor="@color/bright_blue"
+            app:menu="@menu/bottom_menu" />
+    </RelativeLayout>
 </LinearLayout>

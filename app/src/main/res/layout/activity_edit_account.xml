@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/light_background"
-    android:orientation="vertical"
-    tools:context=".EditAccountPage">
+    android:orientation="vertical">
 
     <!-- Tool Bar -->
     <androidx.appcompat.widget.Toolbar
@@ -52,37 +51,34 @@
     </androidx.appcompat.widget.Toolbar>
 
     <!-- User profile -->
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp">
+        <!-- user icon -->
+        <ImageButton
+            android:id="@+id/btnUserIcon"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="false"
+            android:background="@drawable/user_profile_img"
+            android:contentDescription="@string/imgUserProfile"
+            tools:ignore="TouchTargetSizeCheck" />
+        <!-- user name -->
+        <TextView
+            android:id="@+id/txtUserInfo"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="20dp">
-            <!-- user icon -->
-            <ImageButton
-                android:id="@+id/btnUserIcon"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_alignParentEnd="false"
-                android:background="@drawable/user_profile_img"
-                android:contentDescription="@string/imgUserProfile"
-                tools:ignore="TouchTargetSizeCheck" />
-            <!-- user name -->
-            <TextView
-                android:id="@+id/txtUserInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="60sp"
-                android:text="@string/txtUserName"
-                android:textColor="#474846"
-                android:layout_centerVertical="true"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:text="@string/txtUserName"
+            android:textColor="#474846"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <!-- label of editing password-->
     <TextView
@@ -273,26 +269,25 @@
         app:cornerRadius="10dp" />
 
     <!-- the bottom menu bar -->
-    <androidx.core.widget.NestedScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <RelativeLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!-- bottom menu -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_menu"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom">
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_menu"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/nav_bg"
-                android:elevation="4dp"
-                app:fabCradleVerticalOffset="10dp"
-                app:itemIconSize="16dp"
-                app:itemIconTint="@color/bright_blue"
-                app:itemTextColor="@color/bright_blue"
-                app:labelVisibilityMode="unlabeled"
-                app:menu="@menu/bottom_menu" />
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="-2dp"
+            android:background="@color/nav_bg"
+            android:elevation="4dp"
+            app:fabCradleVerticalOffset="10dp"
+            app:itemIconSize="18dp"
+            app:itemIconTint="@color/bright_blue"
+            app:itemTextColor="@color/bright_blue"
+            app:menu="@menu/bottom_menu" />
+    </RelativeLayout>
 </LinearLayout>
