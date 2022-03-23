@@ -3,14 +3,22 @@ package com.example.apopsharebook;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.icu.text.LocaleDisplayNames;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class BorrowBookDetails2 extends AppCompatActivity {
-    String title, author, genre, pub, pubYear, owner, status;
-    // int bookId;
+    String title, author, genre, pub, pubYear, owner, status, senderId;
+    int bookId;
+    Database db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +48,10 @@ public class BorrowBookDetails2 extends AppCompatActivity {
             pubYear=getIntent().getStringExtra("pubYear");
             txtPubYear.setText("Published: "+pubYear);
             owner=getIntent().getStringExtra("owner");
-            txtOwner.setText("Owner ID" +owner);
+            txtOwner.setText("Owner ID: " +owner);
             status=getIntent().getStringExtra("status");
-            txtStatus.setText("Status:" +status);
-            //bookId=getIntent().getIntExtra("bookId",0);
-
+            txtStatus.setText("Status: " +status);
+            bookId=getIntent().getIntExtra("bookId",0);
             if(status.equals("available") || status.equals("on loan")){
                 btnBorrow.setVisibility(View.VISIBLE);
             }
@@ -54,15 +61,27 @@ public class BorrowBookDetails2 extends AppCompatActivity {
 
         }
 
-
-
-      /* btnMessage.setOnClickListener(new View.OnClickListener() {
+        btnBorrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(BorrowBookDetails.this,Message.class);
+                SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(BorrowBookDetails2.this);
+                senderId=sharedPreferences.getString("userId","NA");
+                //LocalDate msgDate=LocalDate.now();
+                String date="2022-03-22";
+                db=new Database(BorrowBookDetails2.this);
+                db.sendBorrowRequest(owner, senderId, title,date, bookId );
+
+            }
+        });
+
+
+      btnMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(BorrowBookDetails2.this,Message.class);
                 i.putExtra("bookId",bookId);
                 startActivity(i);
             }
-        });*/
+        });
     }
 }

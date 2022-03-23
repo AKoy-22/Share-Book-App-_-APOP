@@ -28,9 +28,9 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
     Database database;
     Cursor c;
     String inpLoc, title, author, genre, pub, pubYear, owner, status;
-    //Integer bookId; ??
+    int bookId;
     ArrayList<String> bTitles, bAuthors, bGenres, bPub, bPubYear, bOwner, bStatus;
-    ArrayList<Integer> bId;
+    ArrayList<Integer> bIds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,8 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
         editTxtSearch=findViewById(R.id.editTxtSearch);
 
         database=new Database(this);
-
+       // database.addUser();
+        database.manuallyAddBook();
         //Entering location and clicking Search button will display books in that location
         // --> !!!may be better to change to spinner rather than having user type in location to reduce input error (spelling/not existing)!!!
         btnSearch.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +56,7 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
                 bPubYear=new ArrayList<String>();
                 bOwner=new ArrayList<String>();
                 bStatus=new ArrayList<String>();
-                bId=new ArrayList<Integer>();
+                bIds=new ArrayList<Integer>();
 
                 inpLoc=editTxtSearch.getText().toString();
                 c=database.searchBookByLocation(inpLoc);
@@ -69,6 +70,7 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
                         bPubYear.add(c.getString(4));
                         bOwner.add(c.getString(5));
                         bStatus.add(c.getString(6));
+                        bIds.add(c.getInt(7));
                        // bId.add(c.getInt(7));
                     }
                 }
@@ -108,7 +110,6 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
 
     @Override
     public void onItemClick(View view, int position) {
-        //startActivity(new Intent(BorrowBook2.this,BorrowBookDetails2.class));
         title=bTitles.get(position);
         author=bAuthors.get(position);
         genre=bGenres.get(position);
@@ -116,7 +117,7 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
         pubYear=bPubYear.get(position);
         owner=bOwner.get(position);
         status=bStatus.get(position);
-       // bookId=bId.get(position);
+        bookId=bIds.get(position);
         Intent i = new Intent(BorrowBook2.this, BorrowBookDetails2.class);
         i.putExtra("title",title);
         i.putExtra("author", author);
@@ -125,7 +126,7 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
         i.putExtra("pubYear",pubYear);
         i.putExtra("owner",owner);
         i.putExtra("status",status);
-        //i.putExtra("bookId",bookId);
+        i.putExtra("bookId",bookId);
         startActivity(i);
 
 
