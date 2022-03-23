@@ -44,31 +44,33 @@
     </androidx.appcompat.widget.Toolbar>
 
     <!-- User profile -->
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal">
+        <!-- user icon -->
+        <ImageButton
+            android:id="@+id/btnUserIcon"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/user_profile_img"
+            android:contentDescription="@string/imgUserProfile"
+            tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="20dp">
-            <!-- user icon -->
-            <ImageButton
-                android:id="@+id/btnUserIcon"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_alignParentEnd="false"
-                android:background="@drawable/user_profile_img"
-                android:contentDescription="@string/imgUserProfile"
-                tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+        <LinearLayout
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txtUserName"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="60sp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:text="@string/txtUserName"
                 android:textColor="#474846"
                 android:textSize="22sp"
@@ -78,24 +80,23 @@
                 android:id="@+id/txtUserItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60sp"
-                android:layout_marginTop="27sp"
+                android:layout_marginStart="5dp"
                 android:text="@string/txtUserItem"
                 android:textColor="#474846"
                 android:textSize="12sp" />
+        </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/btnUserArrow"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/ic_arrow_right"
-                android:backgroundTint="@color/dark_gray"
-                android:contentDescription="@string/imgUserProfile"
-                tools:ignore="TouchTargetSizeCheck" />
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
+        <ImageButton
+            android:id="@+id/btnUserArrow"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_arrow_right"
+            android:backgroundTint="@color/dark_gray"
+            android:contentDescription="@string/imgUserProfile"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
     <!-- search bar -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_bar"
@@ -116,19 +117,20 @@
         tools:layout_marginRight="20dp" />
 
     <!--The main button of add book and update book-->
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
             <!-- add book -->
             <ImageButton
                 android:id="@+id/btnAddBook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/imgAddBook"
@@ -138,27 +140,21 @@
                 android:id="@+id/btnUpdateBook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_marginEnd="20dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/imgUpdateBook"
                 app:srcCompat="@drawable/update_book_button" />
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
-    <!--The main button of borrow book and reading tracker-->
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
             <!-- borrow book -->
             <ImageButton
                 android:id="@+id/btnBorrowBook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/imgBorrowBook"
@@ -169,93 +165,53 @@
                 android:id="@+id/btnReadingTracker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_marginEnd="20dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/imgReadingTracker"
                 app:srcCompat="@drawable/reading_tracker_button" />
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+    </LinearLayout>
 
     <!--The message content-->
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true"
-        tools:ignore="SpeakableTextPresentCheck">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_button_white"
+        android:elevation="5dp"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
 
-        <RelativeLayout
+        <ImageView
+            android:id="@+id/imgMessageIcon1"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:contentDescription="@string/imgMessageIcon"
+            android:src="@drawable/message_gray_icon" />
+
+        <TextView
+            android:id="@+id/txtMessage1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/rounded_button_white"
-            android:elevation="5dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/txtMessage1"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_gray"
+            android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/imgMessageIcon1"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:layout_alignParentStart="false"
-                android:contentDescription="@string/imgMessageIcon"
-                android:src="@drawable/message_gray_icon" />
-
-            <TextView
-                android:id="@+id/txtMessage1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="5dp"
-                android:text="@string/txtMessage1"
-                android:textAlignment="viewStart"
-                android:textColor="@color/dark_gray"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtMessageDate1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="25dp"
-                android:text="@string/txtMessageDay1"
-                android:textColor="@color/gray"
-                android:textSize="12sp"
-                tools:ignore="TextContrastCheck" />
-
-            <ImageView
-                android:id="@+id/imgMessageIcon2"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:layout_alignParentStart="false"
-                android:layout_marginTop="50dp"
-                android:contentDescription="@string/txtMessage2"
-                android:src="@drawable/message_gray_icon" />
-
-            <TextView
-                android:id="@+id/txtMessage2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="55dp"
-                android:text="@string/txtMessage2"
-                android:textAlignment="viewStart"
-                android:textColor="@color/dark_gray"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtMessageDate2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="75dp"
-                android:text="@string/txtMessageDay1"
-                android:textColor="@color/gray"
-                android:textSize="12sp"
-                tools:ignore="TextContrastCheck" />
-
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
+        <TextView
+            android:id="@+id/txtMessageDate1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="25dp"
+            android:text="@string/txtMessageDay1"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            tools:ignore="TextContrastCheck" />
+    </LinearLayout>
 </LinearLayout>
