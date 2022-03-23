@@ -42,7 +42,7 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
 
         database=new Database(this);
        // database.addUser();
-        database.manuallyAddBook();
+        //database.manuallyAddBook();
         //Entering location and clicking Search button will display books in that location
         // --> !!!may be better to change to spinner rather than having user type in location to reduce input error (spelling/not existing)!!!
         btnSearch.setOnClickListener(new View.OnClickListener() {
