@@ -13,7 +13,6 @@
     <!-- Main Menu -->
     <string name="imgUserProfile">The photos for user profile</string>
     <string name="txtUserName">amiewill428</string>
-    <string name="txtUserItem">2 items in the bookshelf</string>
     <string name="txt_search_bar">Search a book name or address</string>
     <string name="imgAddBook">The icon of add book</string>
     <string name="imgUpdateBook">The icon of update book</string>
@@ -145,10 +144,8 @@
     <string name="txtBorrowBookDate3">2022/03/02</string>
 
     <!-- current loan -->
-    <string name="txtBorrowRemainDate">2 day remaining</string>
-    <string name="txtBorrowRemainDate2">4 day remaining</string>
-    <string name="txtBorrowRemainDate3">6 day remaining</string>
     <string name="btnBorrowExtend">Extend</string>
+    <string name="btnBookReturned">Returned</string>
 
     <!-- request history -->
     <string name="txtRequestTypeG">Give Away</string>

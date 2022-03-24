@@ -222,6 +222,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/border_btn_white"
         android:backgroundTint="@color/dark_blue"
         android:drawableStart="@drawable/ic_list"
@@ -248,6 +249,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/border_btn_white"
         android:backgroundTint="@color/dark_blue"
         android:drawableStart="@drawable/ic_list"
@@ -305,7 +307,9 @@
         android:drawableStart="@drawable/ic_login"
         android:drawablePadding="10dp"
         android:elevation="15dp"
+        android:paddingStart="18dp"
         android:paddingTop="12dp"
+        android:paddingEnd="5dp"
         android:paddingBottom="12dp"
         android:shadowColor="#000000"
         android:text="@string/btnSignOut"
@@ -313,8 +317,7 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:cornerRadius="10dp"
-        tools:paddingStart="18dp" />
+        app:cornerRadius="10dp" />
 
     <!-- the bottom menu bar -->
     <RelativeLayout
