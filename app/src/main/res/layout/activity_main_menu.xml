@@ -63,26 +63,20 @@
         <LinearLayout
             android:layout_width="290dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txtUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="5dp"
                 android:text="@string/txtUserName"
                 android:textColor="#474846"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txtUserItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text="@string/txtUserItem"
-                android:textColor="#474846"
-                android:textSize="12sp" />
         </LinearLayout>
 
         <ImageButton
