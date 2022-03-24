@@ -65,7 +65,7 @@
     <string-array name="bookStatus">
         <item>Share</item>
         <item>Give-away</item>
-        <item>Rent-out</item>
+        <item>Available</item>
     </string-array>
 
     <!-- Borrow book -->
@@ -91,8 +91,10 @@
     <string name="hintSearch">Enter Preferred Pickup Location</string>
 
     <!-- Borrow book -->
-    <string name="btnSendMessage">Send Message</string>
+    <string name="btnSendMessage">Send</string>
     <string name="txtTitle">Book Information</string>
+    <string name="enterMsgHint">Enter you message here</string>
+
 
     <!-- Edit account -->
     <string name="editUserPassword">Enter your new password</string>

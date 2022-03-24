@@ -157,11 +157,18 @@ public class Database extends SQLiteOpenHelper  {
     public boolean addUser(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();
-        value.put(U_UserId,"akoyama@abc.com");
+        /*value.put(U_UserId,"akoyama@abc.com");
         value.put(U_Address,"7717 77th Street, Surrey");
         value.put(U_Pw,"efgh");
         value.put(U_FName,"Akiko");
         value.put(U_LName,"Koyama");
+        value.put(U_UserType,"user");*/
+
+        value.put(U_UserId,"oprah@abc.com");
+        value.put(U_Address,"555 77th Street, Surrey");
+        value.put(U_Pw,"abcd");
+        value.put(U_FName,"Oprah");
+        value.put(U_LName,"Huang");
         value.put(U_UserType,"user");
 
         long r = sqLiteDatabase.insert(U_TABLE,null,value);
@@ -175,7 +182,7 @@ public class Database extends SQLiteOpenHelper  {
     public void manuallyAddBook(){
         sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();
-        value.put(B_ISBN,32165222);
+        /*value.put(B_ISBN,32165222);
         value.put(B_Title,"Waiting for Godot");
         value.put(B_Genre,"Fiction");
         value.put(B_Author,"Samuel Becket");
@@ -183,7 +190,17 @@ public class Database extends SQLiteOpenHelper  {
         value.put(B_PubYear, 2017);
         value.put(B_OwnerId, "akoyama@abc.com");
         value.put(B_Status,"available");
-        value.put(B_Location,"Burnaby");
+        value.put(B_Location,"Burnaby");*/
+
+        value.put(B_ISBN,32165222);
+        value.put(B_Title,"Midnight");
+        value.put(B_Genre,"Fiction");
+        value.put(B_Author,"Allan Smith");
+        value.put(B_Publisher, "Penguin");
+        value.put(B_PubYear, 2015);
+        value.put(B_OwnerId, "akoyama@abc.com");
+        value.put(B_Status,"give away");
+        value.put(B_Location,"Brentwood");
 
         long r = sqLiteDatabase.insert(B_TABLE,null,value);
     }

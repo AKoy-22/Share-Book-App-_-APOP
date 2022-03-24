@@ -4,15 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.icu.text.LocaleDisplayNames;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
+import java.util.Date;
 
 public class BorrowBookDetails2 extends AppCompatActivity {
     String title, author, genre, pub, pubYear, owner, status, senderId;
@@ -34,6 +34,9 @@ public class BorrowBookDetails2 extends AppCompatActivity {
         Button btnBorrow=findViewById(R.id.btnBorrow);
         Button btnGiveAway=findViewById(R.id.btnBDetailGiveAway);
         Button btnMessage=findViewById(R.id.btnMessage);
+        Button btnSend=findViewById(R.id.btnSubmitMsg);
+        EditText writeMsg=findViewById(R.id.edTxtWriteMsg);
+
 
         Intent i= getIntent();
         if (i != null) {
@@ -60,28 +63,41 @@ public class BorrowBookDetails2 extends AppCompatActivity {
             }
 
         }
-
+        //Borrow button sends borrow request automatically
         btnBorrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(BorrowBookDetails2.this);
                 senderId=sharedPreferences.getString("userId","NA");
-                //LocalDate msgDate=LocalDate.now();
-                String date="2022-03-22";
+
+                Timestamp t = new Timestamp(System.currentTimeMillis());
+                Date d=new Date(t.getTime());
+                String date=d.toString();
                 db=new Database(BorrowBookDetails2.this);
                 db.sendBorrowRequest(owner, senderId, title,date, bookId );
 
             }
         });
 
-
+      //Message button enables user to send personalized message
       btnMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(BorrowBookDetails2.this,Message.class);
+                writeMsg.setVisibility(View.VISIBLE);
+                btnSend.setVisibility(View.VISIBLE);
+                /*Intent i = new Intent(BorrowBookDetails2.this,Message.class);
                 i.putExtra("bookId",bookId);
-                startActivity(i);
+                startActivity(i);*/
             }
         });
+
+      btnSend.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              String msgContent=writeMsg.getText().toString();
+              db=new Database(BorrowBookDetails2.this);
+              //db.sendPersonalizedMsg(owner, senderId, date, bookId,msgContent....);
+          }
+      });
     }
 }
