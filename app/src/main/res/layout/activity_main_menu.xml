@@ -8,7 +8,6 @@
     android:layout_centerVertical="false"
     android:background="@drawable/light_background"
     android:orientation="vertical"
-
     tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck">
 
     <!-- Tool Bar -->
@@ -122,10 +121,41 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/btnSearch1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/border_btn_white"
+            android:backgroundTint="@color/normal_gray"
+            android:elevation="20dp"
+            android:text="@string/txt_search_bar"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
+
+<!--            <Button-->
+<!--                android:layout_width="170dp"-->
+<!--                android:layout_height="160dp"-->
+<!--                android:layout_marginStart="25dp"-->
+<!--                android:background="@drawable/border_btn_white"-->
+<!--                android:backgroundTint="@color/bright_blue"-->
+<!--                android:elevation="20dp"-->
+<!--                android:gravity="bottom"-->
+<!--                android:padding="22dp"-->
+<!--                android:text="@string/btnAdd"-->
+<!--                android:textAlignment="viewStart"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textStyle="bold" />-->
             <!-- add book -->
             <ImageButton
                 android:id="@+id/btnAddBook"
@@ -173,45 +203,45 @@
     </LinearLayout>
 
     <!--The message content-->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/rounded_button_white"
-        android:elevation="5dp"
-        android:orientation="horizontal"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp">
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_marginStart="25dp"-->
+<!--        android:layout_marginEnd="25dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:background="@drawable/rounded_button_white"-->
+<!--        android:elevation="5dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingTop="5dp"-->
+<!--        android:paddingBottom="5dp">-->
 
-        <ImageView
-            android:id="@+id/imgMessageIcon1"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:contentDescription="@string/imgMessageIcon"
-            android:src="@drawable/message_gray_icon" />
+<!--        <ImageView-->
+<!--            android:id="@+id/imgMessageIcon1"-->
+<!--            android:layout_width="42dp"-->
+<!--            android:layout_height="42dp"-->
+<!--            android:contentDescription="@string/imgMessageIcon"-->
+<!--            android:src="@drawable/message_gray_icon" />-->
 
-        <TextView
-            android:id="@+id/txtMessage1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/txtMessage1"
-            android:textAlignment="viewStart"
-            android:textColor="@color/dark_gray"
-            android:textStyle="bold" />
+<!--        <TextView-->
+<!--            android:id="@+id/txtMessage1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="55dp"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:text="@string/txtMessage1"-->
+<!--            android:textAlignment="viewStart"-->
+<!--            android:textColor="@color/dark_gray"-->
+<!--            android:textStyle="bold" />-->
 
-        <TextView
-            android:id="@+id/txtMessageDate1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="25dp"
-            android:text="@string/txtMessageDay1"
-            android:textColor="@color/gray"
-            android:textSize="12sp"
-            tools:ignore="TextContrastCheck" />
-    </LinearLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/txtMessageDate1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="55dp"-->
+<!--            android:layout_marginTop="25dp"-->
+<!--            android:text="@string/txtMessageDay1"-->
+<!--            android:textColor="@color/gray"-->
+<!--            android:textSize="12sp"-->
+<!--            tools:ignore="TextContrastCheck" />-->
+<!--    </LinearLayout>-->
 </LinearLayout>

@@ -38,6 +38,9 @@
     <string name="txtCurrentLoan">Current Loan</string>
     <string name="txtRequestHistory">Request History</string>
     <string name="txtAddBookTrackerPage">Add A Book Tracker</string>
+    <string name="txtAdminMenu">Admin Menu</string>
+    <string name="txtAdminCreateUser">Create User</string>
+    <string name="txtAdminUserList">View User List</string>
 
     <!-- bottom menu bar -->
     <string name="menu_add">ADD</string>
@@ -173,7 +176,7 @@
     <string name="btnAddTrackerBook">Add a book</string>
     <string name="EditReadingPage">Enter the page of reading</string>
     <string name="btnSave">Save</string>
-    <string name="txtTrackerMessage1">You have been read page 20 already.</string>
+    <string name="txtTrackerMessage1">Page.20</string>
     <string name="labelBookPage">Reading page</string>
     <string name="editBookPage">Enter reading page</string>
     <string name="btnAddTracker">Add the book tracker</string>
@@ -181,4 +184,21 @@
     <!-- message -->
     <string name="imgArrow">image of arrow icon</string>
     <string name="btnUpdateBook">UPDATE CHANGES</string>
+
+    <!-- admin -->
+    <string name="btnCreateUser">CREATE USER</string>
+    <string name="btnUserList">VIEW USER LIST</string>
+    <string name="labelUserId">User Id</string>
+    <string name="EditUserId">Enter the user id</string>
+    <string name="labelUserPw">User Password</string>
+    <string name="EditUserPw">Enter the user password</string>
+    <string name="labelUserFName">User First Name</string>
+    <string name="EditUserFName">Enter the user first name</string>
+    <string name="labelUserLName">User Last Name</string>
+    <string name="EditUserLName">Enter the user last name</string>
+    <string name="labelUserAdr">User Address</string>
+    <string name="EditUserAdr">Enter the user address</string>
+    <string name="imgUserIcon">image of user</string>
+    <string name="btnSendMes">Send Message</string>
+    <string name="btnAdmin">Admin Logic</string>
 </resources>
