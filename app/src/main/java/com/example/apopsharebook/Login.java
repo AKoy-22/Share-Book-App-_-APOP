@@ -11,15 +11,17 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Login extends AppCompatActivity {
-Database db;
+    Database db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         //creating Database object
         db=new Database(this);
         Button btnLoginMain = findViewById(R.id.btnLogin1);
-        Button btnAdminMain = findViewById(R.id.btnAdmin);
+//        Button btnAdmin = findViewById(R.id.btnAdmin);
         SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
 
         btnLoginMain.setOnClickListener(v -> startActivity(new Intent(Login.this,MainMenu.class)));
@@ -34,6 +36,11 @@ Database db;
                 startActivity(new Intent(Login.this, MainMenu.class));
             }
         });
-        btnAdminMain.setOnClickListener(v -> startActivity(new Intent(Login.this,AdminMenu.class)));
+//        btnAdmin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(Login.this, AdminMenu.class));
+//            }
+//        });
     }
 }

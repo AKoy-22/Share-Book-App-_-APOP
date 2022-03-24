@@ -17,4 +17,5 @@
     <color name="nav_bg">#F2F2F2</color>
     <color name="light_gray">#E9E9E9</color>
     <color name="red">#FF5656</color>
+    <color name="normal_gray">#C7C7C7</color>
 </resources>

@@ -2,7 +2,9 @@ package com.example.apopsharebook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -22,7 +24,11 @@ public class AdminUserList extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_admin_user_list);
 
+		ImageButton btnMessage = findViewById(R.id.btnMessageIcon);
+		ImageButton go_back = findViewById(R.id.btnBack);
 
+		btnMessage.setOnClickListener(v -> startActivity(new Intent(AdminUserList.this,Message.class)));
+		go_back.setOnClickListener(v -> startActivity(new Intent(AdminUserList.this,AdminMenu.class)));
 
 		//ListView
 		List<HashMap<String,String>> userList = new ArrayList<>();

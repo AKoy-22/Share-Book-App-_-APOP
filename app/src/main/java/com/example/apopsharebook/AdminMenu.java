@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class AdminMenu extends AppCompatActivity {
 
@@ -15,8 +16,10 @@ public class AdminMenu extends AppCompatActivity {
 
 		Button btnCreateUser = findViewById(R.id.btnCreateUser);
 		Button btnViewUser = findViewById(R.id.btnViewUser);
+		ImageButton btnMessage = findViewById(R.id.btnMessageIcon);
 
 		btnCreateUser.setOnClickListener(v -> startActivity(new Intent(AdminMenu.this,AdminCreateUser.class)));
 		btnViewUser.setOnClickListener(v -> startActivity(new Intent(AdminMenu.this,AdminUserList.class)));
+		btnMessage.setOnClickListener(v -> startActivity(new Intent(AdminMenu.this,Message.class)));
 	}
 }
