@@ -6,12 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class CurrentLoan extends AppCompatActivity {
@@ -48,11 +46,6 @@ public class CurrentLoan extends AppCompatActivity {
             return true;
         });
 
-        //Using ListView and ArrayList
-        String[] from = {"cover","title","author","publisher","year","category","owner","date"};
-        int[] to = {R.id.imgBookCover,R.id.txtBookTitle,R.id.txtBookAuthor,R.id.txtBookPublisher,
-                    R.id.txtBookYear,R.id.txtBookCategory,R.id.txtBookOwner,R.id.txtBorrowBookDate};
-
         clList = new ArrayList<>();
         clList.add(new CurrentLoanList(R.drawable.cover01,"Cloud Cuckoo Land","Anthony Doerr",
                 "Scribner","2021","Fiction","mary11","2022-03-06"));
@@ -63,7 +56,7 @@ public class CurrentLoan extends AppCompatActivity {
         clList.add(new CurrentLoanList(R.drawable.cover04,"Under the Whispering Door","TJ Klune",
                 "Tor Books","2021","Fiction","joe55","2022-03-21"));
 
-        listView = findViewById(R.id.CureentLoanListView);
+        listView = findViewById(R.id.CurrentLoanListView);
         CurrentLoanListAdapter adapter = new CurrentLoanListAdapter(this,R.layout.currentloan_list_item,clList);
         listView.setAdapter(adapter);
         listView.setDivider(null);

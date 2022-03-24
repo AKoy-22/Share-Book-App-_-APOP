@@ -275,6 +275,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/border_btn_white"
         android:backgroundTint="@color/dark_blue"
         android:drawableStart="@drawable/ic_list"

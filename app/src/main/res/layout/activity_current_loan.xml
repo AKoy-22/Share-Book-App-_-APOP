@@ -50,15 +50,13 @@
             tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- the bottom menu bar -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- list View -->
         <ListView
-            android:id="@+id/CureentLoanListView"
+            android:id="@+id/CurrentLoanListView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
