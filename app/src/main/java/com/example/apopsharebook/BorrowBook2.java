@@ -41,8 +41,8 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
         editTxtSearch=findViewById(R.id.editTxtSearch);
 
         database=new Database(this);
-       // database.addUser();
-        //database.manuallyAddBook();
+      //  database.addUser();
+     //   database.manuallyAddBook();
         //Entering location and clicking Search button will display books in that location
         // --> !!!may be better to change to spinner rather than having user type in location to reduce input error (spelling/not existing)!!!
         btnSearch.setOnClickListener(new View.OnClickListener() {
@@ -82,12 +82,6 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
                 recyclerView.setAdapter(adapter);
             }
         });
-        //Note - works with just this, but when inside a method, requires classname prior to this (AK)
-        /*RecyclerView recyclerView=findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter=new RecyclerAdapter(this, img,titles,authors,genres);
-        adapter.setClickListener(this);
-        recyclerView.setAdapter(adapter);*/
 
         //Clicking back button will return to Main Menu activity
         btnBack=findViewById(R.id.btnBack);
@@ -129,7 +123,6 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
         i.putExtra("bookId",bookId);
         startActivity(i);
 
-
-
     }
+
 }

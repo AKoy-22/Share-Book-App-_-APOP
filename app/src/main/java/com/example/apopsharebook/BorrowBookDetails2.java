@@ -73,8 +73,27 @@ public class BorrowBookDetails2 extends AppCompatActivity {
                 Timestamp t = new Timestamp(System.currentTimeMillis());
                 Date d=new Date(t.getTime());
                 String date=d.toString();
+                String request="Borrow request has been sent from";
+                String type="Borrow Request";
                 db=new Database(BorrowBookDetails2.this);
-                db.sendBorrowRequest(owner, senderId, title,date, bookId );
+                db.sendBorrowRequest(owner, senderId, title,date, bookId ,request,type);
+
+            }
+        });
+
+        btnGiveAway.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(BorrowBookDetails2.this);
+                senderId=sharedPreferences.getString("userId","NA");
+
+                Timestamp t = new Timestamp(System.currentTimeMillis());
+                Date d=new Date(t.getTime());
+                String date=d.toString();
+                String request="Request to take the book has been sent from";
+                String type="Give-Away Request";
+                db=new Database(BorrowBookDetails2.this);
+                db.sendBorrowRequest(owner, senderId, title,date, bookId ,request, type);
 
             }
         });
@@ -94,9 +113,16 @@ public class BorrowBookDetails2 extends AppCompatActivity {
       btnSend.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
+              SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(BorrowBookDetails2.this);
+              senderId=sharedPreferences.getString("userId","NA");
+
               String msgContent=writeMsg.getText().toString();
+              Timestamp t = new Timestamp(System.currentTimeMillis());
+              Date d=new Date(t.getTime());
+              String date=d.toString();
+              String type="Personalized Message";
               db=new Database(BorrowBookDetails2.this);
-              //db.sendPersonalizedMsg(owner, senderId, date, bookId,msgContent....);
+              db.sendBorrowRequest(owner, senderId, title,date, bookId ,msgContent,type);
           }
       });
     }

@@ -37,3 +37,20 @@ public class Welcome extends AppCompatActivity {
         });
     }
 }
+
+//----------------TO DOs---------------------//
+//1. Change search location to spinner (Akiko, Prabhjit)
+//2. Format Date for Message (Akiko)
+//3. Implement try catch in several places (All)
+//4. Message content display --> create xml (Akiko/Oprah)
+//5. Improve appearance of BorrowBookDetails xml (Oprah)
+//6. Put back the bottom menu bar for BorrowBook xml (Akiko)
+//7. Reading Tracker (Prabhjit)
+//8. Current Loans (Akiko)
+//9. Request history
+//10.Reading history
+//11. Admin login (Puru)
+//12. Search bar
+//13. User Account Edit
+//14. Sign out
+//

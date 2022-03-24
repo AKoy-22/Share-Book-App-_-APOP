@@ -3,7 +3,10 @@ package com.example.apopsharebook;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -16,14 +19,35 @@ import java.util.List;
 
 public class Message extends AppCompatActivity {
 
-    //fake data
-    String[] messageTitle = {"A request from abc0123","A message from cvb3der","A message from 412dd2"};
-    String[] messageDate = {"2022-03-02","2022-03-08","2022-03-11","2022-03-21"};
+    Database db;
+    String userId;
+    Cursor c;
+    String msgTitle, msgDate, msgFrom;
+    ArrayList<String> msgTitlesList, msgDatesList, msgFromList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
+        msgTitlesList=new ArrayList<String>();
+        msgDatesList=new ArrayList<String>();
+        msgFromList=new ArrayList<String>();
+
+        db=new Database(this);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        userId=sharedPreferences.getString("userId","NA");
+        c=db.viewMessages(userId);
+
+        if(c.getCount()>0){
+            while(c.moveToNext()){
+                msgTitle=c.getString(6);
+                msgTitlesList.add(msgTitle);
+                msgDate=c.getString(4);
+                msgDatesList.add(msgDate);
+                /*msgFrom=c.getString(2);
+                msgFromList.add(msgFrom);*/
+            }
+
 
         ImageButton go_back = findViewById(R.id.btnBack);
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
@@ -50,10 +74,10 @@ public class Message extends AppCompatActivity {
         //ListView
         List<HashMap<String,String>> messageList = new ArrayList<>();
 
-        for(int i=0; i<messageTitle.length; i++) {
+        for(int i=0; i< msgTitlesList.size(); i++) {
             HashMap<String,String> hashmap = new HashMap<>();
-            hashmap.put("title",messageTitle[i]);
-            hashmap.put("date",messageDate[i]);
+            hashmap.put("title",msgTitlesList.get(i));
+            hashmap.put("date",msgDatesList.get(i));
             messageList.add(hashmap);
         }
 
@@ -67,4 +91,5 @@ public class Message extends AppCompatActivity {
         listView.setAdapter(adapter);
 
     }
+ }
 }
