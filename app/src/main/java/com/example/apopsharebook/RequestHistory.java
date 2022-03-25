@@ -3,7 +3,10 @@ package com.example.apopsharebook;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -15,6 +18,8 @@ import java.util.List;
 public class RequestHistory extends AppCompatActivity {
     List<RequestHistoryList> rList;
     ListView listView;
+    Database db;
+    String msgTitle, result, ownerId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +49,29 @@ public class RequestHistory extends AppCompatActivity {
             }
             return true;
         });
-
+        //Databse
+        db=new Database(this);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String userId = sharedPreferences.getString("userId", "NA");
+        Cursor c = db.requests(userId);
         //ListView using ArrayList
         rList = new ArrayList<>();
-        rList.add(new RequestHistoryList("Cloud Cuckoo Land","Rent Out", "mary11"));
-        rList.add(new RequestHistoryList("One Two Three","Rent Out","tom22"));
-        rList.add(new RequestHistoryList("A Court of Silver Flames","Give Away","allen33"));
-        rList.add(new RequestHistoryList("Under the Whispering Door","Give Away","joe55"));
+        //Fetching data
+        if (c.getCount() > 0) {
+            while (c.moveToNext()) {
+                msgTitle = c.getString(3);
+                result = c.getString(2);
+                ownerId = c.getString(0);
+                rList.add(new RequestHistoryList(msgTitle, result, ownerId));
+            }
+        }
+
+
+       /* String d="Declined";
+        rList.add(new RequestHistoryList("Cloud Cuckoo Land",d, "mary11"));
+        rList.add(new RequestHistoryList("One Two Three","Declined","tom22"));
+        rList.add(new RequestHistoryList("A Court of Silver Flames","Declined","allen33"));
+        rList.add(new RequestHistoryList("Under the Whispering Door","Accepted","joe55"));*/
 
         listView = findViewById(R.id.RequestHistoryListView);
         RequestHistoryListAdapter adapter = new RequestHistoryListAdapter(this,R.layout.requesthistory_list_item,rList);

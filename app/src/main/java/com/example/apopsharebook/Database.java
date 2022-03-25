@@ -211,6 +211,22 @@ public class Database extends SQLiteOpenHelper  {
 
         return c;
         }
+    //---------JOIN BOOK TABLE AND MESSGAE TABLE BASED ON A OR D-------------------------------------
+
+
+    public Cursor requests(String userId){
+        SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+        String query=
+                "SELECT Message_table.SenderId, Message_table.ReceiverId,  Message_table.MsgType, Book_table.Title " +
+                "FROM Message_table, Book_table " +
+                 "WHERE ReceiverId ="+"'"+userId+"' AND (MsgType= 'Accepted' OR MsgType='Declineed') AND Message_table.bookId=Book_table.bookId";
+        Cursor c=sqLiteDatabase.rawQuery(query,null);
+
+        return c;
+    }
+    /*String query="SELECT SenderId, ReceiverId,  MsgType " +
+            "FROM Message_table " +
+            "WHERE ReceiverId ="+"'"+userId+"' AND (MsgType= 'Accepted' OR MsgType='Declineed')";*/
     //---------Search BOOKID BY MESSAGE ID----------------------------------------------------------
     public int searchBookIdByMessageId(int msgId){
         SQLiteDatabase sqdb=this.getWritableDatabase();

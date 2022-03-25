@@ -2,11 +2,14 @@ package com.example.apopsharebook;
 
 public class RequestHistoryList {
 	String title, status, user;
+	int img;
 
 	public RequestHistoryList(String t, String s, String u){
 		this.title = t;
 		this.status = s;
 		this.user = u;
+		setImg();
+
 	}
 
 	public String getTitle() {
@@ -20,4 +23,16 @@ public class RequestHistoryList {
 	public String getUser() {
 		return user;
 	}
+	public int getImg(){
+		return img;
+	}
+	public void setImg( ){
+		if(status.equals("Accepted")){
+			this.img=R.drawable.ic_check;
+		}
+		else if(status.equals("Declineed")){
+			this.img=R.drawable.ic_cancel;
+		}
+	}
+
 }
