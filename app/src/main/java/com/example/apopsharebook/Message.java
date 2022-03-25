@@ -17,6 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -57,6 +58,12 @@ public class Message extends AppCompatActivity {
                 msgTitle = c.getString(6);
                 msgTitlesList.add(msgTitle);
             }
+
+            Collections.reverse(msgDatesList);
+            Collections.reverse(msgTitlesList);
+            Collections.reverse(msgIdList);
+            Collections.reverse(msgSenderIdList);
+            Collections.reverse(msgContentList);
 
             ImageButton go_back = findViewById(R.id.btnBack);
             BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);

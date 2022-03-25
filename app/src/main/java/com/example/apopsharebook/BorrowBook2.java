@@ -14,6 +14,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
     Button btnSearch;
     ImageButton btnBack, btnMsgIcon;
     EditText editTxtSearch;
+    BottomNavigationView bottom_menu;
     RecyclerAdapter adapter;
     Database database;
     Cursor c;
@@ -98,6 +101,24 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
             public void onClick(View view) {
                 startActivity(new Intent(BorrowBook2.this,Message.class));
             }
+        });
+
+
+        //the bottom menu bar to link the pages
+        bottom_menu=findViewById(R.id.bottom_menu);
+        bottom_menu.setOnItemSelectedListener(menuItem -> {
+            if(menuItem.getItemId() == R.id.menu_add_book) {
+                startActivity(new Intent(BorrowBook2.this,AddBook.class));
+            } else if(menuItem.getItemId() == R.id.menu_update_book) {
+                startActivity(new Intent(BorrowBook2.this,UpdateBook.class));
+            } else if(menuItem.getItemId() == R.id.menu_borrow_book) {
+                startActivity(new Intent(BorrowBook2.this,BorrowBook.class));
+            } else if(menuItem.getItemId() == R.id.menu_reading_tracker) {
+                startActivity(new Intent(BorrowBook2.this,ReadingTracker.class));
+            } else if(menuItem.getItemId() == R.id.menu_user_account) {
+                startActivity(new Intent(BorrowBook2.this,UserAccount.class));
+            }
+            return true;
         });
 
     }

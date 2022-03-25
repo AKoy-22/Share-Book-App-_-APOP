@@ -93,10 +93,10 @@
     <string name="hintSearch">Enter Preferred Pickup Location</string>
 
     <!-- Borrow book -->
-    <string name="btnSendMessage">Send</string>
+    <string name="btnSendMessage">SUBMIT MESSAGE</string>
     <string name="txtTitle">Book Information</string>
     <string name="enterMsgHint">Enter you message here</string>
-
+    <string name="personalized">PERSONALIZED MSG</string>
 
     <!-- Edit account -->
     <string name="editUserPassword">Enter your new password</string>
@@ -184,6 +184,7 @@
     <string name="btnReply">REPLY</string>
     <string name="btnSubmitReply">SEND REPLY</string>
     <string-array name="acceptOrDecline">
+        <item>N/A</item>
         <item>Accept</item>
         <item>Decline</item>
     </string-array>

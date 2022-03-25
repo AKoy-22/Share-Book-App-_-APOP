@@ -54,11 +54,13 @@ public class MessageDisplay extends AppCompatActivity {
                 String date=time.toString();
                 String choice = spinner.getSelectedItem().toString();
                 String content="";
-                if(spinner.getSelectedItemPosition()==0){
+                if(spinner.getSelectedItemPosition()==1){
                     content="Your request has been accepted.";
+                    choice=choice+"ed";
                 }
-                else if(spinner.getSelectedItemPosition()==1){
+                else if(spinner.getSelectedItemPosition()==2){
                     content="Your request has been declined.";
+                    choice=choice+"ed";
                 }
                 String personalizedMsg=reply.getText().toString();
                 content=content+""+personalizedMsg;

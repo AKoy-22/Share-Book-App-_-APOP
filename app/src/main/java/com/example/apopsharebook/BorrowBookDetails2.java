@@ -98,12 +98,14 @@ public class BorrowBookDetails2 extends AppCompatActivity {
             }
         });
 
-      //Send Personalized Message option is chosen. Clicking  button enables user to send personalized message
+     //Send Personalized Message option is chosen. Clicking  button enables user to send personalized message
       btnMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 writeMsg.setVisibility(View.VISIBLE);
                 btnSend.setVisibility(View.VISIBLE);
+                btnBorrow.setVisibility(View.GONE);
+                btnGiveAway.setVisibility(View.GONE);
                 /*Intent i = new Intent(BorrowBookDetails2.this,Message.class);
                 i.putExtra("bookId",bookId);
                 startActivity(i);*/

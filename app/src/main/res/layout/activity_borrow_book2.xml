@@ -9,6 +9,7 @@
     tools:context=".BorrowBook2">
 
     <!-- Tool Bar -->
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -67,33 +68,38 @@
         android:id="@+id/btnSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btnSearch" />
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:autofillHints="name"
-        android:background="@drawable/rounded_button_white"
-        android:elevation="4dp"
-        android:gravity="bottom|end"
-        android:queryBackground="@android:color/transparent"
-        app:defaultQueryHint="@string/txt_search_bar"
-        tools:ignore="TouchTargetSizeCheck"
-        tools:layout_centerHorizontal="true"
-        tools:layout_centerVertical="true"
-        tools:layout_marginRight="20dp" >
-
-    </androidx.appcompat.widget.SearchView>
+        android:text="@string/btnSearch"
+        android:textSize="20sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="450dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_marginEnd="0dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_menu"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:background="@color/nav_bg"
+            android:elevation="4dp"
+            app:fabCradleVerticalOffset="10dp"
+            app:itemIconSize="18dp"
+            app:itemIconTint="@color/bright_blue"
+            app:itemTextColor="@color/bright_blue"
+            app:menu="@menu/bottom_menu" />
+    </LinearLayout>
 
     <!-- the context of book 1 -->
 
