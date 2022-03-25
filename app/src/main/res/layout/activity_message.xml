@@ -9,6 +9,7 @@
     tools:context=".Message">
 
     <!-- Tool Bar -->
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -45,14 +46,18 @@
         android:orientation="vertical">
 
         <!-- list View -->
+
+        <!-- bottom menu -->
+
         <ListView
             android:id="@+id/CureentLoanListView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="50dp"
-            android:padding="5dp" />
+            android:padding="5dp">
 
-        <!-- bottom menu -->
+        </ListView>
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_menu"
             android:layout_width="match_parent"
@@ -67,6 +72,8 @@
             app:itemIconSize="18dp"
             app:itemIconTint="@color/bright_blue"
             app:itemTextColor="@color/bright_blue"
-            app:menu="@menu/bottom_menu" />
+            app:menu="@menu/bottom_menu" >
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
     </RelativeLayout>
 </LinearLayout>

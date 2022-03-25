@@ -180,19 +180,19 @@ public class Database extends SQLiteOpenHelper  {
 
     public Cursor searchBookByLocation(String loc){
         SQLiteDatabase sqdb=this.getWritableDatabase();
-        //sqLiteDatabase=this.getWritableDatabase();
+
         String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId FROM "+B_TABLE+" WHERE Location='"+loc+"'";
         Cursor c=sqdb.rawQuery(query,null);
         return c;
     }
 
     //---------SEND BORROW GIVE-AEAY REQUEST OR PERSONALIZED MESSAGE --------------------------
-    public boolean sendBorrowRequest(String ownerId, String senderId, String bTitle, String date, int bookId, String request, String type){
+    public boolean sendMessage(String receiverId, String senderId, String date, int bookId, String content, String type){
         sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();
-        value.put(M_MsgContent,request+" "+senderId+" for book: "+bTitle);
+        value.put(M_MsgContent,content);
         value.put(M_SenderId,senderId);
-        value.put(M_ReceiverId, ownerId);
+        value.put(M_ReceiverId, receiverId);
         value.put(M_BookId,bookId);
         value.put(M_MsgDate,date);
         value.put(M_Type,type);
@@ -203,15 +203,31 @@ public class Database extends SQLiteOpenHelper  {
             return false;
     }
 
-
-    //---------GET MESSAGE TITLES-------------------------------------------------------------------
+    //---------GET MESSAGE TABLE INFO---------------------------------------------------------------
         public Cursor viewMessages(String userId){
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
-        String query="SELECT* FROM "+M_TABLE+" WHERE SenderId ="+"'"+userId+"'";
+        String query="SELECT* FROM "+M_TABLE+" WHERE ReceiverId ="+"'"+userId+"'";
         Cursor c=sqLiteDatabase.rawQuery(query,null);
 
         return c;
         }
+    //---------Search BOOKID BY MESSAGE ID----------------------------------------------------------
+    public int searchBookIdByMessageId(int msgId){
+        SQLiteDatabase sqdb=this.getWritableDatabase();
+        int id=0;
+        String query="SELECT BookId FROM "+M_TABLE+" WHERE MessageId='"+msgId+"'";
+        Cursor c=sqdb.rawQuery(query,null);
+        try{
+            while(c.moveToNext()){
+                id=c.getInt(0);
+            }
+        }
+        catch (Exception e){
+        e.getStackTrace();
+        }
+        return id;
+    }
+
     //----------------------------------------------------------------------------------------------
 
     public List<Books> viewBooks(){
@@ -263,7 +279,7 @@ public class Database extends SQLiteOpenHelper  {
 
     //----------------------------------------MANUALLY ADD USER /BOOK METHOD------------------------------
 
-    public boolean addUser(){
+    public void addUser(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();
         value.put(U_UserId,"akoyama@abc.com");
@@ -272,26 +288,23 @@ public class Database extends SQLiteOpenHelper  {
         value.put(U_FName,"Akiko");
         value.put(U_LName,"Koyama");
         value.put(U_UserType,"user");
-/*
+        long r = sqLiteDatabase.insert(U_TABLE,null,value);
+
         value.put(U_UserId,"oprah@abc.com");
         value.put(U_Address,"555 77th Street, Surrey");
         value.put(U_Pw,"abcd");
         value.put(U_FName,"Oprah");
         value.put(U_LName,"Huang");
-        value.put(U_UserType,"user");*/
+        value.put(U_UserType,"user");
 
-        long r = sqLiteDatabase.insert(U_TABLE,null,value);
-        if(r>0)
-            return true;
-        else
-            return false;
+        sqLiteDatabase.insert(U_TABLE,null,value);
     }
 
 
     public void manuallyAddBook(){
         sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();
-  /*      value.put(B_ISBN,32165222);
+        value.put(B_ISBN,32165222);
         value.put(B_Title,"Waiting for Godot");
         value.put(B_Genre,"Fiction");
         value.put(B_Author,"Samuel Becket");
@@ -299,7 +312,8 @@ public class Database extends SQLiteOpenHelper  {
         value.put(B_PubYear, 2017);
         value.put(B_OwnerId, "akoyama@abc.com");
         value.put(B_Status,"available");
-        value.put(B_Location,"Burnaby");*/
+        value.put(B_Location,"Burnaby");
+        long r = sqLiteDatabase.insert(B_TABLE,null,value);
 
         value.put(B_ISBN,32165222);
         value.put(B_Title,"Midnight");
@@ -307,11 +321,11 @@ public class Database extends SQLiteOpenHelper  {
         value.put(B_Author,"Allan Smith");
         value.put(B_Publisher, "Penguin");
         value.put(B_PubYear, 2015);
-        value.put(B_OwnerId, "akoyama@abc.com");
+        value.put(B_OwnerId, "oprah@abc.com");
         value.put(B_Status,"give away");
         value.put(B_Location,"Brentwood");
 
-        long r = sqLiteDatabase.insert(B_TABLE,null,value);
+        sqLiteDatabase.insert(B_TABLE,null,value);
     }
 }
 

@@ -63,7 +63,7 @@ public class BorrowBookDetails2 extends AppCompatActivity {
             }
 
         }
-        //Borrow button sends borrow request automatically
+        //Borrow option is chosen, message sent automatically to the owner
         btnBorrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,11 +76,11 @@ public class BorrowBookDetails2 extends AppCompatActivity {
                 String request="Borrow request has been sent from";
                 String type="Borrow Request";
                 db=new Database(BorrowBookDetails2.this);
-                db.sendBorrowRequest(owner, senderId, title,date, bookId ,request,type);
-
+                db.sendMessage(owner, senderId,date, bookId ,request,type);
             }
         });
 
+        //Give-Away option is chosen, message sent automatically to the owner
         btnGiveAway.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,15 +90,15 @@ public class BorrowBookDetails2 extends AppCompatActivity {
                 Timestamp t = new Timestamp(System.currentTimeMillis());
                 Date d=new Date(t.getTime());
                 String date=d.toString();
-                String request="Request to take the book has been sent from";
+                String content=senderId+" wants to have your book titled :"+title;
                 String type="Give-Away Request";
                 db=new Database(BorrowBookDetails2.this);
-                db.sendBorrowRequest(owner, senderId, title,date, bookId ,request, type);
+                db.sendMessage(owner, senderId, date, bookId ,content, type);
 
             }
         });
 
-      //Message button enables user to send personalized message
+      //Send Personalized Message option is chosen. Clicking  button enables user to send personalized message
       btnMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,7 +109,7 @@ public class BorrowBookDetails2 extends AppCompatActivity {
                 startActivity(i);*/
             }
         });
-
+      //method to submit personalized message
       btnSend.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
@@ -122,7 +122,7 @@ public class BorrowBookDetails2 extends AppCompatActivity {
               String date=d.toString();
               String type="Personalized Message";
               db=new Database(BorrowBookDetails2.this);
-              db.sendBorrowRequest(owner, senderId, title,date, bookId ,msgContent,type);
+              db.sendMessage(owner, senderId, date, bookId ,msgContent,type);
           }
       });
     }
