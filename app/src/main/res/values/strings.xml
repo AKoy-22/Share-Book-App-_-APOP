@@ -198,4 +198,14 @@
     <string name="imgUserIcon">image of user</string>
     <string name="btnSendMes">Send Message</string>
     <string name="btnAdmin">Admin Logic</string>
+    <string name="bookLocation">Location</string>
+
+    <string-array name="locations">
+        <item>New Westminster</item>
+        <item>Vancouver</item>
+        <item>Burnaby</item>
+        <item>Richmond</item>
+        <item>Coquitlam</item>
+
+    </string-array>
 </resources>
