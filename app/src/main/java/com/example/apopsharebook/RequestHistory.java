@@ -5,11 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class RequestHistory extends AppCompatActivity {
+    List<RequestHistoryList> rList;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,5 +44,17 @@ public class RequestHistory extends AppCompatActivity {
             }
             return true;
         });
+
+        //ListView using ArrayList
+        rList = new ArrayList<>();
+        rList.add(new RequestHistoryList("Cloud Cuckoo Land","Rent Out", "mary11"));
+        rList.add(new RequestHistoryList("One Two Three","Rent Out","tom22"));
+        rList.add(new RequestHistoryList("A Court of Silver Flames","Give Away","allen33"));
+        rList.add(new RequestHistoryList("Under the Whispering Door","Give Away","joe55"));
+
+        listView = findViewById(R.id.RequestHistoryListView);
+        RequestHistoryListAdapter adapter = new RequestHistoryListAdapter(this,R.layout.requesthistory_list_item,rList);
+        listView.setAdapter(adapter);
+        listView.setDivider(null);
     }
 }
