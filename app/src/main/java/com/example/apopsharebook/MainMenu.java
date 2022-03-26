@@ -4,12 +4,15 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.ImageButton;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -32,6 +35,10 @@ public class MainMenu extends AppCompatActivity {
         ImageButton btnUserIcon = findViewById(R.id.btnUserIcon);
         ImageButton btnUserArrow = findViewById(R.id.btnUserArrow);
         ImageButton btnMessage = findViewById(R.id.btnMessageIcon);
+        TextView userName=findViewById(R.id.txtUserName);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String userId = sharedPreferences.getString("userId", "NA");
+        userName.setText(userId);
 
         //the button event
         btnMessage.setOnClickListener(v -> startActivity(new Intent(MainMenu.this,Message.class)));

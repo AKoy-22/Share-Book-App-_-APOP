@@ -91,6 +91,7 @@
     <string name="txtBookISBN">9781443455879</string>
     <string name="btnSearch">Search</string>
     <string name="hintSearch">Enter Preferred Pickup Location</string>
+    <string name="txtBookLocationPrompt">Choose location to pick up</string>
 
     <!-- Borrow book -->
     <string name="btnSendMessage">SUBMIT MESSAGE</string>
@@ -212,6 +213,7 @@
         <item>New Westminster</item>
         <item>Vancouver</item>
         <item>Burnaby</item>
+        <item>Brentwood</item>  <!--linked to dummy input. can be deleted later. -->
         <item>Richmond</item>
         <item>Coquitlam</item>
 

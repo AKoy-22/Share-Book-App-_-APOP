@@ -54,15 +54,14 @@
 
     <!-- search bar -->
 
-    <EditText
-        android:id="@+id/editTxtSearch"
+    <Spinner
+        android:id="@+id/spnLoc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/hintSearch"
-        android:inputType="textPersonName"
+        android:entries="@array/locations"
         android:minHeight="48dp"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:prompt="@string/txtBookLocationPrompt"
+        android:spinnerMode="dialog" />
 
     <Button
         android:id="@+id/btnSearch"

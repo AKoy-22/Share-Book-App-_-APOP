@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -25,8 +26,8 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
     int img=R.drawable.book_cover_1;
     Button btnSearch;
     ImageButton btnBack, btnMsgIcon;
-    EditText editTxtSearch;
     BottomNavigationView bottom_menu;
+    Spinner spnLoc;
     RecyclerAdapter adapter;
     Database database;
     Cursor c;
@@ -41,8 +42,7 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
         setContentView(R.layout.activity_borrow_book2);
 
         btnSearch=findViewById(R.id.btnSearch);
-        editTxtSearch=findViewById(R.id.editTxtSearch);
-
+        spnLoc=findViewById(R.id.spnLoc);
         database=new Database(this);
        // database.addUser();
        //  database.manuallyAddBook();
@@ -61,7 +61,8 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
                 bStatus=new ArrayList<String>();
                 bIds=new ArrayList<Integer>();
 
-                inpLoc=editTxtSearch.getText().toString();
+
+                inpLoc=spnLoc.getSelectedItem().toString();
                 c=database.searchBookByLocation(inpLoc);
 
                 if(c.getCount()>0){

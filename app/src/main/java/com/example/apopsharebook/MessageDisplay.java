@@ -60,7 +60,7 @@ public class MessageDisplay extends AppCompatActivity {
                 }
                 else if(spinner.getSelectedItemPosition()==2){
                     content="Your request has been declined.";
-                    choice=choice+"ed";
+                    choice=choice+"d";
                 }
                 String personalizedMsg=reply.getText().toString();
                 content=content+""+personalizedMsg;

@@ -1,10 +1,12 @@
 package com.example.apopsharebook;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,13 +35,15 @@ public class RequestHistoryListAdapter extends ArrayAdapter {
 		TextView title = view.findViewById(R.id.txtRTitle);
 		TextView status = view.findViewById(R.id.txtRStatus);
 		TextView user = view.findViewById(R.id.txtRUser);
+		ImageView img=view.findViewById(R.id.imgAorD);
 
 		RequestHistoryList rhList = list.get(position);
 		title.setText(rhList.getTitle());
 		status.setText(rhList.getStatus());
 		user.setText(rhList.getUser());
+		img.setImageResource(rhList.getImg());
 
-		view.findViewById(R.id.btnRequestOK).setOnClickListener(new View.OnClickListener() {
+		/*view.findViewById(R.id.btnRequestOK).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				//button of borrow extend
@@ -51,7 +55,7 @@ public class RequestHistoryListAdapter extends ArrayAdapter {
 			public void onClick(View view) {
 				//button of borrow extend
 			}
-		});
+		});*/
 
 		return view;
 	}
