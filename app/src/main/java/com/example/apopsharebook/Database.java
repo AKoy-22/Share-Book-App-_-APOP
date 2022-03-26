@@ -15,7 +15,7 @@ public class Database extends SQLiteOpenHelper  {
     List<Books> booksList = new ArrayList<>();
     SQLiteDatabase sqLiteDatabase;
     final static String DATABASE_NAME="APOP.db";
-    final static int DATABASE_VERSION=9;
+    final static int DATABASE_VERSION=14;
 
     //----------------------------------------CREATING TABLE STRUCTURES---------------------------------------
 
@@ -59,7 +59,7 @@ public class Database extends SQLiteOpenHelper  {
     final static String R_TABLE="RHistory_table";
     final static String R_UserId="UserId";
     final static String R_BookId="BookId";
-    final static String R_Note="Note";
+    final static String R_Time="TimeSpent";
 
     //MESSAGE TABLE
     final static String M_TABLE="Message_table";
@@ -124,9 +124,9 @@ public class Database extends SQLiteOpenHelper  {
         sqLiteDatabase.execSQL(createTableQuery);
 
         //create Reading History Table
-        createTableQuery=" CREATE TABLE "+R_TABLE+ "("+ R_UserId+ " text,"+ R_BookId+" integer,"+
-                R_Note+" text,"+
-                "PRIMARY KEY ("+ R_UserId+ ","+R_BookId+"), FOREIGN KEY ("+R_UserId+") REFERENCES "+
+        createTableQuery=" CREATE TABLE "+R_TABLE+ "("+ R_UserId+ " text,"+ R_BookId+" integer primary key AUTOINCREMENT,"+
+                B_Title+" text,"+B_Author+" text,"+B_ISBN+" text,"+R_Time+ " float,"+
+                " FOREIGN KEY ("+R_UserId+") REFERENCES "+
                 U_TABLE+" ("+U_UserId+"))";
         sqLiteDatabase.execSQL(createTableQuery);
 
@@ -176,6 +176,20 @@ public class Database extends SQLiteOpenHelper  {
         else
             return false;
     }
+    public boolean addBookToRh(int isbn,String title,String Author, String userId, double timeSpent){
+        sqLiteDatabase = this.getWritableDatabase();
+        ContentValues value = new ContentValues();
+        value.put(B_ISBN,isbn);
+        value.put(B_Title,title);
+        value.put(B_Author,Author);
+        value.put(R_UserId,userId);
+        value.put(R_Time,timeSpent);
+        long r = sqLiteDatabase.insert(R_TABLE,null,value);
+        if(r>0)
+            return true;
+        else
+            return false;
+    }
     //----------------------------------------SEARCH BOOKS BY LOCATION------------------------------
 
     public Cursor searchBookByLocation(String loc){
@@ -186,7 +200,7 @@ public class Database extends SQLiteOpenHelper  {
         return c;
     }
 
-    //---------SEND BORROW GIVE-AEAY REQUEST OR PERSONALIZED MESSAGE --------------------------
+    //--------------SEND BORROW GIVE-AEAY REQUEST OR PERSONALIZED MESSAGE --------------------------
     public boolean sendMessage(String receiverId, String senderId, String date, int bookId, String content, String type){
         sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();

@@ -17,8 +17,8 @@ public class Welcome extends AppCompatActivity {
         Button btnLogin = findViewById(R.id.btnLogin);
         Button signUp = findViewById(R.id.btnSignUp);
         try {
-//            db.addUser();
-//            db.manuallyAddBook();
+            db.addUser();
+            db.manuallyAddBook();
         }
         catch (Exception e){
             e.getStackTrace();

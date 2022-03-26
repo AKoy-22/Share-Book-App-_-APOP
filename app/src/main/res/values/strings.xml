@@ -171,7 +171,7 @@
     <string name="txtBookYear">2020</string>
 
     <!-- reading tracker -->
-    <string name="btnAddTrackerBook">Add a book</string>
+    <string name="btnAddTrackerBook">Add book</string>
     <string name="EditReadingPage">Enter the page of reading</string>
     <string name="btnSave">Save</string>
     <string name="txtTrackerMessage1">Page.20</string>
@@ -208,6 +208,9 @@
     <string name="btnSendMes">Send Message</string>
     <string name="btnAdmin">Admin Logic</string>
     <string name="bookLocation">Location</string>
+    <string name="labelTimeSpent">Time spent</string>
+    <string name="txtTimeSpent">Enter time spent on reading the book</string>
+    <string name="txtRTtitle">Enter information for the book you have read</string>
 
     <string-array name="locations">
         <item>New Westminster</item>
