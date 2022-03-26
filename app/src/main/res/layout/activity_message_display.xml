@@ -1,32 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/green_light"
+    android:orientation="vertical"
     tools:context=".MessageDisplay">
+
+    <!-- Tool Bar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green_light"
+        android:elevation="10dp">
+        <!-- back page icon -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/ic_arrow_left"
+            android:contentDescription="@string/imgMessageIcon"
+            android:minWidth="24dp"
+            android:minHeight="24dp"
+            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+        <!-- page title -->
+        <TextView
+            android:id="@+id/txtToolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/txtMessagePage"
+            android:textColor="@color/dark_gray"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
 
     <EditText
         android:id="@+id/edTxtReplyMsgContent"
-        android:layout_width="416dp"
+        android:layout_width="match_parent"
         android:layout_height="211dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/border_btn_white"
+        android:elevation="5dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/hintReply"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
-        android:textSize="20sp"
+        android:padding="10dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spnAcceptOrDec"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/btnSubmitReply"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/border_btn_white"
+        android:backgroundTint="@color/bright_blue"
         android:text="@string/btnSubmitReply"
+        android:textColor="@color/white"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,34 +81,69 @@
 
     <TextView
         android:id="@+id/txtMsgOrignal"
-        android:layout_width="349dp"
+        android:layout_width="match_parent"
         android:layout_height="181dp"
-        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/border_btn_white"
+        android:elevation="5dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtMsgHeader" />
 
     <Spinner
         android:id="@+id/spnAcceptOrDec"
-        android:layout_width="409dp"
+        android:layout_width="392dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:elevation="5dp"
         android:entries="@array/acceptOrDecline"
         android:minHeight="48dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtMsgOrignal" />
 
     <TextView
         android:id="@+id/txtMsgHeader"
-        android:layout_width="413dp"
+        android:layout_width="match_parent"
         android:layout_height="72dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/border_btn_white"
+        android:elevation="5dp"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_menu"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="-2dp"
+            android:background="@color/nav_bg"
+            android:elevation="4dp"
+            app:fabCradleVerticalOffset="10dp"
+            app:itemIconSize="18dp"
+            app:itemIconTint="@color/bright_blue"
+            app:itemTextColor="@color/bright_blue"
+            app:menu="@menu/bottom_menu">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+    </RelativeLayout>
+</LinearLayout>
