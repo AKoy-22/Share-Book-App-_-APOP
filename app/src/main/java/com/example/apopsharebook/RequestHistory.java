@@ -54,7 +54,6 @@ public class RequestHistory extends AppCompatActivity {
         });
         //Databse
         db=new Database(this);
-
         Cursor c = db.requests(userId);
         //ListView using ArrayList
         rList = new ArrayList<>();

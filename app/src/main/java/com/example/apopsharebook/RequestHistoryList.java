@@ -30,7 +30,7 @@ public class RequestHistoryList {
 		if(status.equals("Accepted")){
 			this.img=R.drawable.ic_check;
 		}
-		else if(status.equals("Declineed")){
+		else if(status.equals("Declined")){
 			this.img=R.drawable.ic_cancel;
 		}
 	}
