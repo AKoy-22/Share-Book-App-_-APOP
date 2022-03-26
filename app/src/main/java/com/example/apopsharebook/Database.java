@@ -291,12 +291,11 @@ public class Database extends SQLiteOpenHelper  {
         long r = sqLiteDatabase.insert(U_TABLE,null,value);
 
         value.put(U_UserId,"oprah@abc.com");
-        value.put(U_Address,"555 77th Street, Surrey");
+        value.put(U_Address,"1230 1st Street, Brentwood");
         value.put(U_Pw,"abcd");
         value.put(U_FName,"Oprah");
         value.put(U_LName,"Huang");
         value.put(U_UserType,"user");
-
         sqLiteDatabase.insert(U_TABLE,null,value);
     }
 
@@ -315,17 +314,26 @@ public class Database extends SQLiteOpenHelper  {
         value.put(B_Location,"Burnaby");
         long r = sqLiteDatabase.insert(B_TABLE,null,value);
 
-        value.put(B_ISBN,32165222);
+        value.put(B_ISBN,32165223);
         value.put(B_Title,"Midnight");
         value.put(B_Genre,"Fiction");
-        value.put(B_Author,"Allan Smith");
-        value.put(B_Publisher, "Penguin");
-        value.put(B_PubYear, 2015);
+        value.put(B_Author,"Matt Haig");
+        value.put(B_Publisher, "Viking");
+        value.put(B_PubYear, 2020);
         value.put(B_OwnerId, "oprah@abc.com");
         value.put(B_Status,"give away");
         value.put(B_Location,"Brentwood");
 
-        sqLiteDatabase.insert(B_TABLE,null,value);
+        value.put(B_ISBN,32165224);
+        value.put(B_Title,"One Two Three");
+        value.put(B_Genre,"Fiction");
+        value.put(B_Author,"Laurie Frankel");
+        value.put(B_Publisher,"Henry Holt and Co");
+        value.put(B_PubYear,2021);
+        value.put(B_OwnerId, "oprach@abc.com");
+        value.put(B_Status,"rent out");
+        value.put(B_Location,"Richmond");
+
+       sqLiteDatabase.insert(B_TABLE,null,value);
     }
 }
-
