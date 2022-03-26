@@ -25,10 +25,13 @@ public class RequestHistory extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_history);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String userId = sharedPreferences.getString("userId", "NA");
 
         ImageButton go_back = findViewById(R.id.btnBack);
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
         ImageButton btnMessage = findViewById(R.id.btnMessageIcon);
+
 
         //button event for go back main page
         go_back.setOnClickListener(v -> startActivity(new Intent(RequestHistory.this,UserAccount.class)));
@@ -51,8 +54,7 @@ public class RequestHistory extends AppCompatActivity {
         });
         //Databse
         db=new Database(this);
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String userId = sharedPreferences.getString("userId", "NA");
+
         Cursor c = db.requests(userId);
         //ListView using ArrayList
         rList = new ArrayList<>();

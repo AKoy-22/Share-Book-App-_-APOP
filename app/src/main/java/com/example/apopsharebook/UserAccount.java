@@ -3,9 +3,12 @@ package com.example.apopsharebook;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -25,6 +28,12 @@ public class UserAccount extends AppCompatActivity {
         Button btnRequestHistory = findViewById(R.id.btnRequestHistory);
         Button btnCurrentLoan = findViewById(R.id.btnCurrentLoan);
 
+        TextView userName=findViewById(R.id.txtUserName);
+        TextView user_Name=findViewById(R.id.txt_user_name);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String userId = sharedPreferences.getString("userId", "NA");
+        userName.setText(userId);
+        user_Name.setText(userId);
         //button event for go back main page
         go_back.setOnClickListener(v -> startActivity(new Intent(UserAccount.this,MainMenu.class)));
         btnMessage.setOnClickListener(v -> startActivity(new Intent(UserAccount.this,Message.class)));
