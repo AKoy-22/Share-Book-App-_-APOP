@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -65,8 +66,13 @@ public class MessageDisplay extends AppCompatActivity {
                 String personalizedMsg=reply.getText().toString();
                 content=content+""+personalizedMsg;
                 int bookId=db.searchBookIdByMessageId(msgId);
-                db.sendMessage(senderId, userId, date,  bookId,content, choice);
-
+                boolean success=db.sendMessage(senderId, userId, date,  bookId,content, choice);
+                if(success){
+                    Toast.makeText(MessageDisplay.this,"Reply sent.", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(MessageDisplay.this,"Message not sent.Please try again.", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

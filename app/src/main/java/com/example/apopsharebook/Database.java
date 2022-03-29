@@ -15,7 +15,7 @@ public class Database extends SQLiteOpenHelper  {
     List<Books> booksList = new ArrayList<>();
     SQLiteDatabase sqLiteDatabase;
     final static String DATABASE_NAME="APOP.db";
-    final static int DATABASE_VERSION=14;
+    final static int DATABASE_VERSION=15;
 
     //----------------------------------------CREATING TABLE STRUCTURES---------------------------------------
 
@@ -26,6 +26,7 @@ public class Database extends SQLiteOpenHelper  {
     final static String U_FName="FName";
     final static String U_LName="LName";
     final static String U_Address="Address";
+    final static String U_Age="Age";
     final static String U_UserType="UserType"; //User or Admin
 
     //BOOK TABLE
@@ -96,7 +97,7 @@ public class Database extends SQLiteOpenHelper  {
         //create User Table
        String createTableQuery=" CREATE TABLE "+U_TABLE+"("+ U_UserId+ " text PRIMARY KEY,"+ U_Pw+
                " text,"+U_FName+" text,"
-                +U_LName+" text,"+U_Address+" text,"+U_UserType+" text)";
+                +U_LName+" text,"+U_Address+" text,"+U_Age+" int,"+U_UserType+" text)";
         sqLiteDatabase.execSQL(createTableQuery);
 
         //create Book Table
@@ -190,6 +191,23 @@ public class Database extends SQLiteOpenHelper  {
         else
             return false;
     }
+
+    //----------------------------------------SEARCH NAME BY USER ID---------------------------------
+    public Cursor getUserInfo(String userID){
+        SQLiteDatabase sqdb=this.getReadableDatabase();
+
+        String query="SELECT * FROM "+U_TABLE+" WHERE UserID='"+userID+"'";
+        Cursor c=sqdb.rawQuery(query,null);
+        return c;
+    }
+    public Cursor getPreferences(String userID){
+        SQLiteDatabase sqdb=this.getReadableDatabase();
+
+        String query="SELECT * FROM "+P_TABLE+" WHERE UserID='"+userID+"'";
+        Cursor c=sqdb.rawQuery(query,null);
+        return c;
+    }
+
     //----------------------------------------SEARCH BOOKS BY LOCATION------------------------------
 
     public Cursor searchBookByLocation(String loc){
@@ -200,7 +218,7 @@ public class Database extends SQLiteOpenHelper  {
         return c;
     }
 
-    //--------------SEND BORROW GIVE-AEAY REQUEST OR PERSONALIZED MESSAGE --------------------------
+    //--------------SEND BORROW GIVE-AWAY REQUEST OR PERSONALIZED MESSAGE --------------------------
     public boolean sendMessage(String receiverId, String senderId, String date, int bookId, String content, String type){
         sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();
@@ -238,9 +256,7 @@ public class Database extends SQLiteOpenHelper  {
 
         return c;
     }
-    /*String query="SELECT SenderId, ReceiverId,  MsgType " +
-            "FROM Message_table " +
-            "WHERE ReceiverId ="+"'"+userId+"' AND (MsgType= 'Accepted' OR MsgType='Declined')";*/
+
     //---------Search BOOKID BY MESSAGE ID----------------------------------------------------------
     public int searchBookIdByMessageId(int msgId){
         SQLiteDatabase sqdb=this.getWritableDatabase();
@@ -318,6 +334,7 @@ public class Database extends SQLiteOpenHelper  {
         value.put(U_FName,"Akiko");
         value.put(U_LName,"Koyama");
         value.put(U_UserType,"user");
+        value.put(U_Age,20);
         long r = sqLiteDatabase.insert(U_TABLE,null,value);
 
         value.put(U_UserId,"oprah@abc.com");
@@ -326,6 +343,7 @@ public class Database extends SQLiteOpenHelper  {
         value.put(U_FName,"Oprah");
         value.put(U_LName,"Huang");
         value.put(U_UserType,"user");
+        value.put(U_Age, 19);
         sqLiteDatabase.insert(U_TABLE,null,value);
     }
 
@@ -366,4 +384,13 @@ public class Database extends SQLiteOpenHelper  {
 
        sqLiteDatabase.insert(B_TABLE,null,value);
     }
+    public void manuallyAddPref() {
+        sqLiteDatabase = this.getWritableDatabase();
+        ContentValues value = new ContentValues();
+        value.put(P_UserId,"akoyama@abc.com");
+        value.put(P_Preference, "Fiction");
+
+        long r = sqLiteDatabase.insert(P_TABLE, null, value);
+    }
+
 }

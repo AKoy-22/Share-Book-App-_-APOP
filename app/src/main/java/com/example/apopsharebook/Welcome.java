@@ -16,13 +16,13 @@ public class Welcome extends AppCompatActivity {
         db = new Database(this);
         Button btnLogin = findViewById(R.id.btnLogin);
         Button signUp = findViewById(R.id.btnSignUp);
-        try {
+       /* try {
             db.addUser();
             db.manuallyAddBook();
         }
         catch (Exception e){
             e.getStackTrace();
-        }
+        }*/
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

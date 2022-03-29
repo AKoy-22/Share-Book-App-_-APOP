@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -18,6 +19,7 @@ public class BorrowBookDetails2 extends AppCompatActivity {
     String title, author, genre, pub, pubYear, owner, status, senderId;
     int bookId;
     Database db;
+    boolean success;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +78,14 @@ public class BorrowBookDetails2 extends AppCompatActivity {
                 String request="Borrow request has been sent from";
                 String type="Borrow Request";
                 db=new Database(BorrowBookDetails2.this);
-                db.sendMessage(owner, senderId,date, bookId ,request,type);
+                success=db.sendMessage(owner, senderId,date, bookId ,request,type);
+
+                if(success){
+                    Toast.makeText(BorrowBookDetails2.this,"Borrow Request has been sent.", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(BorrowBookDetails2.this,"Message not sent.Please try again.", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -93,8 +102,14 @@ public class BorrowBookDetails2 extends AppCompatActivity {
                 String content=senderId+" wants to have your book titled :"+title;
                 String type="Give-Away Request";
                 db=new Database(BorrowBookDetails2.this);
-                db.sendMessage(owner, senderId, date, bookId ,content, type);
+                success=db.sendMessage(owner, senderId, date, bookId ,content, type);
 
+                if(success){
+                    Toast.makeText(BorrowBookDetails2.this,"Give-Away Request has been sent.", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(BorrowBookDetails2.this,"Message not sent.Please try again.", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -106,9 +121,6 @@ public class BorrowBookDetails2 extends AppCompatActivity {
                 btnSend.setVisibility(View.VISIBLE);
                 btnBorrow.setVisibility(View.GONE);
                 btnGiveAway.setVisibility(View.GONE);
-                /*Intent i = new Intent(BorrowBookDetails2.this,Message.class);
-                i.putExtra("bookId",bookId);
-                startActivity(i);*/
             }
         });
       //method to submit personalized message
@@ -124,7 +136,13 @@ public class BorrowBookDetails2 extends AppCompatActivity {
               String date=d.toString();
               String type="Personalized Message";
               db=new Database(BorrowBookDetails2.this);
-              db.sendMessage(owner, senderId, date, bookId ,msgContent,type);
+              success=db.sendMessage(owner, senderId, date, bookId ,msgContent,type);
+              if(success){
+                  Toast.makeText(BorrowBookDetails2.this,"Personalized message has been sent.", Toast.LENGTH_LONG).show();
+              }
+              else{
+                  Toast.makeText(BorrowBookDetails2.this,"Message not sent.Please try again.", Toast.LENGTH_LONG).show();
+              }
           }
       });
     }

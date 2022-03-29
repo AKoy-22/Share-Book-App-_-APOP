@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.Button;
@@ -12,13 +13,18 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class UserAccount extends AppCompatActivity {
+import java.util.ArrayList;
 
+public class UserAccount extends AppCompatActivity {
+    Database db;
+    Cursor c;
+    String password,FName, LName, Address, fullName, stringAge, preferences;
+    int Age;
+    ArrayList prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_account);
-
 
         ImageButton go_back = findViewById(R.id.btnBack);
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
@@ -30,10 +36,51 @@ public class UserAccount extends AppCompatActivity {
 
         TextView userName=findViewById(R.id.txtUserName);
         TextView user_Name=findViewById(R.id.txt_user_name);
+        TextView userEmail=findViewById(R.id.txtUserEmail);
+        TextView userInterest=findViewById(R.id.txtUserInterested);
+        TextView userAge=findViewById(R.id.txtUserAge);
+        TextView userAddress=findViewById(R.id.txtUserAddress);
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String userId = sharedPreferences.getString("userId", "NA");
-        userName.setText(userId);
         user_Name.setText(userId);
+
+        //filling user information
+        userEmail.setText(userId);
+        db=new Database(this);
+
+       c=db.getUserInfo(userId);
+        if(c.getCount()>0) {
+            while (c.moveToNext()) {
+                FName = c.getString(2);
+                LName = c.getString(3);
+                Address = c.getString(4);
+                Age=c.getInt(5);
+            }
+        }
+
+        fullName=FName+" "+LName;
+        userName.setText(fullName);
+        userAge.setText(Age+"");
+        userAddress.setText(Address);
+
+        /*prefs=new ArrayList<String>();
+        c=db.getPreferences(userId);
+        if(c.getCount()>0) {
+            while (c.moveToNext()) {
+             prefs.add(c.getString(1));
+            }
+        }
+
+      for(int i=0;i<prefs.size();i++){
+          preferences=prefs.get(i)+" ";
+      }
+
+      userInterest.setText(preferences);*/
+
+
+
+
         //button event for go back main page
         go_back.setOnClickListener(v -> startActivity(new Intent(UserAccount.this,MainMenu.class)));
         btnMessage.setOnClickListener(v -> startActivity(new Intent(UserAccount.this,Message.class)));
