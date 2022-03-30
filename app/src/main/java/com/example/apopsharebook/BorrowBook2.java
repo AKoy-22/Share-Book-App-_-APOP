@@ -44,8 +44,8 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
         btnSearch=findViewById(R.id.btnSearch);
         spnLoc=findViewById(R.id.spnLoc);
         database=new Database(this);
-        //database.addUser();
-        //database.manuallyAddBook();
+        database.addUser();
+        database.manuallyAddBook();
         database.manuallyAddPref();
 
         btnSearch.setOnClickListener(new View.OnClickListener() {

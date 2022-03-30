@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Oprah/Documents/GitHub/APOP(g)/app/src/main/res/drawable/ic_check.xml" value="0.1365" />
+        <entry key="..\:/Users/Oprah/Documents/GitHub/APOP(g)/app/src/main/res/layout/activity_admin_create_user.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/Oprah/Documents/GitHub/APOP(g)/app/src/main/res/layout/activity_create_account.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/Oprah/Documents/GitHub/APOP(g)/app/src/main/res/layout/requesthistory_list_item.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/akiko/AndroidStudioProjects/APOPShareBook/app/src/main/res/drawable/ic_cancel.xml" value="0.1155" />
         <entry key="..\:/Users/akiko/AndroidStudioProjects/APOPShareBook/app/src/main/res/drawable/ic_check.xml" value="0.1755" />
         <entry key="..\:/Users/akiko/AndroidStudioProjects/APOPShareBook/app/src/main/res/layout-v23/activity_borrow_book_details.xml" value="0.25" />

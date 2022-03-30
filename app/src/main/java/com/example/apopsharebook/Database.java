@@ -244,8 +244,6 @@ public class Database extends SQLiteOpenHelper  {
         return c;
         }
     //---------JOIN BOOK TABLE AND MESSGAE TABLE BASED ON A OR D-------------------------------------
-
-
     public Cursor requests(String userId){
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
         String query=

@@ -192,7 +192,7 @@
     <string name="hintReply">Choose Accept of Decline if applicable. You can also  write your personalized reply </string>
 
     <!-- admin -->
-    <string name="btnCreateUser">CREATE USER</string>
+    <string name="btnCreateUser">Register</string>
     <string name="btnUserList">VIEW USER LIST</string>
     <string name="labelUserId">User Id</string>
     <string name="EditUserId">Enter the user id</string>
@@ -204,6 +204,14 @@
     <string name="EditUserLName">Enter the user last name</string>
     <string name="labelUserAdr">User Address</string>
     <string name="EditUserAdr">Enter the user address</string>
+    <string name="labelUserAge">User Age</string>
+    <string name="labelUserInterest">User Interest</string>
+    <string name="EditUserAge">Enter the user age</string>
+    <string-array name="userInterest">
+        <item>Fiction</item>
+        <item>NonFiction</item>
+    </string-array>
+    <string name="userInterestPrompt">User Interest</string>
     <string name="imgUserIcon">image of user</string>
     <string name="btnSendMes">Send Message</string>
     <string name="btnAdmin">Admin Logic</string>
@@ -219,6 +227,5 @@
         <item>Brentwood</item>  <!--linked to dummy input. can be deleted later. -->
         <item>Richmond</item>
         <item>Coquitlam</item>
-
     </string-array>
 </resources>
