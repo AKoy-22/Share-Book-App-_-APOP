@@ -64,19 +64,19 @@ public class UserAccount extends AppCompatActivity {
         userAge.setText(Age+"");
         userAddress.setText(Address);
 
-        /*prefs=new ArrayList<String>();
+        prefs=new ArrayList<String>();
         c=db.getPreferences(userId);
         if(c.getCount()>0) {
             while (c.moveToNext()) {
              prefs.add(c.getString(1));
             }
         }
-
-      for(int i=0;i<prefs.size();i++){
-          preferences=prefs.get(i)+" ";
+        preferences="";
+        preferences=prefs.get(0).toString();
+        for(int i=1;i<prefs.size();i++){
+          preferences=preferences+", "+prefs.get(i).toString();
       }
-
-      userInterest.setText(preferences);*/
+      userInterest.setText(preferences);
 
 
 
