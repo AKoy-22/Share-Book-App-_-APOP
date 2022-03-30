@@ -41,9 +41,9 @@ public class ReadingTracker extends AppCompatActivity {
             if(menuItem.getItemId() == R.id.menu_add_book) {
                 startActivity(new Intent(ReadingTracker.this,AddBook.class));
             } else if(menuItem.getItemId() == R.id.menu_update_book) {
-                startActivity(new Intent(ReadingTracker.this,UpdateBook.class));
+                startActivity(new Intent(ReadingTracker.this,UpdateBook2.class));
             } else if(menuItem.getItemId() == R.id.menu_borrow_book) {
-                startActivity(new Intent(ReadingTracker.this,BorrowBook.class));
+                startActivity(new Intent(ReadingTracker.this,BorrowBook2.class));
             } else if(menuItem.getItemId() == R.id.menu_reading_tracker) {
                 startActivity(new Intent(ReadingTracker.this,ReadingTracker.class));
             } else if(menuItem.getItemId() == R.id.menu_user_account) {

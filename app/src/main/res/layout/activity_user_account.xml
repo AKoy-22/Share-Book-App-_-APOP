@@ -72,7 +72,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:text="@string/txtUserName"
+            android:text="123@abc.com"
             android:textAlignment="viewStart"
             android:textColor="#474846"
             android:textSize="22sp"
@@ -167,7 +167,7 @@
                 android:id="@+id/txtUserName"
                 android:layout_width="225dp"
                 android:layout_height="wrap_content"
-                android:text="@string/txtUserNameInfo"
+                android:text="abc"
                 android:textAlignment="viewStart"
                 android:textColor="@color/dark_gray"
                 android:textSize="14sp" />
@@ -177,7 +177,7 @@
                 android:layout_width="225dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/txtUserAgeInfo"
+                android:text="22"
                 android:textAlignment="viewStart"
                 android:textColor="@color/dark_gray"
                 android:textSize="14sp" />
@@ -187,7 +187,7 @@
                 android:layout_width="225dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/txtUserEmailInfo"
+                android:text="123@abc.com"
                 android:textAlignment="viewStart"
                 android:textColor="@color/dark_gray"
                 android:textSize="14sp" />
@@ -197,7 +197,7 @@
                 android:layout_width="225dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/txtBookFiction"
+                android:text="fiction"
                 android:textAlignment="viewStart"
                 android:textColor="@color/dark_gray"
                 android:textSize="14sp" />
@@ -207,7 +207,7 @@
                 android:layout_width="225dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/txtUserAddressInfo"
+                android:text="1234 1st rd"
                 android:textAlignment="viewStart"
                 android:textColor="@color/dark_gray"
                 android:textSize="14sp" />

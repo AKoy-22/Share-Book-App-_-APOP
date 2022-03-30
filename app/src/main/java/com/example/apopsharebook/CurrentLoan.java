@@ -35,9 +35,9 @@ public class CurrentLoan extends AppCompatActivity {
             if(menuItem.getItemId() == R.id.menu_add_book) {
                 startActivity(new Intent(CurrentLoan.this,AddBook.class));
             } else if(menuItem.getItemId() == R.id.menu_update_book) {
-                startActivity(new Intent(CurrentLoan.this,UpdateBook.class));
+                startActivity(new Intent(CurrentLoan.this,UpdateBook2.class));
             } else if(menuItem.getItemId() == R.id.menu_borrow_book) {
-                startActivity(new Intent(CurrentLoan.this,BorrowBook.class));
+                startActivity(new Intent(CurrentLoan.this,BorrowBook2.class));
             } else if(menuItem.getItemId() == R.id.menu_reading_tracker) {
                 startActivity(new Intent(CurrentLoan.this,ReadingTracker.class));
             } else if(menuItem.getItemId() == R.id.menu_user_account) {

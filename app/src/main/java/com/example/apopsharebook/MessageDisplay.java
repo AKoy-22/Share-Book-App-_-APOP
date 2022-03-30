@@ -9,9 +9,12 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -30,6 +33,28 @@ public class MessageDisplay extends AppCompatActivity {
         Spinner spinner=findViewById(R.id.spnAcceptOrDec);
         EditText reply=findViewById(R.id.edTxtReplyMsgContent);
         Button btnReply=findViewById(R.id.btnSubmitReply);
+
+        ImageButton go_back = findViewById(R.id.btnBack);
+        BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
+
+        //button event for go back main page
+        go_back.setOnClickListener(v -> startActivity(new Intent(MessageDisplay.this, MainMenu.class)));
+
+        //the bottom menu bar to link the pages
+        bottom_menu.setOnItemSelectedListener(menuItem -> {
+            if (menuItem.getItemId() == R.id.menu_add_book) {
+                startActivity(new Intent(MessageDisplay.this, AddBook.class));
+            } else if (menuItem.getItemId() == R.id.menu_update_book) {
+                startActivity(new Intent(MessageDisplay.this, UpdateBook2.class));
+            } else if (menuItem.getItemId() == R.id.menu_borrow_book) {
+                startActivity(new Intent(MessageDisplay.this, BorrowBook2.class));
+            } else if (menuItem.getItemId() == R.id.menu_reading_tracker) {
+                startActivity(new Intent(MessageDisplay.this, ReadingTracker.class));
+            } else if (menuItem.getItemId() == R.id.menu_user_account) {
+                startActivity(new Intent(MessageDisplay.this, UserAccount.class));
+            }
+            return true;
+        });
 
         //display message
         Intent i=getIntent();

@@ -28,9 +28,9 @@ public class AddBookTracker extends AppCompatActivity {
             if(menuItem.getItemId() == R.id.menu_add_book) {
                 startActivity(new Intent(AddBookTracker.this,AddBook.class));
             } else if(menuItem.getItemId() == R.id.menu_update_book) {
-                startActivity(new Intent(AddBookTracker.this,UpdateBook.class));
+                startActivity(new Intent(AddBookTracker.this,UpdateBook2.class));
             } else if(menuItem.getItemId() == R.id.menu_borrow_book) {
-                startActivity(new Intent(AddBookTracker.this,BorrowBook.class));
+                startActivity(new Intent(AddBookTracker.this,BorrowBook2.class));
             } else if(menuItem.getItemId() == R.id.menu_reading_tracker) {
                 startActivity(new Intent(AddBookTracker.this,ReadingTracker.class));
             } else if(menuItem.getItemId() == R.id.menu_user_account) {

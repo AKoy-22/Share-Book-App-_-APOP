@@ -51,9 +51,9 @@ public class UpdateBook2 extends AppCompatActivity  implements BooksAdapter.Item
             if(menuItem.getItemId() == R.id.menu_add_book) {
                 startActivity(new Intent(UpdateBook2.this,AddBook.class));
             } else if(menuItem.getItemId() == R.id.menu_update_book) {
-                startActivity(new Intent(UpdateBook2.this,UpdateBook.class));
+                startActivity(new Intent(UpdateBook2.this,UpdateBook2.class));
             } else if(menuItem.getItemId() == R.id.menu_borrow_book) {
-                startActivity(new Intent(UpdateBook2.this,BorrowBook.class));
+                startActivity(new Intent(UpdateBook2.this,BorrowBook2.class));
             } else if(menuItem.getItemId() == R.id.menu_reading_tracker) {
                 startActivity(new Intent(UpdateBook2.this,ReadingTracker.class));
             } else if(menuItem.getItemId() == R.id.menu_user_account) {

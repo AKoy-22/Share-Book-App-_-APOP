@@ -111,9 +111,9 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
             if(menuItem.getItemId() == R.id.menu_add_book) {
                 startActivity(new Intent(BorrowBook2.this,AddBook.class));
             } else if(menuItem.getItemId() == R.id.menu_update_book) {
-                startActivity(new Intent(BorrowBook2.this,UpdateBook.class));
+                startActivity(new Intent(BorrowBook2.this,UpdateBook2.class));
             } else if(menuItem.getItemId() == R.id.menu_borrow_book) {
-                startActivity(new Intent(BorrowBook2.this,BorrowBook.class));
+                startActivity(new Intent(BorrowBook2.this,BorrowBook2.class));
             } else if(menuItem.getItemId() == R.id.menu_reading_tracker) {
                 startActivity(new Intent(BorrowBook2.this,ReadingTracker.class));
             } else if(menuItem.getItemId() == R.id.menu_user_account) {

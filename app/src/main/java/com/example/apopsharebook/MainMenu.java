@@ -35,6 +35,7 @@ public class MainMenu extends AppCompatActivity {
         ImageButton btnUserIcon = findViewById(R.id.btnUserIcon);
         ImageButton btnUserArrow = findViewById(R.id.btnUserArrow);
         ImageButton btnMessage = findViewById(R.id.btnMessageIcon);
+        ImageButton btnHome = findViewById(R.id.btnHome);
         TextView userName=findViewById(R.id.txtUserName);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String userId = sharedPreferences.getString("userId", "NA");
@@ -42,6 +43,7 @@ public class MainMenu extends AppCompatActivity {
 
         //the button event
         btnMessage.setOnClickListener(v -> startActivity(new Intent(MainMenu.this,Message.class)));
+        btnHome.setOnClickListener(v -> startActivity(new Intent(MainMenu.this,Login.class)));
         btnUserIcon.setOnClickListener(v -> startActivity(new Intent(MainMenu.this,UserAccount.class)));
         btnUserArrow.setOnClickListener(v -> startActivity(new Intent(MainMenu.this,UserAccount.class)));
         btnAddBook.setOnClickListener(v -> startActivity(new Intent(MainMenu.this,AddBook.class)));

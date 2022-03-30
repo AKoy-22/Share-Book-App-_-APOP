@@ -13,16 +13,12 @@
     <!-- Main Menu -->
     <string name="imgUserProfile">The photos for user profile</string>
     <string name="txtUserName">amiewill428</string>
-    <string name="txt_search_bar">Search a book name or address</string>
+    <string name="txtSearch">Search a book name</string>
     <string name="imgAddBook">The icon of add book</string>
     <string name="imgUpdateBook">The icon of update book</string>
     <string name="imgBorrowBook">The icon of borrow book</string>
     <string name="imgReadingTracker">The icon of reading tracker</string>
     <string name="imgMessageIcon">The icon of message</string>
-    <string name="txtMessage1">You have a book request from y612352</string>
-    <string name="txtMessageDay1">2020/02/07 11:25 AM</string>
-    <string name="txtMessage2">mary23112a send you a message</string>
-    <string name="txtMessageDay2">2020/02/03 07:15 AM</string>
     <string name="string_img_message_nav" />
 
     <!-- page title -->
@@ -73,22 +69,6 @@
     <!-- Borrow book -->
     <string name="imgBookCover">image of book</string>
     <string name="btnBorrow">Borrow</string>
-    <string name="txtBookPrice">$1</string>
-    <string name="txtBookTitle1">The Midnight of Library</string>
-    <string name="txtBookTitle2">The Martian</string>
-    <string name="txtBookTitle3">Ready Player One</string>
-    <string name="txtBookAuthor1">Matt Haig</string>
-    <string name="txtBookAuthor2">Andy Weir</string>
-    <string name="txtBookAuthor3">Ernest Cline</string>
-    <string name="txtBookFiction">Fiction</string>
-    <string name="txtBookNonFiction">NonFiction</string>
-    <string name="txtBookPublisher1">Viking / 2020</string>
-    <string name="txtBookPublisher2">Crown / 2011</string>
-    <string name="txtBookPublisher3">Crown Publishers / 2011</string>
-    <string name="txtBookOwner1">Mary Williams</string>
-    <string name="txtBookOwner2">Tom Low</string>
-    <string name="txtBookOwner3">Jessica Blackthon</string>
-    <string name="txtBookISBN">9781443455879</string>
     <string name="btnSearch">Search</string>
     <string name="hintSearch">Enter Preferred Pickup Location</string>
     <string name="txtBookLocationPrompt">Choose location to pick up</string>
@@ -117,12 +97,6 @@
     <string name="labelEditAddress">Your Address</string>
     <string name="labelEditInterested">Your Interested Book</string>
     <string name="labelEditAge">Your Current Age</string>
-    <string name="txtUserNameInfo">Amie Williams</string>
-    <string name="txtUserPasswordInfo">amie1234</string>
-    <string name="txtUserAddressInfo">700 Royal Avenue,New Westminster,BC V3M 5Z5</string>
-    <string name="txtUserEmailInfo">amiewill428@gmail.com</string>
-    <string name="txtUserAgeInfo">22</string>
-    <string name="txtUserCateInfo">Fiction</string>
     <string name="imgEditAccount">icon of editing user account</string>
 
     <!-- user account page -->
@@ -135,14 +109,6 @@
     <string name="btnCurrentLoan">Current Loan</string>
     <string name="btnRequestHistory">Request History</string>
     <string name="btnSignOut">Sign Out</string>
-
-    <!-- reading history -->
-    <string name="txtBorrowFromUser">Borrow from mary12345</string>
-    <string name="txtBorrowFromUser2">Borrow from sami8o82</string>
-    <string name="txtBorrowFromUser3">Borrow from 1qaz2wsx</string>
-    <string name="txtBorrowBookDate">2022/01/02</string>
-    <string name="txtBorrowBookDate2">2022/02/23</string>
-    <string name="txtBorrowBookDate3">2022/03/02</string>
 
     <!-- current loan -->
     <string name="btnBorrowExtend">Extend</string>
@@ -161,12 +127,12 @@
     <string name="btnEdit">Edit</string>
 
     <!-- edit book -->
-    <string name="labelBookTitle">Book\'s title</string>
+    <string name="labelBookTitle">Book Title</string>
     <string name="labelBookISBN">ISBN-13</string>
-    <string name="labelBookAuthor">Book\'s author</string>
-    <string name="labelBookPublisher">Book\'s publisher</string>
-    <string name="labelBookCategory">Book\'s category</string>
-    <string name="labelBookYear">The publication year</string>
+    <string name="labelBookAuthor">Book Author</string>
+    <string name="labelBookPublisher">Book Publisher</string>
+    <string name="labelBookCategory">Book Category</string>
+    <string name="labelBookYear">The Publication Year</string>
     <string name="txtBookPublisherOnly">Viking</string>
     <string name="txtBookYear">2020</string>
 
@@ -214,7 +180,6 @@
     <string name="userInterestPrompt">User Interest</string>
     <string name="imgUserIcon">image of user</string>
     <string name="btnSendMes">Send Message</string>
-    <string name="btnAdmin">Admin Logic</string>
     <string name="bookLocation">Location</string>
     <string name="labelTimeSpent">Time spent</string>
     <string name="txtTimeSpent">Enter time spent on reading the book</string>

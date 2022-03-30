@@ -16,8 +16,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/green_light"
-        android:elevation="10dp"
-        app:navigationIcon="@drawable/ic_home">
+        android:elevation="10dp">
+
+        <ImageButton
+            android:id="@+id/btnHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_horizontal"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/ic_home"
+            android:contentDescription="@string/imgMessageIcon"
+            android:minWidth="24dp"
+            android:minHeight="24dp"
+            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
         <!-- page title -->
         <TextView
             android:id="@+id/txtToolbarTitle"
@@ -91,7 +102,7 @@
 
     </LinearLayout>
     <!-- search bar -->
-    <androidx.appcompat.widget.SearchView
+    <EditText
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -99,14 +110,14 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="10dp"
+        android:autofillHints=""
         android:background="@drawable/rounded_button_white"
         android:elevation="4dp"
-        android:gravity="bottom|end"
+        android:gravity="center"
+        android:hint="@string/txtSearch"
+        android:inputType="text"
         android:queryBackground="@android:color/transparent"
-        app:defaultQueryHint="@string/txt_search_bar"
-        tools:ignore="TouchTargetSizeCheck"
-        tools:layout_centerHorizontal="true"
-        tools:layout_centerVertical="true"
+        tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck,TextContrastCheck"
         tools:layout_marginRight="20dp" />
 
     <!--The main button of add book and update book-->
@@ -125,9 +136,9 @@
             android:background="@drawable/border_btn_white"
             android:backgroundTint="@color/normal_gray"
             android:elevation="20dp"
-            android:text="@string/txt_search_bar"
+            android:text="@string/txtSearch"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="TextContrastCheck" />
 
