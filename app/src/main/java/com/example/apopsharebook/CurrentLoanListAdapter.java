@@ -38,9 +38,9 @@ public class CurrentLoanListAdapter extends ArrayAdapter {
 		TextView author = view.findViewById(R.id.txtBookAuthor);
 		TextView publisher = view.findViewById(R.id.txtBookPublisher);
 		TextView year = view.findViewById(R.id.txtBookYear);
-		TextView category = view.findViewById(R.id.txtBookCategory);
+		TextView category = view.findViewById(R.id.txtBookIsbn);
 		TextView owner = view.findViewById(R.id.txtBookOwner);
-		TextView date = view.findViewById(R.id.txtBorrowBookDate);
+		TextView date = view.findViewById(R.id.txtTimeSpent);
 
 		CurrentLoanList clList = list.get(position);
 

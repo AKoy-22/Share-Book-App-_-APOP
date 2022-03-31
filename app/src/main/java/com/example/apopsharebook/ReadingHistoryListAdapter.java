@@ -16,9 +16,9 @@ import java.util.List;
 public class ReadingHistoryListAdapter extends ArrayAdapter {
 	Context context;
 	int resource;
-	List<ReadingHistoryList> list;
+	List<Books> list;
 
-	public ReadingHistoryListAdapter(Context context, int resource, List<ReadingHistoryList> list) {
+	public ReadingHistoryListAdapter(Context context, int resource, List<Books> list) {
 		super(context, resource, list);
 		this.context = context;
 		this.resource = resource;
@@ -34,22 +34,18 @@ public class ReadingHistoryListAdapter extends ArrayAdapter {
 		ImageView cover = view.findViewById(R.id.imgBookCover);
 		TextView title = view.findViewById(R.id.txtBookTitle);
 		TextView author = view.findViewById(R.id.txtBookAuthor);
-		TextView publisher = view.findViewById(R.id.txtBookPublisher);
-		TextView year = view.findViewById(R.id.txtBookYear);
-		TextView category = view.findViewById(R.id.txtBookCategory);
 		TextView owner = view.findViewById(R.id.txtBookOwner);
-		TextView date = view.findViewById(R.id.txtBorrowBookDate);
+		TextView timeSpent = view.findViewById(R.id.txtTimeSpent);
+		TextView isbn = view.findViewById(R.id.txtBookIsbn);
 
-		ReadingHistoryList clList = list.get(position);
+		Books bookList = list.get(position);
 
-		cover.setImageDrawable(context.getResources().getDrawable(clList.getCover(),null));
-		title.setText(clList.getTitle());
-		author.setText(clList.getAuthor());
-		publisher.setText(clList.getPublisher());
-		year.setText(clList.getYear());
-		category.setText(clList.getCategory());
-		owner.setText(clList.getOwner());
-		date.setText(clList.getDate());
+		cover.setImageResource(R.drawable.book_cover_2);
+		title.setText(bookList.getTitle());
+		author.setText(bookList.getAuthor());
+		isbn.setText(bookList.getIsbn());
+		owner.setText(bookList.getOwner());
+		timeSpent.setText(Double.toString(bookList.getTime()));
 
 		return view;
 	}

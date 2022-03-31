@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -27,9 +29,12 @@ public class UpdateBook2 extends AppCompatActivity  implements BooksAdapter.Item
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_book2);
 
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String userId = sharedPreferences.getString("userId", "NA");
+
         db = new Database(this);
 
-        booksList = db.viewBooks();
+        booksList = db.viewBooks(userId);
         recyclerView = findViewById(R.id.RecyclerView);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);

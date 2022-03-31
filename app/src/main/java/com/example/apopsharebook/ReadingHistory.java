@@ -3,7 +3,9 @@ package com.example.apopsharebook;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -14,9 +16,9 @@ import java.util.List;
 
 public class ReadingHistory extends AppCompatActivity {
 
-    List<ReadingHistoryList> rhList;
+    List<Books> bList = new ArrayList<>();
     ListView listView;
-
+    Database db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,9 @@ public class ReadingHistory extends AppCompatActivity {
         //button event for go back main page
         go_back.setOnClickListener(v -> startActivity(new Intent(ReadingHistory.this,UserAccount.class)));
         btnMessage.setOnClickListener(v -> startActivity(new Intent(ReadingHistory.this,Message.class)));
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String userId = sharedPreferences.getString("userId", "NA");
 
         //the bottom menu bar to link the pages
         bottom_menu.setOnItemSelectedListener(menuItem -> {
@@ -45,20 +50,12 @@ public class ReadingHistory extends AppCompatActivity {
             }
             return true;
         });
-
+        db = new Database(this);
+        bList = db.viewRHBooks(userId);
         //ListView using ArrayList
-        rhList = new ArrayList<>();
-        rhList.add(new ReadingHistoryList(R.drawable.cover01,"Cloud Cuckoo Land","Anthony Doerr",
-                "Scribner","2021","Fiction","mary11","2022-03-06"));
-        rhList.add(new ReadingHistoryList(R.drawable.cover02,"One Two Three","Laurie Frankel",
-                "Henry Holt and Co","2021","NonFiction","tom22","2022-03-08"));
-        rhList.add(new ReadingHistoryList(R.drawable.cover03,"A Court of Silver Flames","Sarah J. Maas",
-                "Bloomsbury Publishing","2021","Fiction","allen33","2022-03-19"));
-        rhList.add(new ReadingHistoryList(R.drawable.cover04,"Under the Whispering Door","TJ Klune",
-                "Tor Books","2021","Fiction","joe55","2022-03-21"));
 
         listView = findViewById(R.id.ReadingHistoryListView);
-        ReadingHistoryListAdapter adapter = new ReadingHistoryListAdapter(this,R.layout.readinghistory_list_item,rhList);
+        ReadingHistoryListAdapter adapter = new ReadingHistoryListAdapter(this,R.layout.readinghistory_list_item,bList);
         listView.setAdapter(adapter);
         listView.setDivider(null);
     }

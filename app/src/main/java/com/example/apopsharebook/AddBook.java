@@ -3,7 +3,9 @@ package com.example.apopsharebook;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +36,10 @@ public class AddBook extends AppCompatActivity {
         EditText inpPubYear=findViewById(R.id.editBookYear);
         Spinner genre = findViewById(R.id.editBookCategory);
         Spinner status = findViewById(R.id.chooseBookStatus);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String userId = sharedPreferences.getString("userId", "NA");
+
         //button event for go back main page
         go_back.setOnClickListener(v -> startActivity(new Intent(AddBook.this,MainMenu.class)));
         btnMessage.setOnClickListener(v -> startActivity(new Intent(AddBook.this,Message.class)));
@@ -62,7 +68,7 @@ public class AddBook extends AppCompatActivity {
 
                 isInserted = db.addBook(Integer.parseInt(inpIsbn.getText().toString()),
                         inpTitle.getText().toString(),genre.getSelectedItem().toString(),
-                        inpAuthor.getText().toString(),inpPublisher.getText().toString(),inpPubYear.getText().toString(),"prabh@xzy.com",status.getSelectedItem().toString(),"Location");
+                        inpAuthor.getText().toString(),inpPublisher.getText().toString(),inpPubYear.getText().toString(),userId,status.getSelectedItem().toString(),"Location");
                 if(isInserted){
                     Toast.makeText(AddBook.this,
                             Html.fromHtml("<big>Data is added</big>"),

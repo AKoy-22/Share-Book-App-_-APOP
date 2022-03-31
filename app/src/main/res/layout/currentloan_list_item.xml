@@ -82,7 +82,7 @@
 
                 <!-- book category -->
                 <TextView
-                    android:id="@+id/txtBookCategory"
+                    android:id="@+id/txtBookIsbn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -115,7 +115,7 @@
                 android:orientation="vertical">
                 <!-- borrowing time -->
                 <TextView
-                    android:id="@+id/txtBorrowBookDate"
+                    android:id="@+id/txtTimeSpent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAlignment="viewEnd"

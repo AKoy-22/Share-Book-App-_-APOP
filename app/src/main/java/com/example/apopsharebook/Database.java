@@ -274,12 +274,12 @@ public class Database extends SQLiteOpenHelper  {
 
     //----------------------------------------------------------------------------------------------
 
-    public List<Books> viewBooks(){
+    public List<Books> viewBooks(String id){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        String query = "SELECT Title,Author,Genre,Status,PubYear,FName,ISBN,Publisher,BookId FROM " + B_TABLE+","+
-                U_TABLE +" WHERE Book_table.OwnerId = User_table.UserId";
+        String query = "SELECT Title,Author,Genre,Status,PubYear,FName,ISBN,Publisher,BookId FROM " + B_TABLE+" JOIN "+
+                U_TABLE+" ON Book_table.OwnerId = User_table.UserId WHERE Book_table.OwnerId = '"+ id+"'";
         Cursor c =sqLiteDatabase.rawQuery(query,null);
-        try{
+
             while(c.moveToNext()){
                 String title = c.getString(0);
                 String Author = c.getString(1);
@@ -294,10 +294,24 @@ public class Database extends SQLiteOpenHelper  {
                 booksList.add(book);
             }
 
+        return booksList;
+    }
+
+    public List<Books> viewRHBooks(String id){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT Title,Author,ISBN,TimeSpent FROM " + R_TABLE+" JOIN "+
+                U_TABLE+" ON RHistory_table.UserId = User_table.UserId WHERE RHistory_table.UserId = '"+ id+"'";
+        Cursor c =sqLiteDatabase.rawQuery(query,null);
+
+        while(c.moveToNext()){
+            String title = c.getString(0);
+            String Author = c.getString(1);
+            String isbn = c.getString(2);
+            double time = c.getDouble(3);
+            Books book = new Books(title,Author,isbn,time);
+            booksList.add(book);
         }
-        catch (Exception e){
-            e.getStackTrace();
-        }
+
         return booksList;
     }
 
