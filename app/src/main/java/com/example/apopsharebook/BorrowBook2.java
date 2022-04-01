@@ -5,8 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +37,8 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
     int bookId;
     ArrayList<String> bTitles, bAuthors, bGenres, bPub, bPubYear, bOwner, bStatus;
     ArrayList<Integer> bIds;
+//    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//    String userId = sharedPreferences.getString("userId", "NA");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +48,9 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
         btnSearch=findViewById(R.id.btnSearch);
         spnLoc=findViewById(R.id.spnLoc);
         database=new Database(this);
-        database.addUser();
-        database.manuallyAddBook();
-        database.manuallyAddPref();
+//        database.addUser();
+//        database.manuallyAddBook();
+//        database.manuallyAddPref();
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +67,7 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
 
 
                 inpLoc=spnLoc.getSelectedItem().toString();
-                c=database.searchBookByLocation(inpLoc);
+                c=database.searchBookByLocation(inpLoc,"akoyama@abc.com");
 
                 if(c.getCount()>0){
                     while(c.moveToNext()){

@@ -184,6 +184,8 @@
     <string name="labelTimeSpent">Time spent</string>
     <string name="txtTimeSpent">Enter time spent on reading the book</string>
     <string name="txtRTtitle">Enter information for the book you have read</string>
+    <string name="dateBorrowed">Date Borrowed</string>
+    <string name="returnDate">Return Date</string>
 
     <string-array name="locations">
         <item>New Westminster</item>

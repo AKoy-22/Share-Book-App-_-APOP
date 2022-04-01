@@ -43,19 +43,6 @@ public class RequestHistoryListAdapter extends ArrayAdapter {
 		user.setText(rhList.getUser());
 		img.setImageResource(rhList.getImg());
 
-		/*view.findViewById(R.id.btnRequestOK).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				//button of borrow extend
-			}
-		});
-
-		view.findViewById(R.id.btnRequestCancel).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				//button of borrow extend
-			}
-		});*/
 
 		return view;
 	}

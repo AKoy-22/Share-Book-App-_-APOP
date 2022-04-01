@@ -34,7 +34,6 @@ public class ReadingHistoryListAdapter extends ArrayAdapter {
 		ImageView cover = view.findViewById(R.id.imgBookCover);
 		TextView title = view.findViewById(R.id.txtBookTitle);
 		TextView author = view.findViewById(R.id.txtBookAuthor);
-		TextView owner = view.findViewById(R.id.txtBookOwner);
 		TextView timeSpent = view.findViewById(R.id.txtTimeSpent);
 		TextView isbn = view.findViewById(R.id.txtBookIsbn);
 
@@ -44,7 +43,6 @@ public class ReadingHistoryListAdapter extends ArrayAdapter {
 		title.setText(bookList.getTitle());
 		author.setText(bookList.getAuthor());
 		isbn.setText(bookList.getIsbn());
-		owner.setText(bookList.getOwner());
 		timeSpent.setText(Double.toString(bookList.getTime()));
 
 		return view;

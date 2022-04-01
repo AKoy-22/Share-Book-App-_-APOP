@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.Date;
 import java.util.List;
 
 public class CurrentLoanListAdapter extends ArrayAdapter {
@@ -38,9 +39,10 @@ public class CurrentLoanListAdapter extends ArrayAdapter {
 		TextView author = view.findViewById(R.id.txtBookAuthor);
 		TextView publisher = view.findViewById(R.id.txtBookPublisher);
 		TextView year = view.findViewById(R.id.txtBookYear);
-		TextView category = view.findViewById(R.id.txtBookIsbn);
+		TextView isbn = view.findViewById(R.id.txtBookIsbn);
 		TextView owner = view.findViewById(R.id.txtBookOwner);
-		TextView date = view.findViewById(R.id.txtTimeSpent);
+		TextView sdate = view.findViewById(R.id.txtTimeSpent);
+		TextView rDate = view.findViewById(R.id.txtReturnDate);
 
 		CurrentLoanList clList = list.get(position);
 
@@ -49,23 +51,17 @@ public class CurrentLoanListAdapter extends ArrayAdapter {
 		author.setText(clList.getAuthor());
 		publisher.setText(clList.getPublisher());
 		year.setText(clList.getYear());
-		category.setText(clList.getCategory());
+		isbn.setText(clList.getIsbn());
 		owner.setText(clList.getOwner());
-		date.setText(clList.getDate());
 
-		view.findViewById(R.id.btnBorrowExtend).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				//button of borrow extend
-			}
-		});
+		String[] date1 = clList.getsDate().split(" ");
+		String startDate = date1[0]+", "+date1[1]+" "+date1[2];
+		sdate.setText(startDate);
 
-		view.findViewById(R.id.btnBookReturned).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				//button of book returned
-			}
-		});
+		String[] date2 = clList.getrDate().split(" ");
+		String endDate = date2[0]+", "+date2[1]+" "+date2[2];
+		rDate.setText(endDate);
+
 
 		return view;
 	}

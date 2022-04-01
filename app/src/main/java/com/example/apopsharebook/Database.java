@@ -13,9 +13,10 @@ import java.util.List;
 
 public class Database extends SQLiteOpenHelper  {
     List<Books> booksList = new ArrayList<>();
+    List<CurrentLoanList> loansList = new ArrayList<>();
     SQLiteDatabase sqLiteDatabase;
     final static String DATABASE_NAME="APOP.db";
-    final static int DATABASE_VERSION=15;
+    final static int DATABASE_VERSION=18;
 
     //----------------------------------------CREATING TABLE STRUCTURES---------------------------------------
 
@@ -210,10 +211,11 @@ public class Database extends SQLiteOpenHelper  {
 
     //----------------------------------------SEARCH BOOKS BY LOCATION------------------------------
 
-    public Cursor searchBookByLocation(String loc){
+    public Cursor searchBookByLocation(String loc,String id){
         SQLiteDatabase sqdb=this.getWritableDatabase();
 
-        String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId FROM "+B_TABLE+" WHERE Location='"+loc+"'";
+        String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId FROM "+B_TABLE+" WHERE Location='"+loc+"'"
+                +"and OwnerId != '"+ id+"'";
         Cursor c=sqdb.rawQuery(query,null);
         return c;
     }
@@ -300,6 +302,7 @@ public class Database extends SQLiteOpenHelper  {
     public List<Books> viewRHBooks(String id){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT Title,Author,ISBN,TimeSpent FROM " + R_TABLE+" JOIN "+
+
                 U_TABLE+" ON RHistory_table.UserId = User_table.UserId WHERE RHistory_table.UserId = '"+ id+"'";
         Cursor c =sqLiteDatabase.rawQuery(query,null);
 
@@ -313,6 +316,31 @@ public class Database extends SQLiteOpenHelper  {
         }
 
         return booksList;
+    }
+
+    public List<CurrentLoanList> viewClBooks(String id){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT Title,Author,Publisher,PubYear,isbn,BorrowerId,StartDate,ReturnDate,Price,LoanId FROM " + B_TABLE+" JOIN "+
+                L_TABLE +" ON Book_table.BookID = Loan_table.BookId WHERE Loan_table.BorrowerId = '"+id+"'";
+
+        Cursor c = sqLiteDatabase.rawQuery(query,null);
+        while(c.moveToNext()){
+            String title = c.getString(0);
+            String Author = c.getString(1);
+            String publisher = c.getString(2);
+            String year = c.getString(3);
+            String isbn = c.getString(4);
+            String BorrowerId = c.getString(5);
+            String StartDate = c.getString(6);
+            String EndDate = c.getString(7);
+            String price = c.getString(8);
+            int loanId = c.getInt(9);
+            CurrentLoanList loan = new CurrentLoanList(R.drawable.cover01,title,Author,publisher,year,
+                    isbn,BorrowerId,StartDate,EndDate,price,loanId );
+            loansList.add(loan);
+        }
+        return  loansList;
+
     }
 
     public boolean updateRec(String title, String author, String genre, String status,
@@ -333,6 +361,19 @@ public class Database extends SQLiteOpenHelper  {
         else
             return false;
     }
+
+    public boolean extendDate(String id,String retDate){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(L_ReturnDate,retDate);
+        int u = sqLiteDatabase.update(L_TABLE,values,"LoanId=?",
+                new String[]{id});
+        if(u>0)
+            return true;
+        else
+            return false;
+    }
+
 
 
     //----------------------------------------MANUALLY ADD USER /BOOK METHOD------------------------------
@@ -363,26 +404,29 @@ public class Database extends SQLiteOpenHelper  {
     public void manuallyAddBook(){
         sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();
-        value.put(B_ISBN,32165222);
-        value.put(B_Title,"Waiting for Godot");
-        value.put(B_Genre,"Fiction");
-        value.put(B_Author,"Samuel Becket");
-        value.put(B_Publisher, "Hachette Book");
-        value.put(B_PubYear, 2017);
-        value.put(B_OwnerId, "akoyama@abc.com");
-        value.put(B_Status,"available");
-        value.put(B_Location,"Burnaby");
-        long r = sqLiteDatabase.insert(B_TABLE,null,value);
+//        value.put(B_ISBN,32165222);
+//        value.put(B_Title,"Waiting for Godot");
+//        value.put(B_Genre,"Fiction");
+//        value.put(B_Author,"Samuel Becket");
+//        value.put(B_Publisher, "Hachette Book");
+//        value.put(B_PubYear, 2017);
+//        value.put(B_OwnerId, "akoyama@abc.com");
+//        value.put(B_Status,"available");
+//        value.put(B_Location,"Burnaby");
+//        long r = sqLiteDatabase.insert(B_TABLE,null,value);
 
-        value.put(B_ISBN,32165223);
-        value.put(B_Title,"Midnight");
-        value.put(B_Genre,"Fiction");
-        value.put(B_Author,"Matt Haig");
-        value.put(B_Publisher, "Viking");
-        value.put(B_PubYear, 2020);
-        value.put(B_OwnerId, "oprah@abc.com");
-        value.put(B_Status,"give away");
-        value.put(B_Location,"Brentwood");
+//        value.put(B_ISBN,32165223);
+//        value.put(B_Title,"Midnight");
+//        value.put(B_Genre,"Fiction");
+//        value.put(B_Author,"Matt Haig");
+//        value.put(B_Publisher, "Viking");
+//        value.put(B_PubYear, 2020);
+//        value.put(B_OwnerId, "oprah@abc.com");
+//        value.put(B_Status,"give away");
+//        value.put(B_Location,"Brentwood");
+//
+//
+//       sqLiteDatabase.insert(B_TABLE,null,value);
 
         value.put(B_ISBN,32165224);
         value.put(B_Title,"One Two Three");
@@ -390,11 +434,10 @@ public class Database extends SQLiteOpenHelper  {
         value.put(B_Author,"Laurie Frankel");
         value.put(B_Publisher,"Henry Holt and Co");
         value.put(B_PubYear,2021);
-        value.put(B_OwnerId, "oprach@abc.com");
+        value.put(B_OwnerId, "oprah@abc.com");
         value.put(B_Status,"rent out");
         value.put(B_Location,"Richmond");
-
-       sqLiteDatabase.insert(B_TABLE,null,value);
+        sqLiteDatabase.insert(B_TABLE,null,value);
     }
     public void manuallyAddPref() {
         sqLiteDatabase = this.getWritableDatabase();
@@ -403,6 +446,21 @@ public class Database extends SQLiteOpenHelper  {
         value.put(P_Preference, "Fiction");
 
         long r = sqLiteDatabase.insert(P_TABLE, null, value);
+    }
+
+    public boolean addToLoanTable( int bookId, String borrowerID, String startDate, String returnDate,String price){
+        sqLiteDatabase = this.getWritableDatabase();
+        ContentValues value = new ContentValues();
+        value.put(L_BookId,bookId);
+        value.put(L_BorrowerId,borrowerID);
+        value.put(L_StartDate, startDate);
+        value.put(L_ReturnDate,returnDate);
+        value.put(L_Price,price);
+        long r = sqLiteDatabase.insert(L_TABLE,null,value);
+        if(r>0)
+            return true;
+        else
+            return false;
     }
 
 }
