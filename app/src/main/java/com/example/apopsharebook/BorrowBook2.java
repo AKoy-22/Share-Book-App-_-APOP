@@ -66,25 +66,45 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
                 bIds=new ArrayList<Integer>();
                 bPrices=new ArrayList<Integer>();
 
-                //fetching the location chosen from the spinner and passing to SQL query
-                inpLoc=spnLoc.getSelectedItem().toString();
-                c=database.searchBook(inpLoc);
-                //if SQL returns book information the the books will be displayed
-                if(c.getCount()>0){
-                    while(c.moveToNext()){
-                        bTitles.add(c.getString(0));
-                        bAuthors.add(c.getString(1));
-                        bGenres.add(c.getString(2));
-                        bPub.add(c.getString(3));
-                        bPubYear.add(c.getString(4));
-                        bOwner.add(c.getString(5));
-                        bStatus.add(c.getString(6));
-                        bIds.add(c.getInt(7));
-                        bPrices.add(c.getInt(8));
+                //All location chose
+                if(spnLoc.getSelectedItemPosition()==0) {
+                    c = database.searchAllAvailableBooks();
+                    if (c.getCount() > 0) {
+                        while (c.moveToNext()) {
+                            bTitles.add(c.getString(0));
+                            bAuthors.add(c.getString(1));
+                            bGenres.add(c.getString(2));
+                            bPub.add(c.getString(3));
+                            bPubYear.add(c.getString(4));
+                            bOwner.add(c.getString(5));
+                            bStatus.add(c.getString(6));
+                            bIds.add(c.getInt(7));
+                            bPrices.add(c.getInt(8));
+                        }
+                    } else if (c.getCount() == 0) {
+                        Toast.makeText(BorrowBook2.this, "No books available at the moment", Toast.LENGTH_LONG).show();
                     }
                 }
-                else if(c.getCount()==0){
-                    Toast.makeText(BorrowBook2.this,"No books available in the area chosen", Toast.LENGTH_LONG).show();
+                else {
+                    //fetching the location chosen from the spinner and passing to SQL query
+                    inpLoc = spnLoc.getSelectedItem().toString();
+                    c = database.searchAvailableBooksByLoc(inpLoc);
+                    //if SQL returns book information the the books will be displayed
+                    if (c.getCount() > 0) {
+                        while (c.moveToNext()) {
+                            bTitles.add(c.getString(0));
+                            bAuthors.add(c.getString(1));
+                            bGenres.add(c.getString(2));
+                            bPub.add(c.getString(3));
+                            bPubYear.add(c.getString(4));
+                            bOwner.add(c.getString(5));
+                            bStatus.add(c.getString(6));
+                            bIds.add(c.getInt(7));
+                            bPrices.add(c.getInt(8));
+                        }
+                    } else if (c.getCount() == 0) {
+                        Toast.makeText(BorrowBook2.this, "No books available in the area chosen", Toast.LENGTH_LONG).show();
+                    }
                 }
 
                 RecyclerView recyclerView=findViewById(R.id.recyclerView);

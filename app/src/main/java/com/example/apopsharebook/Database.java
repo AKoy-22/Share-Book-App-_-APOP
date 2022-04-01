@@ -221,10 +221,17 @@ public class Database extends SQLiteOpenHelper  {
         Cursor c=sqdb.rawQuery(query,null);
         return c;
     }
-    public Cursor searchBook(String loc){
+    public Cursor searchAvailableBooksByLoc(String loc){
         SQLiteDatabase sqdb=this.getWritableDatabase();
         String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId, Price FROM "+B_TABLE+" " +
                 "WHERE Location='"+loc+"' AND (status='available' OR status='give away')";
+        Cursor c=sqdb.rawQuery(query,null);
+        return c;
+    }
+    public Cursor searchAllAvailableBooks(){
+        SQLiteDatabase sqdb=this.getWritableDatabase();
+        String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId, Price FROM "+B_TABLE+
+                " WHERE status='available' OR status='give away'";
         Cursor c=sqdb.rawQuery(query,null);
         return c;
     }

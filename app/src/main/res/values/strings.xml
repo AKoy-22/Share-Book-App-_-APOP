@@ -189,6 +189,7 @@
     <string name="returnDate">Return Date</string>
 
     <string-array name="locations">
+        <item>All Locations</item>
         <item>New Westminster</item>
         <item>Vancouver</item>
         <item>Burnaby</item>
