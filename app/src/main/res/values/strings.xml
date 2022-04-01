@@ -78,6 +78,7 @@
     <string name="txtTitle">Book Information</string>
     <string name="enterMsgHint">Enter you message here</string>
     <string name="personalized">PERSONALIZED MSG</string>
+    <string name="cardviewtitle">BOOK DETAILS</string>
 
     <!-- Edit account -->
     <string name="editUserPassword">Enter your new password</string>

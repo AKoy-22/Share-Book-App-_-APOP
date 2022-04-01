@@ -28,10 +28,10 @@ public class RequestHistoryList {
 	}
 	public void setImg( ){
 		if(status.equals("Accepted")){
-			this.img=R.drawable.ic_check;
+			this.img=R.drawable.icon_check;
 		}
 		else if(status.equals("Declined")){
-			this.img=R.drawable.ic_cancel;
+			this.img=R.drawable.icon_cancel;
 		}
 	}
 

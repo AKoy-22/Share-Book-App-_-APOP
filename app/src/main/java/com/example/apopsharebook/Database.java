@@ -42,6 +42,7 @@ public class Database extends SQLiteOpenHelper  {
     final static String B_Location="Location";
     final static String B_OwnerId="OwnerId"; //one of UserIds FK
     final static String B_Status="Status"; //on Loan or Available
+    final static String B_Price="Price";
 
     //LOAN TABLE
     final static String L_TABLE="Loan_table";
@@ -105,7 +106,7 @@ public class Database extends SQLiteOpenHelper  {
         createTableQuery=" CREATE TABLE "+B_TABLE+ "("+ B_BookId+ " integer,"+ B_ISBN+" integer,"+
                 B_Title+" text,"
                 +B_Genre+" text,"+B_Author+" text,"+B_Publisher+" text,"+B_PubYear+" integer,"+
-                B_OwnerId+" text,"+B_Status+" text,"+B_Location+" text,"+
+                B_OwnerId+" text,"+B_Status+" text,"+B_Location+" text,"+B_Price+" integer,"+
                 "PRIMARY KEY ("+ B_BookId+ "), FOREIGN KEY ("+B_OwnerId+") REFERENCES "+U_TABLE+
                 " ("+U_UserId+"))";
         sqLiteDatabase.execSQL(createTableQuery);

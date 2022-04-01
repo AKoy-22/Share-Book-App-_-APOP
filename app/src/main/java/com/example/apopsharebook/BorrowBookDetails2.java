@@ -13,9 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Timestamp;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Random;
 
 public class BorrowBookDetails2 extends AppCompatActivity {
     String title, author, genre, pub, pubYear, owner, status, senderId;
@@ -25,15 +23,9 @@ public class BorrowBookDetails2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        Calendar c= Calendar.getInstance();
-        c.add(Calendar.DATE, 30);
-        Date d1=c.getTime();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_borrow_book_details2);
 
-        TextView output = findViewById(R.id.output);
         TextView txtTitle=findViewById(R.id.txtBDetailTitle);
         TextView txtAuthor=findViewById(R.id.txtBDetailAuthor);
         TextView txtGenre=findViewById(R.id.txtBDetailGenre);
@@ -46,7 +38,7 @@ public class BorrowBookDetails2 extends AppCompatActivity {
         Button btnMessage=findViewById(R.id.btnMessage);
         Button btnSend=findViewById(R.id.btnSubmitMsg);
         EditText writeMsg=findViewById(R.id.edTxtWriteMsg);
-        Button btn1  =findViewById(R.id.button);
+
 
         Intent i= getIntent();
         if (i != null) {
@@ -75,7 +67,6 @@ public class BorrowBookDetails2 extends AppCompatActivity {
         }
         //Borrow option is chosen, message sent automatically to the owner
         btnBorrow.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(BorrowBookDetails2.this);
@@ -154,38 +145,5 @@ public class BorrowBookDetails2 extends AppCompatActivity {
               }
           }
       });
-      btn1.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(BorrowBookDetails2.this);
-              String borrowerId=sharedPreferences.getString("userId","NA");
-
-              Random rand = new Random();
-              int low = 1;
-              int high = 3;
-              int p = rand.nextInt(high-low) + low;
-              String price = Integer.toString(p);
-
-              Timestamp t = new Timestamp(System.currentTimeMillis());
-              Date d=new Date(t.getTime());
-
-              String startDateDummy=d.toString();
-//              String[] date1 = startDateDummy.split(" ");
-//              String startDate = date1[0]+", "+date1[1]+" "+date1[2];
-
-              String endDateDummy=d1.toString();
-//              String[] date2 = endDateDummy.split(" ");
-//              String endDate = date2[0]+", "+date2[1]+" "+date2[2];
-              db=new Database(BorrowBookDetails2.this);
-              success = db.addToLoanTable(bookId,borrowerId,startDateDummy,endDateDummy,price);
-              if(success){
-                  Toast.makeText(BorrowBookDetails2.this,"Added.", Toast.LENGTH_LONG).show();
-              }
-              else{
-                  Toast.makeText(BorrowBookDetails2.this,"not added.", Toast.LENGTH_LONG).show();
-              }
-          }
-      });
-
     }
 }
