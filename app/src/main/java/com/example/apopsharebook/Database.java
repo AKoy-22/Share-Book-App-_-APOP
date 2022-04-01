@@ -16,7 +16,7 @@ public class Database extends SQLiteOpenHelper  {
     List<CurrentLoanList> loansList = new ArrayList<>();
     SQLiteDatabase sqLiteDatabase;
     final static String DATABASE_NAME="APOP.db";
-    final static int DATABASE_VERSION=18;
+    final static int DATABASE_VERSION=19;
 
     //----------------------------------------CREATING TABLE STRUCTURES---------------------------------------
 
@@ -321,7 +321,7 @@ public class Database extends SQLiteOpenHelper  {
 
     public List<CurrentLoanList> viewClBooks(String id){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        String query = "SELECT Title,Author,Publisher,PubYear,isbn,BorrowerId,StartDate,ReturnDate,Price,LoanId FROM " + B_TABLE+" JOIN "+
+        String query = "SELECT Title,Author,Publisher,PubYear,isbn,BorrowerId,StartDate,ReturnDate,Loan_Table.Price,LoanId FROM " + B_TABLE+" JOIN "+
                 L_TABLE +" ON Book_table.BookID = Loan_table.BookId WHERE Loan_table.BorrowerId = '"+id+"'";
 
         Cursor c = sqLiteDatabase.rawQuery(query,null);

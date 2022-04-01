@@ -13,13 +13,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 public class BorrowBookDetails2 extends AppCompatActivity {
     String title, author, genre, pub, pubYear, owner, status, senderId;
     int bookId;
     Database db;
-    boolean success;
+    boolean success,success2;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,21 +69,35 @@ public class BorrowBookDetails2 extends AppCompatActivity {
                 btnGiveAway.setVisibility(View.VISIBLE);
             }
 
+
         }
         //Borrow option is chosen, message sent automatically to the owner
         btnBorrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                cal.add(Calendar.DATE,30);
+                Date retDate = cal.getTime();
+
+                Random r = new Random();
+                int low = 10;
+                int high = 100;
+                int price = r.nextInt(high-low) + low;
+
                 SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(BorrowBookDetails2.this);
                 senderId=sharedPreferences.getString("userId","NA");
+                String borrowerId = sharedPreferences.getString("userId","NA");
 
                 Timestamp t = new Timestamp(System.currentTimeMillis());
                 Date d=new Date(t.getTime());
-                String date=d.toString();
+                String StartDate=d.toString();
+                String returnDate = retDate.toString();
+
                 String request="Borrow request has been sent from";
                 String type="Borrow Request";
+
                 db=new Database(BorrowBookDetails2.this);
-                success=db.sendMessage(owner, senderId,date, bookId ,request,type);
+                success=db.sendMessage(owner, senderId,StartDate, bookId ,request,type);
 
                 if(success){
                     Toast.makeText(BorrowBookDetails2.this,"Borrow Request has been sent.", Toast.LENGTH_LONG).show();
@@ -86,6 +105,7 @@ public class BorrowBookDetails2 extends AppCompatActivity {
                 else{
                     Toast.makeText(BorrowBookDetails2.this,"Message not sent.Please try again.", Toast.LENGTH_LONG).show();
                 }
+                success2 = db.addToLoanTable(bookId,borrowerId,StartDate,returnDate,Integer.toString(price));
             }
         });
 
@@ -95,6 +115,8 @@ public class BorrowBookDetails2 extends AppCompatActivity {
             public void onClick(View view) {
                 SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(BorrowBookDetails2.this);
                 senderId=sharedPreferences.getString("userId","NA");
+
+
 
                 Timestamp t = new Timestamp(System.currentTimeMillis());
                 Date d=new Date(t.getTime());
