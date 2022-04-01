@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -33,7 +34,7 @@ public class UserAccount extends AppCompatActivity {
         Button btnReadingHistory = findViewById(R.id.btnReadingHistory);
         Button btnRequestHistory = findViewById(R.id.btnRequestHistory);
         Button btnCurrentLoan = findViewById(R.id.btnCurrentLoan);
-
+        Button btnSignOut=findViewById(R.id.btnSignOut);
         TextView userName=findViewById(R.id.txtUserName);
         TextView user_Name=findViewById(R.id.txt_user_name);
         TextView userEmail=findViewById(R.id.txtUserEmail);
@@ -49,7 +50,7 @@ public class UserAccount extends AppCompatActivity {
         userEmail.setText(userId);
         db=new Database(this);
 
-       c=db.getUserInfo(userId);
+        c=db.getUserInfo(userId);
         if(c.getCount()>0) {
             while (c.moveToNext()) {
                 FName = c.getString(2);
@@ -71,15 +72,21 @@ public class UserAccount extends AppCompatActivity {
              prefs.add(c.getString(1));
             }
         }
-        preferences="";
-        preferences=prefs.get(0).toString();
-        for(int i=1;i<prefs.size();i++){
-          preferences=preferences+", "+prefs.get(i).toString();
-      }
-      userInterest.setText(preferences);
+         preferences="";
+         preferences=prefs.get(0).toString();
+         for(int i=1;i<prefs.size();i++){
+           preferences=preferences+", "+prefs.get(i).toString();
+         }
+         userInterest.setText(preferences);
 
-
-
+        // button to Log Out
+        btnSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sharedPreferences.edit().remove("userId").commit();
+                startActivity(new Intent(UserAccount.this,Login.class));
+            }
+        });
 
         //button event for go back main page
         go_back.setOnClickListener(v -> startActivity(new Intent(UserAccount.this,MainMenu.class)));
@@ -105,5 +112,8 @@ public class UserAccount extends AppCompatActivity {
             }
             return true;
         });
+
+
+
     }
 }

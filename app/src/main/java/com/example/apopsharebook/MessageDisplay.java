@@ -33,28 +33,8 @@ public class MessageDisplay extends AppCompatActivity {
         Spinner spinner=findViewById(R.id.spnAcceptOrDec);
         EditText reply=findViewById(R.id.edTxtReplyMsgContent);
         Button btnReply=findViewById(R.id.btnSubmitReply);
-
         ImageButton go_back = findViewById(R.id.btnBack);
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
-
-        //button event for go back main page
-        go_back.setOnClickListener(v -> startActivity(new Intent(MessageDisplay.this, MainMenu.class)));
-
-        //the bottom menu bar to link the pages
-        bottom_menu.setOnItemSelectedListener(menuItem -> {
-            if (menuItem.getItemId() == R.id.menu_add_book) {
-                startActivity(new Intent(MessageDisplay.this, AddBook.class));
-            } else if (menuItem.getItemId() == R.id.menu_update_book) {
-                startActivity(new Intent(MessageDisplay.this, UpdateBook2.class));
-            } else if (menuItem.getItemId() == R.id.menu_borrow_book) {
-                startActivity(new Intent(MessageDisplay.this, BorrowBook2.class));
-            } else if (menuItem.getItemId() == R.id.menu_reading_tracker) {
-                startActivity(new Intent(MessageDisplay.this, ReadingTracker.class));
-            } else if (menuItem.getItemId() == R.id.menu_user_account) {
-                startActivity(new Intent(MessageDisplay.this, UserAccount.class));
-            }
-            return true;
-        });
 
         //display message
         Intent i=getIntent();
@@ -75,13 +55,18 @@ public class MessageDisplay extends AppCompatActivity {
             public void onClick(View view) {
                 SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(MessageDisplay.this);
                 String userId=sharedPreferences.getString("userId","NA");
+
                 Timestamp t = new Timestamp(System.currentTimeMillis());
                 Date time=new Date(t.getTime());
+
                 String date=time.toString();
+                //Spinner choices are accept, decline, N/A
                 String choice = spinner.getSelectedItem().toString();
                 String content="";
+                int bookId=db.searchBookIdByMessageId(msgId);
+                int pay=db.findPriceByBookId(bookId);
                 if(spinner.getSelectedItemPosition()==1){
-                    content="Your request has been accepted.";
+                    content="Your request has been accepted. Please pay $"+pay;
                     choice=choice+"ed";
                 }
                 else if(spinner.getSelectedItemPosition()==2){
@@ -90,7 +75,7 @@ public class MessageDisplay extends AppCompatActivity {
                 }
                 String personalizedMsg=reply.getText().toString();
                 content=content+""+personalizedMsg;
-                int bookId=db.searchBookIdByMessageId(msgId);
+
                 boolean success=db.sendMessage(senderId, userId, date,  bookId,content, choice);
                 if(success){
                     Toast.makeText(MessageDisplay.this,"Reply sent.", Toast.LENGTH_LONG).show();
@@ -100,7 +85,24 @@ public class MessageDisplay extends AppCompatActivity {
                 }
             }
         });
+        //button event for go back main page
+        go_back.setOnClickListener(v -> startActivity(new Intent(MessageDisplay.this, MainMenu.class)));
 
+        //the bottom menu bar to link the pages
+        bottom_menu.setOnItemSelectedListener(menuItem -> {
+            if (menuItem.getItemId() == R.id.menu_add_book) {
+                startActivity(new Intent(MessageDisplay.this, AddBook.class));
+            } else if (menuItem.getItemId() == R.id.menu_update_book) {
+                startActivity(new Intent(MessageDisplay.this, UpdateBook2.class));
+            } else if (menuItem.getItemId() == R.id.menu_borrow_book) {
+                startActivity(new Intent(MessageDisplay.this, BorrowBook2.class));
+            } else if (menuItem.getItemId() == R.id.menu_reading_tracker) {
+                startActivity(new Intent(MessageDisplay.this, ReadingTracker.class));
+            } else if (menuItem.getItemId() == R.id.menu_user_account) {
+                startActivity(new Intent(MessageDisplay.this, UserAccount.class));
+            }
+            return true;
+        });
     }
 
 

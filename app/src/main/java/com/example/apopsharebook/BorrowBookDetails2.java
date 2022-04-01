@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,7 +21,7 @@ import java.util.Random;
 
 public class BorrowBookDetails2 extends AppCompatActivity {
     String title, author, genre, pub, pubYear, owner, status, senderId;
-    int bookId;
+    int bookId, price;
     Database db;
     boolean success,success2;
 
@@ -38,30 +40,35 @@ public class BorrowBookDetails2 extends AppCompatActivity {
         TextView txtPubYear=findViewById(R.id.txtBDetailPubYear);
         TextView txtOwner=findViewById(R.id.txtBDetailOwner);
         TextView txtStatus=findViewById(R.id.txtBDetailStatus);
+        TextView txtPrice=findViewById(R.id.txtBPrice);
         Button btnBorrow=findViewById(R.id.btnBorrow);
         Button btnGiveAway=findViewById(R.id.btnBDetailGiveAway);
         Button btnMessage=findViewById(R.id.btnMessage);
         Button btnSend=findViewById(R.id.btnSubmitMsg);
         EditText writeMsg=findViewById(R.id.edTxtWriteMsg);
+        BottomNavigationView bottom_menu;
 
 
         Intent i= getIntent();
         if (i != null) {
             title=getIntent().getStringExtra("title");
-            txtTitle.setText("Title: "+title);
+            txtTitle.setText("Title:  "+title);
             author=getIntent().getStringExtra("author");
-            txtAuthor.setText("Author: "+author);
+            txtAuthor.setText("Author  : "+author);
             genre=getIntent().getStringExtra("genre");
-            txtGenre.setText("Category: "+ genre);
+            txtGenre.setText("Category:  "+ genre);
             pub=getIntent().getStringExtra("pub");
-            txtPub.setText("Publisher: "+pub);
+            txtPub.setText("Publisher:  "+pub);
             pubYear=getIntent().getStringExtra("pubYear");
-            txtPubYear.setText("Published: "+pubYear);
+            txtPubYear.setText("Published:  "+pubYear);
             owner=getIntent().getStringExtra("owner");
-            txtOwner.setText("Owner ID: " +owner);
+            txtOwner.setText("Owner ID:  " +owner);
             status=getIntent().getStringExtra("status");
-            txtStatus.setText("Status: " +status);
+            txtStatus.setText("Status:  " +status);
+            price=getIntent().getIntExtra("price",0);
+            txtPrice.setText("Price:  $"+price);
             bookId=getIntent().getIntExtra("bookId",0);
+
             if(status.equals("available") || status.equals("on loan")){
                 btnBorrow.setVisibility(View.VISIBLE);
             }
@@ -71,7 +78,7 @@ public class BorrowBookDetails2 extends AppCompatActivity {
 
 
         }
-        //Borrow option is chosen, message sent automatically to the owner
+        //Borrow option is chosen, borrow request message sent automatically to the owner
         btnBorrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -167,5 +174,22 @@ public class BorrowBookDetails2 extends AppCompatActivity {
               }
           }
       });
+
+        //the bottom menu bar to link the pages
+        bottom_menu=findViewById(R.id.bottom_menu);
+        bottom_menu.setOnItemSelectedListener(menuItem -> {
+            if(menuItem.getItemId() == R.id.menu_add_book) {
+                startActivity(new Intent(BorrowBookDetails2.this,AddBook.class));
+            } else if(menuItem.getItemId() == R.id.menu_update_book) {
+                startActivity(new Intent(BorrowBookDetails2.this,UpdateBook2.class));
+            } else if(menuItem.getItemId() == R.id.menu_borrow_book) {
+                startActivity(new Intent(BorrowBookDetails2.this,BorrowBook2.class));
+            } else if(menuItem.getItemId() == R.id.menu_reading_tracker) {
+                startActivity(new Intent(BorrowBookDetails2.this,ReadingTracker.class));
+            } else if(menuItem.getItemId() == R.id.menu_user_account) {
+                startActivity(new Intent(BorrowBookDetails2.this,UserAccount.class));
+            }
+            return true;
+        });
     }
 }

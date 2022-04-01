@@ -10,12 +10,13 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="376dp"
-        android:layout_height="274dp"
-        android:layout_marginTop="47dp"
+        android:layout_width="386dp"
+        android:layout_height="299dp"
+        android:layout_marginTop="16dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -111,6 +112,17 @@
                 android:textAlignment="inherit"
                 android:textColor="@color/dark_gray"
                 android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtBPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:text="dummy text for editing"
+                android:textAlignment="inherit"
+                android:textColor="@color/dark_gray"
+                android:textSize="20sp" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
@@ -177,8 +189,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="365dp"
-        android:layout_height="161dp"
+        android:layout_width="360dp"
+        android:layout_height="141dp"
         android:layout_marginStart="21dp"
         android:layout_marginTop="11dp"
         android:layout_marginEnd="25dp"
@@ -191,7 +203,7 @@
         <EditText
             android:id="@+id/edTxtWriteMsg"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="144dp"
             android:backgroundTint="@color/light_gray"
             android:elevation="0dp"
             android:ems="10"
@@ -210,7 +222,29 @@
         android:text="@string/btnSendMessage"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_menu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/nav_bg"
+        android:elevation="4dp"
+        app:fabCradleVerticalOffset="10dp"
+        app:itemIconSize="18dp"
+        app:itemIconTint="@color/bright_blue"
+        app:itemTextColor="@color/bright_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSubmitMsg"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_menu">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 </androidx.constraintlayout.widget.ConstraintLayout>

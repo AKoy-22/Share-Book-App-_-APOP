@@ -17,12 +17,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
  //Class level variables
     private LayoutInflater layoutInflator;
     private int image;
-    /*private String [] titleArr;
-    private String [] authorArr;
-    private String [] genreArr;*/
+
     ArrayList<String> titlesList;
     ArrayList<String> authorsList;
     ArrayList<String> genreList;
+
     private ItemClickListener iClickListener; //interface object
 
   //Constructor
@@ -36,8 +35,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
         genreList=new ArrayList<String>();
         genreList=genre;
 
-       /* authorArr=authors;
-        genreArr=genres;*/
+
     }
 
     @NonNull

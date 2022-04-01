@@ -16,7 +16,7 @@ public class Database extends SQLiteOpenHelper  {
     List<CurrentLoanList> loansList = new ArrayList<>();
     SQLiteDatabase sqLiteDatabase;
     final static String DATABASE_NAME="APOP.db";
-    final static int DATABASE_VERSION=19;
+    final static int DATABASE_VERSION=16;
 
     //----------------------------------------CREATING TABLE STRUCTURES---------------------------------------
 
@@ -215,10 +215,34 @@ public class Database extends SQLiteOpenHelper  {
     public Cursor searchBookByLocation(String loc,String id){
         SQLiteDatabase sqdb=this.getWritableDatabase();
 
-        String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId FROM "+B_TABLE+" WHERE Location='"+loc+"'"
+
+        String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId, Price FROM "+B_TABLE+" WHERE Location='"+loc+"'"
                 +"and OwnerId != '"+ id+"'";
         Cursor c=sqdb.rawQuery(query,null);
         return c;
+    }
+    public Cursor searchBook(String loc){
+        SQLiteDatabase sqdb=this.getWritableDatabase();
+        String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId, Price FROM "+B_TABLE+" " +
+                "WHERE Location='"+loc+"' AND (status='available' OR status='give away')";
+        Cursor c=sqdb.rawQuery(query,null);
+        return c;
+    }
+
+    public int findPriceByBookId(int bookId){
+        SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+        String query="SELECT Price FROM Book_table WHERE bookId="+bookId;
+        Cursor c=sqLiteDatabase.rawQuery(query,null);
+        int price=0;
+        try{
+            while(c.moveToNext()){
+                price=c.getInt(0);
+            }
+        }
+        catch (Exception e){
+            e.getStackTrace();
+        }
+        return price;
     }
 
     //--------------SEND BORROW GIVE-AWAY REQUEST OR PERSONALIZED MESSAGE --------------------------
@@ -405,29 +429,29 @@ public class Database extends SQLiteOpenHelper  {
     public void manuallyAddBook(){
         sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();
-//        value.put(B_ISBN,32165222);
-//        value.put(B_Title,"Waiting for Godot");
-//        value.put(B_Genre,"Fiction");
-//        value.put(B_Author,"Samuel Becket");
-//        value.put(B_Publisher, "Hachette Book");
-//        value.put(B_PubYear, 2017);
-//        value.put(B_OwnerId, "akoyama@abc.com");
-//        value.put(B_Status,"available");
-//        value.put(B_Location,"Burnaby");
-//        long r = sqLiteDatabase.insert(B_TABLE,null,value);
+        value.put(B_ISBN,32165222);
+        value.put(B_Title,"Waiting for Godot");
+        value.put(B_Genre,"Fiction");
+        value.put(B_Author,"Samuel Becket");
+        value.put(B_Publisher, "Hachette Book");
+        value.put(B_PubYear, 2017);
+        value.put(B_OwnerId, "akoyama@abc.com");
+        value.put(B_Status,"available");
+        value.put(B_Location,"Burnaby");
+        value.put(B_Price,1);
+        long r = sqLiteDatabase.insert(B_TABLE,null,value);
 
-//        value.put(B_ISBN,32165223);
-//        value.put(B_Title,"Midnight");
-//        value.put(B_Genre,"Fiction");
-//        value.put(B_Author,"Matt Haig");
-//        value.put(B_Publisher, "Viking");
-//        value.put(B_PubYear, 2020);
-//        value.put(B_OwnerId, "oprah@abc.com");
-//        value.put(B_Status,"give away");
-//        value.put(B_Location,"Brentwood");
-//
-//
-//       sqLiteDatabase.insert(B_TABLE,null,value);
+        value.put(B_ISBN,32165223);
+        value.put(B_Title,"Midnight");
+        value.put(B_Genre,"Fiction");
+        value.put(B_Author,"Matt Haig");
+        value.put(B_Publisher, "Viking");
+        value.put(B_PubYear, 2020);
+        value.put(B_OwnerId, "oprah@abc.com");
+        value.put(B_Status,"give away");
+        value.put(B_Location,"Brentwood");
+        value.put(B_Price,2);
+        r = sqLiteDatabase.insert(B_TABLE,null,value);
 
         value.put(B_ISBN,32165224);
         value.put(B_Title,"One Two Three");
@@ -438,7 +462,8 @@ public class Database extends SQLiteOpenHelper  {
         value.put(B_OwnerId, "oprah@abc.com");
         value.put(B_Status,"rent out");
         value.put(B_Location,"Richmond");
-        sqLiteDatabase.insert(B_TABLE,null,value);
+        value.put(B_Price,2);
+        r=sqLiteDatabase.insert(B_TABLE,null,value);
     }
     public void manuallyAddPref() {
         sqLiteDatabase = this.getWritableDatabase();

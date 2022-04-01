@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -34,11 +35,9 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
     Database database;
     Cursor c;
     String inpLoc, title, author, genre, pub, pubYear, owner, status;
-    int bookId;
+    int bookId, price;
     ArrayList<String> bTitles, bAuthors, bGenres, bPub, bPubYear, bOwner, bStatus;
-    ArrayList<Integer> bIds;
-//    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//    String userId = sharedPreferences.getString("userId", "NA");
+    ArrayList<Integer> bIds, bPrices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +47,11 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
         btnSearch=findViewById(R.id.btnSearch);
         spnLoc=findViewById(R.id.spnLoc);
         database=new Database(this);
-//        database.addUser();
-//        database.manuallyAddBook();
-//        database.manuallyAddPref();
+        //database.addUser();
+        //database.manuallyAddBook();
+       // database.manuallyAddPref();
 
+        //Search button will display books in the area chosen
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,11 +64,12 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
                 bOwner=new ArrayList<String>();
                 bStatus=new ArrayList<String>();
                 bIds=new ArrayList<Integer>();
+                bPrices=new ArrayList<Integer>();
 
-
+                //fetching the location chosen from the spinner and passing to SQL query
                 inpLoc=spnLoc.getSelectedItem().toString();
-                c=database.searchBookByLocation(inpLoc,"akoyama@abc.com");
-
+                c=database.searchBook(inpLoc);
+                //if SQL returns book information the the books will be displayed
                 if(c.getCount()>0){
                     while(c.moveToNext()){
                         bTitles.add(c.getString(0));
@@ -79,8 +80,11 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
                         bOwner.add(c.getString(5));
                         bStatus.add(c.getString(6));
                         bIds.add(c.getInt(7));
-                       // bId.add(c.getInt(7));
+                        bPrices.add(c.getInt(8));
                     }
+                }
+                else if(c.getCount()==0){
+                    Toast.makeText(BorrowBook2.this,"No books available in the area chosen", Toast.LENGTH_LONG).show();
                 }
 
                 RecyclerView recyclerView=findViewById(R.id.recyclerView);
@@ -137,7 +141,10 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
         pubYear=bPubYear.get(position);
         owner=bOwner.get(position);
         status=bStatus.get(position);
+        price=bPrices.get(position);
         bookId=bIds.get(position);
+
+
         Intent i = new Intent(BorrowBook2.this, BorrowBookDetails2.class);
         i.putExtra("title",title);
         i.putExtra("author", author);
@@ -146,6 +153,7 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
         i.putExtra("pubYear",pubYear);
         i.putExtra("owner",owner);
         i.putExtra("status",status);
+        i.putExtra("price",price);
         i.putExtra("bookId",bookId);
         startActivity(i);
 
