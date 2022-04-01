@@ -39,7 +39,7 @@ public class BorrowBookDetails2 extends AppCompatActivity {
         Button btnSend=findViewById(R.id.btnSubmitMsg);
         EditText writeMsg=findViewById(R.id.edTxtWriteMsg);
 
-
+        //Getting the information from BorrowBook2 class
         Intent i= getIntent();
         if (i != null) {
             title=getIntent().getStringExtra("title");
