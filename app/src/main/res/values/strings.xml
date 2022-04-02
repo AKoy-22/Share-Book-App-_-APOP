@@ -78,7 +78,15 @@
     <string name="txtTitle">Book Information</string>
     <string name="enterMsgHint">Enter you message here</string>
     <string name="personalized">PERSONALIZED MSG</string>
-    <string name="cardviewtitle">BOOK DETAILS</string>
+    <string name="cardviewtitle">Book Detail</string>
+    <string name="labelBDTitle">Title</string>
+    <string name="labelBDAuthor">Author</string>
+    <string name="labelBDCategory">Category</string>
+    <string name="labelBDPublisher">Publisher</string>
+    <string name="labelBDYear">Year</string>
+    <string name="labelBDOwner">OwnerID</string>
+    <string name="labelBDStatus">Status</string>
+    <string name="labelBDPrice">Price</string>
 
     <!-- Edit account -->
     <string name="editUserPassword">Enter your new password</string>
