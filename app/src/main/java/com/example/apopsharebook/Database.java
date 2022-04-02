@@ -243,12 +243,11 @@ public class Database extends SQLiteOpenHelper  {
     //----------------------------------------SEARCH BOOKS BY TITLE ----------------------
     public Cursor searchBooksByTitle(String word){
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
-        String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId, Price FROM Book_table WHERE Title LIKE "+"'%"+word+"%'";
+        String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId, Price FROM Book_table " +
+                "WHERE Title LIKE "+"'%"+word+"%' AND(Status='available' OR Status='give away')";
         Cursor c=sqLiteDatabase.rawQuery(query,null);
         return c;
     }
-
-
 
 
     //----------------------------------------SEARCH RENTAL PRICE BY BOOKID-----------------------------
