@@ -36,9 +36,9 @@ public class SearchOutput extends AppCompatActivity implements RecyclerAdapter.I
         database=new Database(this);
 
         Intent i=getIntent();
-        if(i!=null){
-           keyword=getIntent().getStringExtra("searchWord");
-        }
+
+           keyword=i.getStringExtra("searchWord");
+
         c=database.searchBooksByTitle(keyword);
 
         bTitles=new ArrayList<String>();
