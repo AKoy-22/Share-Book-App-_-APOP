@@ -16,7 +16,7 @@ public class Database extends SQLiteOpenHelper  {
     List<CurrentLoanList> loansList = new ArrayList<>();
     SQLiteDatabase sqLiteDatabase;
     final static String DATABASE_NAME="APOP.db";
-    final static int DATABASE_VERSION=16;
+    final static int DATABASE_VERSION=20;
 
     //----------------------------------------CREATING TABLE STRUCTURES---------------------------------------
 
@@ -240,7 +240,7 @@ public class Database extends SQLiteOpenHelper  {
         return c;
     }
 
-    //----------------------------------------SEARCH BOOKS BY TITLE ------------------------------------
+    //----------------------------------------SEARCH BOOKS BY TITLE ----------------------
     public Cursor searchBooksByTitle(String word){
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
         String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId, Price FROM Book_table WHERE Title LIKE "+"'%"+word+"%'";

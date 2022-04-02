@@ -44,10 +44,11 @@ public class MainMenu extends AppCompatActivity {
         Button btnSearch=findViewById(R.id.btnSearch1);
 
         //Free word search by title
-        String word=search.getText().toString();
+
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String word=search.getText().toString();
                 Intent i=new Intent(MainMenu.this,SearchOutput.class);
                 i.putExtra("searchWord", word);
                 startActivity(i);
