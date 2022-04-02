@@ -1,93 +1,317 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bookshelf"
+    android:orientation="vertical"
     tools:context=".CreateAccount">
 
     <TextView
         android:id="@+id/txtWelcome"
-        android:layout_width="239dp"
-        android:layout_height="85dp"
+        android:layout_width="243dp"
+        android:layout_height="91dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="156dp"
         android:fontFamily="@font/candal"
         android:text="@string/CrateAccount"
         android:textColor="@color/white"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/inpEmail"-->
+    <!--        android:layout_width="382dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:layout_marginTop="28dp"-->
+    <!--        android:layout_marginEnd="13dp"-->
+    <!--        android:layout_marginBottom="8dp"-->
+    <!--        android:background="@drawable/rounded_edittext"-->
+    <!--        android:ems="10"-->
+    <!--        android:gravity="center|center_horizontal|center_vertical"-->
+    <!--        android:hint="@string/emailHint"-->
+    <!--        android:importantForAutofill="no"-->
+    <!--        android:inputType="textEmailAddress"-->
+    <!--        android:textSize="24sp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/inpPass"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/inpPass"-->
+    <!--        android:layout_width="382dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:layout_marginTop="8dp"-->
+    <!--        android:layout_marginEnd="13dp"-->
+    <!--        android:layout_marginBottom="8dp"-->
+    <!--        android:background="@drawable/rounded_edittext"-->
+    <!--        android:ems="10"-->
+    <!--        android:gravity="center"-->
+    <!--        android:hint="@string/passHint"-->
+    <!--        android:importantForAutofill="no"-->
+    <!--        android:inputType="textPassword"-->
+    <!--        android:textSize="24sp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/inpRePass"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/inpEmail" />-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/inpRePass"-->
+    <!--        android:layout_width="382dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:layout_marginEnd="13dp"-->
+    <!--        android:background="@drawable/rounded_edittext"-->
+    <!--        android:ems="10"-->
+    <!--        android:gravity="center"-->
+    <!--        android:hint="Re-enter the password"-->
+    <!--        android:importantForAutofill="no"-->
+    <!--        android:inputType="textPassword"-->
+    <!--        android:textSize="24sp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/spinner"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/inpPass"-->
+    <!--        app:layout_constraintVertical_bias="0.046" />-->
+
+    <TextView
+        android:id="@+id/labelUserId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/labelUserId"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/inpEmail"
-        android:layout_width="382dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="79dp"
-        android:layout_marginEnd="13dp"
-        android:background="@drawable/rounded_edittext"
-        android:ems="10"
-        android:gravity="center|center_horizontal|center_vertical"
-        android:hint="@string/emailHint"
-        android:importantForAutofill="no"
-        android:inputType="textEmailAddress"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
-
-    <EditText
-        android:id="@+id/inpPass"
-        android:layout_width="382dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="13dp"
-        android:background="@drawable/rounded_edittext"
+        android:id="@+id/editUserId"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/white"
         android:ems="10"
         android:gravity="center"
-        android:hint="@string/passHint"
+        android:hint="@string/EditUserId"
         android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inpEmail" />
+        android:inputType="textPersonName"
+        android:textColor="@color/dark_gray"
+        android:textColorHighlight="@color/dark_blue"
+        android:textColorHint="@color/dark_gray"
+        android:textColorLink="@color/dark_gray"
+        android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/btnLogin1"
-        android:layout_width="195dp"
-        android:layout_height="84dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginBottom="80dp"
-        android:background="#000000"
-        android:text="@string/register"
+
+    <TextView
+        android:id="@+id/labelUserPw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/labelUserPw"
         android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editUserPw"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/EditUserPw"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColor="@color/dark_gray"
+        android:textColorHighlight="@color/white"
+        android:textColorHint="@color/dark_gray"
+        android:textColorLink="@color/dark_gray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/labelUserReneterPw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/labelUserRenterPw"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editUserRePw"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/EditUserRePw"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColor="@color/dark_gray"
+        android:textColorHighlight="@color/white"
+        android:textColorHint="@color/dark_gray"
+        android:textColorLink="@color/dark_gray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/labelUserFname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/labelUserFName"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editUserFname"
+        android:layout_width="370dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/EditUserFName"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColor="@color/dark_gray"
+        android:textColorHighlight="@color/dark_blue"
+        android:textColorHint="@color/dark_gray"
+        android:textColorLink="@color/dark_gray"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/labelUserLname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/labelUserLName"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editUserLname"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/EditUserLName"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColor="@color/dark_gray"
+        android:textColorHighlight="@color/dark_blue"
+        android:textColorHint="@color/dark_gray"
+        android:textColorLink="@color/dark_gray"
+        android:textSize="16sp" />
+
+
+
+    <TextView
+        android:id="@+id/labelUserAdr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/labelUserAdr"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editUserAdr"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/EditUserAdr"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColor="@color/dark_gray"
+        android:textColorHighlight="@color/dark_blue"
+        android:textColorHint="@color/dark_gray"
+        android:textColorLink="@color/dark_gray"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/labelUserAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/labelUserAge"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editUserAge"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/EditUserAge"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColor="@color/dark_gray"
+        android:textColorHighlight="@color/dark_blue"
+        android:textColorHint="@color/dark_gray"
+        android:textColorLink="@color/dark_gray"
+        android:textSize="16sp" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="394dp"
-        android:layout_height="56dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="38dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:spinnerMode="dropdown"
-        android:theme="@style/Theme.Material3.Dark.BottomSheetDialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inpPass"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:theme="@style/Theme.Material3.Dark.BottomSheetDialog" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="145dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="80dp"
+        android:background="#000000"
+        android:text="@string/register"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+
+</LinearLayout>

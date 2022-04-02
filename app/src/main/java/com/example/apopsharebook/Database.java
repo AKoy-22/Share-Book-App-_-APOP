@@ -410,25 +410,17 @@ public class Database extends SQLiteOpenHelper  {
 
     //----------------------------------------MANUALLY ADD USER /BOOK METHOD------------------------------
 
-    public void addUser(){
+    public void addAdmin(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();
-        value.put(U_UserId,"akoyama@abc.com");
-        value.put(U_Address,"7717 77th Street, Surrey");
-        value.put(U_Pw,"efgh");
-        value.put(U_FName,"Akiko");
-        value.put(U_LName,"Koyama");
-        value.put(U_UserType,"user");
-        value.put(U_Age,20);
-        long r = sqLiteDatabase.insert(U_TABLE,null,value);
 
-        value.put(U_UserId,"oprah@abc.com");
-        value.put(U_Address,"1230 1st Street, Brentwood");
-        value.put(U_Pw,"abcd");
-        value.put(U_FName,"Oprah");
-        value.put(U_LName,"Huang");
-        value.put(U_UserType,"user");
-        value.put(U_Age, 19);
+        value.put(U_UserId,"Admin");
+        value.put(U_Address,"admin");
+        value.put(U_Pw,"APOP_admin");
+        value.put(U_FName,"admin");
+        value.put(U_LName,"admin");
+        value.put(U_UserType,"admin");
+        value.put(U_Age, 1);
         sqLiteDatabase.insert(U_TABLE,null,value);
     }
 
@@ -475,7 +467,7 @@ public class Database extends SQLiteOpenHelper  {
     public void manuallyAddPref() {
         sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();
-        value.put(P_UserId,"akoyama@abc.com");
+        value.put(P_UserId,"puru@abcd.com");
         value.put(P_Preference, "Fiction");
 
         long r = sqLiteDatabase.insert(P_TABLE, null, value);
@@ -496,4 +488,57 @@ public class Database extends SQLiteOpenHelper  {
             return false;
     }
 
+    //---------------Insert Data-----------------  U_UserId+ " text PRIMARY KEY,"+ U_Pw+
+
+    public boolean insertData(String username, String password, String fName, String lName, String address, int age){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(U_UserId, username);
+        contentValues.put(U_Pw, password);
+        contentValues.put(U_FName, fName);
+        contentValues.put(U_LName, lName);
+        contentValues.put(U_Address, address);
+        contentValues.put(U_Age, age);
+        contentValues.put(U_UserType,"user");
+
+        Long result = MyDB.insert(U_TABLE, null, contentValues);
+
+        if (result==1)
+            return false;
+        else
+            return true;
+    }
+
+    //---------------check if user exists-------------------
+
+    public boolean checkUsername(String username){
+        SQLiteDatabase MyDb = this.getWritableDatabase();
+        Cursor cursor = MyDb.rawQuery("Select * from " + U_TABLE + " where " +  U_UserId + " = ? " , new String[] {username});
+        if(cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
+
+
+    //--------------login-----------------
+    public boolean checkusernamepassword(String username, String password){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor =  MyDB.rawQuery("select * from " + U_TABLE + " where " + U_UserId + " = ? and " + U_Pw + " = ?", new String[] {username, password });
+        if (cursor.getCount() > 0  )
+            return true;
+        else
+            return false ;
+
+    }
+    public String getType(String id){
+        String type="";
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        String query = "SELECT UserType FROM User_Table WHERE UserId = '"+ id+"'";
+        Cursor c = MyDB.rawQuery(query,null);
+        while(c.moveToNext()) {
+            type = c.getString(0);
+        }
+        return  type;
+    }
 }

@@ -187,6 +187,8 @@
     <string name="txtRTtitle">Enter information for the book you have read</string>
     <string name="dateBorrowed">Date Borrowed</string>
     <string name="returnDate">Return Date</string>
+    <string name="labelUserRenterPw">Re-enter password</string>
+    <string name="EditUserRePw">Re-enter password</string>
 
     <string-array name="locations">
         <item>All Locations</item>
