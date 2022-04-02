@@ -150,13 +150,15 @@
     <string name="imgArrow">image of arrow icon</string>
     <string name="btnUpdateBook">UPDATE CHANGES</string>
     <string name="btnReply">REPLY</string>
-    <string name="btnSubmitReply">SEND REPLY</string>
+    <string name="btnSubmitReply">SEND MESSAGE</string>
     <string-array name="acceptOrDecline">
         <item>N/A</item>
         <item>Accept</item>
         <item>Decline</item>
     </string-array>
-    <string name="hintReply">Choose Accept of Decline if applicable. You can also  write your personalized reply </string>
+    <string name="hintReply">Please write your personalized reply in here</string>
+    <string name="imgMessageTitle">image for message title</string>
+    <string name="txtMessageContent">Original Content: </string>
 
     <!-- admin -->
     <string name="btnCreateUser">Register</string>
