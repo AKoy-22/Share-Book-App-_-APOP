@@ -197,4 +197,6 @@
         <item>Richmond</item>
         <item>Coquitlam</item>
     </string-array>
+
+    <string name="searchTitle">Search Result</string>
 </resources>
