@@ -26,8 +26,8 @@ public class Message extends AppCompatActivity {
     Database db;
     String userId;
     Cursor c;
-    String msgTitle, msgDate, msgSenderId, msgContent;
-    int msgId;
+   // String msgTitle, msgDate, msgSenderId, msgContent;
+    //int msgId;
     ArrayList<String> msgTitlesList, msgDatesList, msgSenderIdList, msgContentList;
     ArrayList<Integer> msgIdList;
 
@@ -47,15 +47,15 @@ public class Message extends AppCompatActivity {
 
         if (c.getCount() > 0) {
             while (c.moveToNext()) {
-                msgId = c.getInt(0);
+                int msgId = c.getInt(0);
                 msgIdList.add(msgId);
-                msgSenderId = c.getString(1);
+                String msgSenderId = c.getString(1);
                 msgSenderIdList.add(msgSenderId);
-                msgDate = c.getString(4);
+                String msgDate = c.getString(4);
                 msgDatesList.add(msgDate);
-                msgContent=c.getString(5);
+                String msgContent=c.getString(5);
                 msgContentList.add(msgContent);
-                msgTitle = c.getString(6);
+                String msgTitle = c.getString(6);
                 msgTitlesList.add(msgTitle);
             }
 
