@@ -110,7 +110,8 @@
         android:textColorHighlight="@color/dark_blue"
         android:textColorHint="@color/dark_gray"
         android:textColorLink="@color/dark_gray"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
     <TextView
@@ -140,7 +141,8 @@
         android:textColorHighlight="@color/white"
         android:textColorHint="@color/dark_gray"
         android:textColorLink="@color/dark_gray"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/labelUserReneterPw"
@@ -169,7 +171,8 @@
         android:textColorHighlight="@color/white"
         android:textColorHint="@color/dark_gray"
         android:textColorLink="@color/dark_gray"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/labelUserFname"
@@ -198,7 +201,8 @@
         android:textColorHighlight="@color/dark_blue"
         android:textColorHint="@color/dark_gray"
         android:textColorLink="@color/dark_gray"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
     <TextView
@@ -228,7 +232,8 @@
         android:textColorHighlight="@color/dark_blue"
         android:textColorHint="@color/dark_gray"
         android:textColorLink="@color/dark_gray"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
 
@@ -259,7 +264,8 @@
         android:textColorHighlight="@color/dark_blue"
         android:textColorHint="@color/dark_gray"
         android:textColorLink="@color/dark_gray"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
     <TextView
@@ -289,7 +295,8 @@
         android:textColorHighlight="@color/dark_blue"
         android:textColorHint="@color/dark_gray"
         android:textColorLink="@color/dark_gray"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -298,7 +305,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:spinnerMode="dropdown"
-        android:theme="@style/Theme.Material3.Dark.BottomSheetDialog" />
+        android:theme="@style/Theme.Material3.Dark.BottomSheetDialog"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
 
     <Button
@@ -311,7 +319,8 @@
         android:background="#000000"
         android:text="@string/register"
         android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
 </LinearLayout>
