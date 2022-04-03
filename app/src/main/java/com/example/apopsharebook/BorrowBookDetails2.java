@@ -52,21 +52,21 @@ public class BorrowBookDetails2 extends AppCompatActivity {
         Intent i= getIntent();
         if (i != null) {
             title=getIntent().getStringExtra("title");
-            txtTitle.setText("Title:  "+title);
+            txtTitle.setText(title);
             author=getIntent().getStringExtra("author");
-            txtAuthor.setText("Author  : "+author);
+            txtAuthor.setText(author);
             genre=getIntent().getStringExtra("genre");
-            txtGenre.setText("Category:  "+ genre);
+            txtGenre.setText(genre);
             pub=getIntent().getStringExtra("pub");
-            txtPub.setText("Publisher:  "+pub);
+            txtPub.setText(pub);
             pubYear=getIntent().getStringExtra("pubYear");
-            txtPubYear.setText("Published:  "+pubYear);
+            txtPubYear.setText(pubYear);
             owner=getIntent().getStringExtra("owner");
-            txtOwner.setText("Owner ID:  " +owner);
+            txtOwner.setText(owner);
             status=getIntent().getStringExtra("status");
-            txtStatus.setText("Status:  " +status);
+            txtStatus.setText(status);
             price=getIntent().getIntExtra("price",0);
-            txtPrice.setText("Price:  $"+price);
+            txtPrice.setText("$"+price);
             bookId=getIntent().getIntExtra("bookId",0);
 
             if(status.equals("available") || status.equals("on loan")){

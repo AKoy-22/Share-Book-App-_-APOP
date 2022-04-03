@@ -78,7 +78,15 @@
     <string name="txtTitle">Book Information</string>
     <string name="enterMsgHint">Enter you message here</string>
     <string name="personalized">PERSONALIZED MSG</string>
-    <string name="cardviewtitle">BOOK DETAILS</string>
+    <string name="cardviewtitle">Book Detail</string>
+    <string name="labelBDTitle">Title</string>
+    <string name="labelBDAuthor">Author</string>
+    <string name="labelBDCategory">Category</string>
+    <string name="labelBDPublisher">Publisher</string>
+    <string name="labelBDYear">Year</string>
+    <string name="labelBDOwner">OwnerID</string>
+    <string name="labelBDStatus">Status</string>
+    <string name="labelBDPrice">Price</string>
 
     <!-- Edit account -->
     <string name="editUserPassword">Enter your new password</string>
@@ -150,13 +158,15 @@
     <string name="imgArrow">image of arrow icon</string>
     <string name="btnUpdateBook">UPDATE CHANGES</string>
     <string name="btnReply">REPLY</string>
-    <string name="btnSubmitReply">SEND REPLY</string>
+    <string name="btnSubmitReply">SEND MESSAGE</string>
     <string-array name="acceptOrDecline">
         <item>N/A</item>
         <item>Accept</item>
         <item>Decline</item>
     </string-array>
-    <string name="hintReply">Choose Accept of Decline if applicable. You can also  write your personalized reply </string>
+    <string name="hintReply">Please write your personalized reply in here</string>
+    <string name="imgMessageTitle">image for message title</string>
+    <string name="txtMessageContent">Original Content: </string>
 
     <!-- admin -->
     <string name="btnCreateUser">Register</string>
@@ -199,4 +209,6 @@
         <item>Richmond</item>
         <item>Coquitlam</item>
     </string-array>
+
+    <string name="searchTitle">Search Result</string>
 </resources>

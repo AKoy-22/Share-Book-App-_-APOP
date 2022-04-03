@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green_light"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".MessageDisplay">
 
@@ -39,12 +39,19 @@
             android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
 
+
+    <ImageView
+        android:id="@+id/imgMessage1"
+        android:layout_width="wrap_content"
+        android:layout_height="125dp"
+        android:contentDescription="@string/imgMessageTitle"
+        app:srcCompat="@drawable/img_message1" />
+
     <EditText
         android:id="@+id/edTxtReplyMsgContent"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/border_btn_white"
         android:ems="10"
@@ -52,95 +59,110 @@
         android:hint="@string/hintReply"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
-        android:padding="10dp"
+        android:padding="12dp"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spnAcceptOrDec"
-        tools:ignore="TextContrastCheck" />
+        tools:ignore="TextContrastCheck"
+        tools:minHeight="100dp" />
 
-    <Button
-        android:id="@+id/btnSubmitReply"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/border_btn_white"
-        android:backgroundTint="@color/bright_blue"
-        android:text="@string/btnSubmitReply"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edTxtReplyMsgContent"
-        tools:ignore="TouchTargetSizeCheck" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/txtMsgOrignal"
+        <Spinner
+            android:id="@+id/spnAcceptOrDec"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:elevation="5dp"
+            android:entries="@array/acceptOrDecline"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtMsgOrignal" />
+
+        <Button
+            android:id="@+id/btnSubmitReply"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/border_btn_white"
+            android:backgroundTint="@color/navy"
+            android:text="@string/btnSubmitReply"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.948"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edTxtReplyMsgContent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/border_btn_white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMsgHeader" />
+        android:layout_height="75dp"
+        android:contentDescription="@string/imgMessageTitle"
+        app:srcCompat="@drawable/img_message2"
+        tools:ignore="ImageContrastCheck" />
 
-    <Spinner
-        android:id="@+id/spnAcceptOrDec"
-        android:layout_width="392dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:elevation="5dp"
-        android:entries="@array/acceptOrDecline"
-        android:minHeight="48dp"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMsgOrignal" />
-
-    <TextView
-        android:id="@+id/txtMsgHeader"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/border_btn_white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:backgroundTint="@color/light_gray"
+        android:orientation="vertical"
+        android:padding="12dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_menu"
+        <TextView
+            android:id="@+id/txtMsgHeader"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="-2dp"
-            android:background="@color/nav_bg"
-            android:elevation="4dp"
-            app:fabCradleVerticalOffset="10dp"
-            app:itemIconSize="18dp"
-            app:itemIconTint="@color/bright_blue"
-            app:itemTextColor="@color/bright_blue"
-            app:menu="@menu/bottom_menu">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:minHeight="55dp"
+            android:paddingTop="2dp"
+            android:text="Title: Borrow Request"
+            android:textColor="@color/dark_gray"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/txtMessageContentTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txtMessageContent"
+            android:textColor="@color/dark_gray"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtMsgOrignal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:padding="10dp"
+            android:text="Borrow request has been sent from"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtMsgHeader"
+            tools:ignore="TextContrastCheck" />
+    </LinearLayout>
+
 </LinearLayout>

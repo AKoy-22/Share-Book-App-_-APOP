@@ -35,7 +35,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
         genreList=new ArrayList<String>();
         genreList=genre;
 
-
     }
 
     @NonNull
@@ -55,9 +54,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
         title.setText(titlesList.get(position));
         author.setText(authorsList.get(position));
         genre.setText(genreList.get(position));
-        /*title.setText(titleArr[position]);
-        author.setText(authorArr[position]);
-        genre.setText(genreArr[position]);*/
     }
 
     @Override
@@ -68,7 +64,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
     public void setClickListener(ItemClickListener iClickListener){
         this.iClickListener=iClickListener;
     }
-    //getItem??
+
 
     //inner class to make image clickable
     public class VH extends RecyclerView.ViewHolder implements View

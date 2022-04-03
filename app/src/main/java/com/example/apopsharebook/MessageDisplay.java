@@ -22,6 +22,7 @@ import java.util.Date;
 public class MessageDisplay extends AppCompatActivity {
     int msgId;
     String senderId, receivedDate, title, receivedContent;
+
     Database db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class MessageDisplay extends AppCompatActivity {
         ImageButton go_back = findViewById(R.id.btnBack);
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
 
-        //display message
+       //display message
         Intent i=getIntent();
         if(i!=null){
             msgId=getIntent().getIntExtra("msgId",0);
@@ -85,9 +86,9 @@ public class MessageDisplay extends AppCompatActivity {
                 }
             }
         });
-        //button event for go back main page
+      //button event for go back main page
         go_back.setOnClickListener(v -> startActivity(new Intent(MessageDisplay.this, MainMenu.class)));
-
+/*
         //the bottom menu bar to link the pages
         bottom_menu.setOnItemSelectedListener(menuItem -> {
             if (menuItem.getItemId() == R.id.menu_add_book) {
@@ -102,7 +103,7 @@ public class MessageDisplay extends AppCompatActivity {
                 startActivity(new Intent(MessageDisplay.this, UserAccount.class));
             }
             return true;
-        });
+        });*/
     }
 
 

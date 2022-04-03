@@ -16,7 +16,7 @@ public class Database extends SQLiteOpenHelper  {
     List<CurrentLoanList> loansList = new ArrayList<>();
     SQLiteDatabase sqLiteDatabase;
     final static String DATABASE_NAME="APOP.db";
-    final static int DATABASE_VERSION=16;
+    final static int DATABASE_VERSION=20;
 
     //----------------------------------------CREATING TABLE STRUCTURES---------------------------------------
 
@@ -210,7 +210,7 @@ public class Database extends SQLiteOpenHelper  {
         return c;
     }
 
-    //----------------------------------------SEARCH BOOKS BY LOCATION------------------------------
+    //----------------------------------------SEARCH BOOKS BY LOCATION & OWNER ID------------------------
 
     public Cursor searchBookByLocation(String loc,String id){
         SQLiteDatabase sqdb=this.getWritableDatabase();
@@ -221,6 +221,8 @@ public class Database extends SQLiteOpenHelper  {
         Cursor c=sqdb.rawQuery(query,null);
         return c;
     }
+
+    //----------------------------------------SEARCH AVAILABLE BOOKS BY LOCATION------------------------
     public Cursor searchAvailableBooksByLoc(String loc){
         SQLiteDatabase sqdb=this.getWritableDatabase();
         String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId, Price FROM "+B_TABLE+" " +
@@ -228,6 +230,8 @@ public class Database extends SQLiteOpenHelper  {
         Cursor c=sqdb.rawQuery(query,null);
         return c;
     }
+
+    //----------------------------------------SEARCH ALL AVAILABLE BOOKS IN ALL LOCATIONS---------------
     public Cursor searchAllAvailableBooks(){
         SQLiteDatabase sqdb=this.getWritableDatabase();
         String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId, Price FROM "+B_TABLE+
@@ -236,6 +240,17 @@ public class Database extends SQLiteOpenHelper  {
         return c;
     }
 
+    //----------------------------------------SEARCH BOOKS BY TITLE ----------------------
+    public Cursor searchBooksByTitle(String word){
+        SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+        String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId, Price FROM Book_table " +
+                "WHERE Title LIKE "+"'%"+word+"%' AND(Status='available' OR Status='give away')";
+        Cursor c=sqLiteDatabase.rawQuery(query,null);
+        return c;
+    }
+
+
+    //----------------------------------------SEARCH RENTAL PRICE BY BOOKID-----------------------------
     public int findPriceByBookId(int bookId){
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
         String query="SELECT Price FROM Book_table WHERE bookId="+bookId;

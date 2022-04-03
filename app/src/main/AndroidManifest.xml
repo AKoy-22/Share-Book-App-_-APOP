@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APOPShareBook">
         <activity
+            android:name=".SearchOutput"
+            android:exported="false" />
+        <activity
             android:name=".popup"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.Dialog"/>
+            android:theme="@style/Theme.AppCompat.Light.Dialog" />
         <activity
             android:name=".MessageDisplay"
             android:exported="false" />

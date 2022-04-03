@@ -51,22 +51,22 @@
             tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
     </androidx.appcompat.widget.Toolbar>
 
-    <Button
-        android:id="@+id/btnUpdateImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/border_btn_white"
-        android:drawableLeft="@drawable/ic_image"
-        android:elevation="10dp"
-        android:padding="10dp"
-        android:text="@string/btnUpdateImage"
-        android:textColor="@color/bright_blue"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:cornerRadius="10dp" />
+<!--    <Button-->
+<!--        android:id="@+id/btnUpdateImage"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:background="@drawable/border_btn_white"-->
+<!--        android:drawableLeft="@drawable/ic_image"-->
+<!--        android:elevation="10dp"-->
+<!--        android:padding="10dp"-->
+<!--        android:text="@string/btnUpdateImage"-->
+<!--        android:textColor="@color/bright_blue"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:cornerRadius="10dp" />-->
 
     <!-- book title -->
     <TextView
@@ -74,6 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/labelBookTitle"
         android:textColor="@color/dark_gray"
         android:textSize="14sp"

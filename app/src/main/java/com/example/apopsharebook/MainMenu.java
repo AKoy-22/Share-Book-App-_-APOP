@@ -9,6 +9,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import android.os.Bundle;
@@ -37,6 +40,21 @@ public class MainMenu extends AppCompatActivity {
         ImageButton btnMessage = findViewById(R.id.btnMessageIcon);
         ImageButton btnHome = findViewById(R.id.btnHome);
         TextView userName=findViewById(R.id.txtUserName);
+        EditText search=findViewById(R.id.edTxtSearch);
+        Button btnSearch=findViewById(R.id.btnSearch1);
+
+        //Free word search by title
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String word=search.getText().toString();
+                Intent i=new Intent(MainMenu.this,SearchOutput.class);
+                i.putExtra("searchWord", word);
+                startActivity(i);
+            }
+        });
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String userId = sharedPreferences.getString("userId", "NA");
         userName.setText(userId);
