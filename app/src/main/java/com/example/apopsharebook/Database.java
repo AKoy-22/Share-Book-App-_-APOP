@@ -551,6 +551,7 @@ public class Database extends SQLiteOpenHelper  {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         String query = "SELECT UserType FROM User_Table WHERE UserId = '"+ id+"'";
         Cursor c = MyDB.rawQuery(query,null);
+
         while(c.moveToNext()) {
             type = c.getString(0);
         }

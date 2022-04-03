@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APOPShareBook">
         <activity
+            android:name=".AdminMenu"
+            android:exported="false" />
+        <activity
             android:name=".SearchOutput"
             android:exported="false" />
         <activity

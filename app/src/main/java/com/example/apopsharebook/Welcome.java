@@ -21,7 +21,7 @@ public class Welcome extends AppCompatActivity {
 //            db.addUser();
 //            db.manuallyAddBook();
 //            db.manuallyAddPref();
-            db.addAdmin();
+//            db.addAdmin();
         }
         catch (Exception e){
             e.getStackTrace();

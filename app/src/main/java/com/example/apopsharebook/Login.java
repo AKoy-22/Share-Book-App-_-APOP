@@ -44,6 +44,7 @@ public class Login extends AppCompatActivity {
         EditText username = findViewById(R.id.inpEmail);
         EditText password = findViewById(R.id.inpPass);
         Button btnLogin = findViewById(R.id.btnRegister);
+        TextView out = findViewById(R.id.out);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,18 +60,22 @@ public class Login extends AppCompatActivity {
                     boolean checkuserpass = DB.checkusernamepassword(user, pass);
                     if (checkuserpass == true) {
                         String type = DB.getType(user);
-                        if(type == "admin"){
+                        out.setText(type);
+                        if(type.equals("admin")){
                             Toast.makeText(Login.this, "Welcome Admin", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login.this,AdminMenu.class));
                         }
 
-                        if(type == "user") {
+                        if(type.equals("user")) {
                             Toast.makeText(Login.this, "Sign in successful", Toast.LENGTH_SHORT).show();
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString("userId", user);
                             editor.commit();
                             Intent intent = new Intent(getApplicationContext(), MainMenu.class);
                             startActivity(intent);
+                        }
+                        else{
+                            Toast.makeText(Login.this, "yo tf", Toast.LENGTH_SHORT).show();
                         }
                     }
                     else{
