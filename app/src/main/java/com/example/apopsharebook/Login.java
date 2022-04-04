@@ -60,7 +60,7 @@ public class Login extends AppCompatActivity {
                     boolean checkuserpass = DB.checkusernamepassword(user, pass);
                     if (checkuserpass == true) {
                         String type = DB.getType(user);
-                        out.setText(type);
+//                        out.setText(type);
                         if(type.equals("admin")){
                             Toast.makeText(Login.this, "Welcome Admin", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login.this,AdminMenu.class));
