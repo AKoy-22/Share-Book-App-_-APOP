@@ -211,4 +211,11 @@
     </string-array>
 
     <string name="searchTitle">Search Result</string>
+    <string name="pref">Select preferences</string>
+    <string name="pref1">Fiction</string>
+    <string name="pref2">Sci-Fi</string>
+    <string name="pref3">Crime</string>
+    <string name="pref4">Mystery</string>
+    <string name="pref5">Self Help</string>
+    <string name="pref6">Horror</string>
 </resources>

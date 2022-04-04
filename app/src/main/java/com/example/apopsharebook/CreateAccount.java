@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -22,24 +23,6 @@ public class CreateAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
-        final String[] select_qualification = {
-                "Select Preferences", "Fiction/Sci Fi", "Classics", "Action and Adventure", "Technology",
-                "Horror", "Detective and Mystery"};
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-
-        ArrayList<StateVO> listVOs = new ArrayList<>();
-
-        for (int i = 0; i < select_qualification.length; i++) {
-            StateVO stateVO = new StateVO();
-            stateVO.setTitle(select_qualification[i]);
-            stateVO.setSelected(false);
-            listVOs.add(stateVO);
-        }
-        MyAdapter myAdapter = new MyAdapter(CreateAccount.this, 0,
-                listVOs);
-        spinner.setAdapter(myAdapter);
-
-
 
         //-------Create account------
 
@@ -50,11 +33,20 @@ public class CreateAccount extends AppCompatActivity {
         EditText lName = findViewById(R.id.editUserLname);
         EditText add = findViewById(R.id.editUserAdr);
         EditText age = findViewById(R.id.editUserAge);
-
+        TextView txtWel = findViewById(R.id.txtWelcome);
+        Button btnPef = findViewById(R.id.btnPref);
 
         Button register = findViewById(R.id.btnRegister);
 
         DB = new Database(this);
+
+
+        btnPef.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CreateAccount.this,PrefPopup.class));
+            }
+        });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,8 +59,6 @@ public class CreateAccount extends AppCompatActivity {
                 String lastName = lName.getText().toString();
                 String address = add.getText().toString();
                 int userAge = Integer.parseInt(age.getText().toString());
-
-
 
                 if(TextUtils.isEmpty(username.getText().toString()) || TextUtils.isEmpty(password.getText().toString())  || TextUtils.isEmpty(repassword.getText().toString()) || TextUtils.isEmpty(fName.getText().toString()) || TextUtils.isEmpty(lName.getText().toString()) || TextUtils.isEmpty(add.getText().toString()) || TextUtils.isEmpty(age.getText().toString())) {
                     Toast.makeText(CreateAccount.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
@@ -98,8 +88,18 @@ public class CreateAccount extends AppCompatActivity {
                             Boolean insert = DB.insertData(user, pass, firstName, lastName, address, userAge);
                             if(insert) {
                                 Toast.makeText(CreateAccount.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), Login.class);
-                                startActivity(intent);
+                                Intent i = getIntent();
+                                Bundle args = i.getBundleExtra("BUNDLE");
+                                if(!args.isEmpty()) {
+                                    ArrayList<String> prefs = (ArrayList<String>) args.getSerializable("ARRAYLIST");
+                                    DB.addPrefs(prefs,user);
+                                    Intent intent = new Intent(getApplicationContext(),Login.class);
+                                    startActivity(intent);
+                                }
+                                else{
+                                    Toast.makeText(CreateAccount.this, "Select Preferences", Toast.LENGTH_SHORT).show();
+                                }
+//
                             }
                             else{
                                 Toast.makeText(CreateAccount.this, "Registration failed", Toast.LENGTH_SHORT).show();

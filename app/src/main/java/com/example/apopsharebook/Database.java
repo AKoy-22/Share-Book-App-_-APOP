@@ -557,4 +557,19 @@ public class Database extends SQLiteOpenHelper  {
         }
         return  type;
     }
+    public boolean addPrefs(List<String> pref,String id){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        Long result = null;
+        for(int i = 0;i<pref.size();i++){
+            contentValues.put(P_UserId,id);
+            contentValues.put(P_Preference,pref.get(i));
+            result = MyDB.insert(P_TABLE, null, contentValues);
+        }
+
+        if (result==1)
+            return false;
+        else
+            return true;
+    }
 }

@@ -10,6 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APOPShareBook">
         <activity
+            android:name=".abcAct"
+            android:exported="false" />
+        <activity
+            android:name=".PrefPopup"
+            android:exported="false"
+            android:theme="@style/myPopupTheme" />
+        <activity
             android:name=".AdminMenu"
             android:exported="false" />
         <activity
@@ -18,7 +25,7 @@
         <activity
             android:name=".popup"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.Dialog" />
+            android:theme="@style/myPopupTheme" />
         <activity
             android:name=".MessageDisplay"
             android:exported="false" />
