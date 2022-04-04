@@ -420,8 +420,25 @@ public class Database extends SQLiteOpenHelper  {
         else
             return false;
     }
+    //----------------------------------------UPDATE USER ACCOUNT DETAILS-----------------------------
+    public boolean updateUserAccount(String UserId, String newUserId,String password, String fn, String ln,
+                             String address, int age){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(U_UserId,newUserId);
+        values.put(U_Pw,password);
+        values.put(U_FName, fn);
+        values.put(U_LName,ln);
+        values.put(U_Address,address);
+        values.put(U_Age, age);
 
-
+        int u = sqLiteDatabase.update(U_TABLE,values,"UserId=?",
+                new String[]{UserId});
+        if(u>0)
+            return true;
+        else
+            return false;
+    }
 
     //----------------------------------------MANUALLY ADD USER /BOOK METHOD------------------------------
 
