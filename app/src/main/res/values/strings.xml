@@ -63,7 +63,11 @@
     <string-array name="bookStatus">
         <item>Share</item>
         <item>Give-away</item>
-        <item>Available</item>
+    </string-array>
+    <string-array name="bookStatusForUpdate">
+        <item>Share</item>
+        <item>Give-away</item>
+        <item>On-loan</item>
     </string-array>
 
     <!-- Borrow book -->

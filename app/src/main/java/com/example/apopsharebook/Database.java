@@ -227,7 +227,7 @@ public class Database extends SQLiteOpenHelper  {
     public Cursor searchAvailableBooksByLoc(String loc){
         SQLiteDatabase sqdb=this.getWritableDatabase();
         String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId, Price FROM "+B_TABLE+" " +
-                "WHERE Location='"+loc+"'";
+                "WHERE Location='"+loc+"'"+ "AND (status='Share' OR status='Give-away')";
         Cursor c=sqdb.rawQuery(query,null);
         return c;
     }
@@ -236,7 +236,7 @@ public class Database extends SQLiteOpenHelper  {
     public Cursor searchAllAvailableBooks(){
         SQLiteDatabase sqdb=this.getWritableDatabase();
         String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId, Price FROM "+B_TABLE+
-                " WHERE status='Available' OR status='Give-away'";
+                " WHERE status='Share' OR status='Give-away'";
         Cursor c=sqdb.rawQuery(query,null);
         return c;
     }
@@ -440,11 +440,10 @@ public class Database extends SQLiteOpenHelper  {
             return false;
     }
     //----------------------------------------UPDATE USER ACCOUNT DETAILS-----------------------------
-    public boolean updateUserAccount(String UserId, String newUserId,String password, String fn, String ln,
+    public boolean updateUserAccount(String UserId,String password, String fn, String ln,
                              String address, int age){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(U_UserId,newUserId);
         values.put(U_Pw,password);
         values.put(U_FName, fn);
         values.put(U_LName,ln);
