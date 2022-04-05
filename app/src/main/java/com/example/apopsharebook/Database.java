@@ -499,7 +499,7 @@ public class Database extends SQLiteOpenHelper  {
     public void manuallyAddPref() {
         sqLiteDatabase = this.getWritableDatabase();
         ContentValues value = new ContentValues();
-        value.put(P_UserId,"puru");
+        value.put(P_UserId,"puru@abcd.com");
         value.put(P_Preference, "Fiction");
 
         long r = sqLiteDatabase.insert(P_TABLE, null, value);
@@ -541,17 +541,7 @@ public class Database extends SQLiteOpenHelper  {
             return true;
     }
 
-
-
-
-
-    //-------------method for the admin to delete the user form the db
-    public void deleteUser(String user){
-        SQLiteDatabase MyDB = this.getWritableDatabase();
-        MyDB.execSQL("DELETE FROM " + U_TABLE + " WHERE " + U_UserId + " = '" + user + "'");
-
-    }
-    //---------------method to check if user exists at the time of login -------------------
+    //---------------check if user exists-------------------
 
     public boolean checkUsername(String username){
         SQLiteDatabase MyDb = this.getWritableDatabase();
@@ -563,7 +553,7 @@ public class Database extends SQLiteOpenHelper  {
     }
 
 
-    //--------------method for user to login-----------------
+    //--------------login-----------------
     public boolean checkusernamepassword(String username, String password){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor cursor =  MyDB.rawQuery("select * from " + U_TABLE + " where " + U_UserId + " = ? and " + U_Pw + " = ?", new String[] {username, password });
@@ -573,8 +563,6 @@ public class Database extends SQLiteOpenHelper  {
             return false ;
 
     }
-
-
     public String getType(String id){
         String type="";
         SQLiteDatabase MyDB = this.getWritableDatabase();
@@ -585,46 +573,5 @@ public class Database extends SQLiteOpenHelper  {
             type = c.getString(0);
         }
         return  type;
-    }
-
-    //-------------method for the admin to get user details
-    public Cursor getUserDetails(String user){
-        SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
-        String query="SELECT* FROM "+U_TABLE+" WHERE UserId ="+"'"+user+"'";
-        Cursor c=sqLiteDatabase.rawQuery(query,null);
-        return c;
-    }
-
-    //-------------method for the admin to make updates to the user in the database
-    public boolean updateUser(String user, String pwd, String fName, String lName, String add, int age){
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(U_UserId, user);
-        values.put(U_Pw, pwd);
-        values.put(U_FName, fName);
-        values.put(U_LName, lName);
-        values.put(U_Address, add);
-        values.put(U_Age, age);
-
-        int u = sqLiteDatabase.update(U_TABLE, values, "UserId = ?", new String[]{user});
-        if(u>0)
-            return true;
-        else
-            return false;
-    }
-
-   //-------------method for the admin to message a user
-    public boolean adminMessage(String receiverId, String senderId, String msg){
-        sqLiteDatabase = this.getWritableDatabase();
-        ContentValues value = new ContentValues();
-        value.put(M_MsgContent,msg);
-        value.put(M_SenderId,senderId);
-        value.put(M_ReceiverId, receiverId);
-
-        long r = sqLiteDatabase.insert(M_TABLE,null,value);
-        if(r>0)
-            return true;
-        else
-            return false;
     }
 }
