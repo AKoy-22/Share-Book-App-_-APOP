@@ -34,19 +34,19 @@ public class CreateAccount extends AppCompatActivity {
         EditText add = findViewById(R.id.editUserAdr);
         EditText age = findViewById(R.id.editUserAge);
         TextView txtWel = findViewById(R.id.txtWelcome);
-        Button btnPef = findViewById(R.id.btnPref);
+//        Button btnPef = findViewById(R.id.btnPref);
 
         Button register = findViewById(R.id.btnRegister);
 
         DB = new Database(this);
 
 
-        btnPef.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(CreateAccount.this,PrefPopup.class));
-            }
-        });
+//        btnPef.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(CreateAccount.this,PrefPopup.class));
+//            }
+//        });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,22 +84,13 @@ public class CreateAccount extends AppCompatActivity {
                 else{
                     if(pass.equals(repass)){
                         Boolean checkuser = DB.checkUsername(user);
-                        if (checkuser==false){
+                        if (!checkuser){
                             Boolean insert = DB.insertData(user, pass, firstName, lastName, address, userAge);
                             if(insert) {
                                 Toast.makeText(CreateAccount.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                                Intent i = getIntent();
-                                Bundle args = i.getBundleExtra("BUNDLE");
-                                if(!args.isEmpty()) {
-                                    ArrayList<String> prefs = (ArrayList<String>) args.getSerializable("ARRAYLIST");
-                                    DB.addPrefs(prefs,user);
-                                    Intent intent = new Intent(getApplicationContext(),Login.class);
-                                    startActivity(intent);
-                                }
-                                else{
-                                    Toast.makeText(CreateAccount.this, "Select Preferences", Toast.LENGTH_SHORT).show();
-                                }
-//
+                                Intent intent = new Intent(getApplicationContext(),PrefPopup.class);
+                                intent.putExtra("id",user);
+                                startActivity(intent);
                             }
                             else{
                                 Toast.makeText(CreateAccount.this, "Registration failed", Toast.LENGTH_SHORT).show();

@@ -20,26 +20,10 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-//
-//        //creating Database object
-        DB=new Database(this);
-//        Button register = findViewById(R.id.btnRegister);
-////        Button btnAdmin = findViewById(R.id.btnAdmin);
-        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
-//
-//        btnLoginMain.setOnClickListener(v -> startActivity(new Intent(Login.this,MainMenu.class)));
-//        btnLoginMain.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                TextView userId = findViewById(R.id.inpEmail);
-//                String uId = userId.getText().toString();
-//                SharedPreferences.Editor editor=sharedPreferences.edit();
-//                editor.putString("userId", uId);
-//                editor.commit();
-//                startActivity(new Intent(Login.this, MainMenu.class));
-//            }
-//        });
 
+        DB=new Database(this);
+
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
 
         EditText username = findViewById(R.id.inpEmail);
         EditText password = findViewById(R.id.inpPass);

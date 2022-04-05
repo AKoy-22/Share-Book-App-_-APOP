@@ -218,4 +218,5 @@
     <string name="pref4">Mystery</string>
     <string name="pref5">Self Help</string>
     <string name="pref6">Horror</string>
+    <string name="DeleteBook">Delete Book</string>
 </resources>

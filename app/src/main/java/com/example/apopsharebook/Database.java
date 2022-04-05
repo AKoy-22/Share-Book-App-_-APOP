@@ -16,7 +16,7 @@ public class Database extends SQLiteOpenHelper  {
     List<CurrentLoanList> loansList = new ArrayList<>();
     SQLiteDatabase sqLiteDatabase;
     final static String DATABASE_NAME="APOP.db";
-    final static int DATABASE_VERSION=20;
+    final static int DATABASE_VERSION=21;
 
     //----------------------------------------CREATING TABLE STRUCTURES---------------------------------------
 
@@ -108,7 +108,7 @@ public class Database extends SQLiteOpenHelper  {
                 +B_Genre+" text,"+B_Author+" text,"+B_Publisher+" text,"+B_PubYear+" integer,"+
                 B_OwnerId+" text,"+B_Status+" text,"+B_Location+" text,"+B_Price+" integer,"+
                 "PRIMARY KEY ("+ B_BookId+ "), FOREIGN KEY ("+B_OwnerId+") REFERENCES "+U_TABLE+
-                " ("+U_UserId+"))";
+                " ("+U_UserId+") ON DELETE CASCADE)";
         sqLiteDatabase.execSQL(createTableQuery);
 
         //create Loan Table
@@ -116,7 +116,7 @@ public class Database extends SQLiteOpenHelper  {
                 L_BorrowerId+" text,"
                 +L_StartDate+" text,"+L_ReturnDate+" text,"+L_Price+" text,"+
                 "PRIMARY KEY ("+ L_LoanId+ "), FOREIGN KEY ("+L_BookId+") REFERENCES "+B_TABLE+" ("+
-                B_BookId+"),  " +
+                B_BookId+") ON DELETE CASCADE,  " +
                 "FOREIGN KEY ("+L_BorrowerId+") REFERENCES "+U_TABLE+" ("+U_UserId+"))";
         sqLiteDatabase.execSQL(createTableQuery);
 
@@ -409,6 +409,15 @@ public class Database extends SQLiteOpenHelper  {
             return false;
     }
 
+    public boolean delBook(String id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        int d = sqLiteDatabase.delete(B_TABLE,"BookId=?",new String[]{id});
+        if(d>0)
+            return true;
+        else
+            return false;
+    }
+
     public boolean extendDate(String id,String retDate){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -535,10 +544,10 @@ public class Database extends SQLiteOpenHelper  {
 
         Long result = MyDB.insert(U_TABLE, null, contentValues);
 
-        if (result==1)
-            return false;
-        else
+        if (result>0)
             return true;
+        else
+            return false;
     }
 
     //---------------check if user exists-------------------

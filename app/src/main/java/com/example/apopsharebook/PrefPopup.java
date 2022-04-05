@@ -32,6 +32,10 @@ public class PrefPopup extends AppCompatActivity {
         CheckBox chkBx6 = findViewById(R.id.checkBox6);
         Button btnGo = findViewById(R.id.btnGo);
         TextView out = findViewById(R.id.textView2);
+
+        Intent i = getIntent();
+        String user = i.getStringExtra("id");
+
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,11 +57,17 @@ public class PrefPopup extends AppCompatActivity {
                 if(chkBx6.isChecked()){
                     prefs.add(chkBx6.getText().toString());
                 }
-                Intent intent = new Intent(PrefPopup.this, CreateAccount.class);
-                Bundle args = new Bundle();
-                args.putSerializable("ARRAYLIST",(Serializable)prefs);
-                intent.putExtra("BUNDLE",args);
-                startActivity(intent);
+//                Intent intent = new Intent(PrefPopup.this, CreateAccount.class);
+//                Bundle args = new Bundle();
+//                args.putSerializable("ARRAYLIST",(Serializable)prefs);
+//                intent.putExtra("BUNDLE",args);
+//                startActivity(intent);
+                if(!prefs.isEmpty()) {
+                    db.addPrefs(prefs, user);
+                    startActivity(new Intent(PrefPopup.this,Login.class));
+                } else {
+                    Toast.makeText(PrefPopup.this, "Select Preferences", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

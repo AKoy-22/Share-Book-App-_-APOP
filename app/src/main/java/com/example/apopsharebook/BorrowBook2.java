@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.ItemClickListener{
 
@@ -81,6 +82,7 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
                 else {
                     //fetching the location chosen from the spinner and passing to SQL query
                     inpLoc = spnLoc.getSelectedItem().toString();
+//                    inpLoc.toLowerCase();
                     c = database.searchAvailableBooksByLoc(inpLoc);
                     //if SQL returns book information the the books will be displayed
                     if (c.getCount() > 0) {
