@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APOPShareBook">
         <activity
+            android:name=".AdminMsgUser"
+            android:exported="false" />
+        <activity
+            android:name=".AdminUpdateUser2"
+            android:exported="false" />
+        <activity
+            android:name=".AdminUpdateUser"
+            android:exported="false" />
+        <activity
+            android:name=".AdminDeleteUser"
+            android:exported="false" />
+        <activity
             android:name=".AdminMenu"
             android:exported="false" />
         <activity
@@ -69,6 +81,9 @@
             android:exported="false" />
         <activity
             android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".AdminCreateUser"
             android:exported="false" />
         <activity
             android:name=".MainMenu"

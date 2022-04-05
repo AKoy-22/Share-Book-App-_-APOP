@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,7 +35,7 @@ public class EditAccount extends AppCompatActivity {
         EditText editEmail=findViewById(R.id.editUserEmail);
         EditText editAge=findViewById(R.id.editUserAge);
         Spinner spnPref=findViewById(R.id.spEditInterest);
-        Button btnSubmitChange=findViewById(R.id.btnEditSubmit);
+        Button btnSubmitChange=findViewById(R.id.btnAdminUpdateUser);
 
         database=new Database(this);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);

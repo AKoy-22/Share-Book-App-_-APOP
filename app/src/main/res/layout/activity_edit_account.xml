@@ -252,7 +252,7 @@
         tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
     <!-- button of submitting -->
     <Button
-        android:id="@+id/btnEditSubmit"
+        android:id="@+id/btnAdminUpdateUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"

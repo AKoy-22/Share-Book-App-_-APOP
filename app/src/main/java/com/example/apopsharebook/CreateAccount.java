@@ -104,7 +104,6 @@ public class CreateAccount extends AppCompatActivity {
                             else{
                                 Toast.makeText(CreateAccount.this, "Registration failed", Toast.LENGTH_SHORT).show();
                             }
-//
                         }else{
                             Toast.makeText(CreateAccount.this, "User already exists! Please sign in!   ", Toast.LENGTH_SHORT).show();
                         }
@@ -116,13 +115,5 @@ public class CreateAccount extends AppCompatActivity {
 
             }
         });
-
-
-
     }
-
-
-
-
-
 }
