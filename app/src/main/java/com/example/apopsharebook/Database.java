@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Database extends SQLiteOpenHelper  {
     List<Books> booksList = new ArrayList<>();
@@ -367,6 +368,15 @@ public class Database extends SQLiteOpenHelper  {
 
     public List<CurrentLoanList> viewClBooks(String id){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        int[] images = {R.drawable.book_cover_1,R.drawable.book_cover_2,R.drawable.book_cover_3
+                ,R.drawable.cover02,R.drawable.cover01,R.drawable.cover03,
+                R.drawable.cover04};
+
+        Random r = new Random();
+        int low = 0;
+        int high = 6;
+        int img = r.nextInt(high-low) + low;
+
         String query = "SELECT Title,Author,Publisher,PubYear,isbn,BorrowerId,StartDate,ReturnDate,Loan_Table.Price,LoanId FROM " + B_TABLE+" JOIN "+
                 L_TABLE +" ON Book_table.BookID = Loan_table.BookId WHERE Loan_table.BorrowerId = '"+id+"'";
 
@@ -382,7 +392,7 @@ public class Database extends SQLiteOpenHelper  {
             String EndDate = c.getString(7);
             String price = c.getString(8);
             int loanId = c.getInt(9);
-            CurrentLoanList loan = new CurrentLoanList(R.drawable.cover01,title,Author,publisher,year,
+            CurrentLoanList loan = new CurrentLoanList(images[img],title,Author,publisher,year,
                     isbn,BorrowerId,StartDate,EndDate,price,loanId );
             loansList.add(loan);
         }
