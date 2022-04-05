@@ -16,7 +16,7 @@ public class Database extends SQLiteOpenHelper  {
     List<CurrentLoanList> loansList = new ArrayList<>();
     SQLiteDatabase sqLiteDatabase;
     final static String DATABASE_NAME="APOP.db";
-    final static int DATABASE_VERSION=21;
+    final static int DATABASE_VERSION=22;
 
     //----------------------------------------CREATING TABLE STRUCTURES---------------------------------------
 
@@ -103,7 +103,7 @@ public class Database extends SQLiteOpenHelper  {
         sqLiteDatabase.execSQL(createTableQuery);
 
         //create Book Table
-        createTableQuery=" CREATE TABLE "+B_TABLE+ "("+ B_BookId+ " integer,"+ B_ISBN+" integer,"+
+        createTableQuery=" CREATE TABLE "+B_TABLE+ "("+ B_BookId+ " integer,"+ B_ISBN+" text,"+
                 B_Title+" text,"
                 +B_Genre+" text,"+B_Author+" text,"+B_Publisher+" text,"+B_PubYear+" integer,"+
                 B_OwnerId+" text,"+B_Status+" text,"+B_Location+" text,"+B_Price+" integer,"+
@@ -158,7 +158,7 @@ public class Database extends SQLiteOpenHelper  {
 
     //-----------------------------------------ADD BOOK METHOD--------------------------------------
 
-    public boolean addBook(int isbn,String title,String genre,String Author, String Publisher,
+    public boolean addBook(String isbn,String title,String genre,String Author, String Publisher,
                            String PubYear,String OwnerId
     ,String status, String location){
         sqLiteDatabase = this.getWritableDatabase();
@@ -226,7 +226,7 @@ public class Database extends SQLiteOpenHelper  {
     public Cursor searchAvailableBooksByLoc(String loc){
         SQLiteDatabase sqdb=this.getWritableDatabase();
         String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId, Price FROM "+B_TABLE+" " +
-                "WHERE Location='"+loc+"' AND (status='available' OR status='give away')";
+                "WHERE Location='"+loc+"'";
         Cursor c=sqdb.rawQuery(query,null);
         return c;
     }
@@ -235,7 +235,7 @@ public class Database extends SQLiteOpenHelper  {
     public Cursor searchAllAvailableBooks(){
         SQLiteDatabase sqdb=this.getWritableDatabase();
         String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId, Price FROM "+B_TABLE+
-                " WHERE status='available' OR status='give away'";
+                " WHERE status='Available' OR status='Give-away'";
         Cursor c=sqdb.rawQuery(query,null);
         return c;
     }
@@ -244,7 +244,7 @@ public class Database extends SQLiteOpenHelper  {
     public Cursor searchBooksByTitle(String word){
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
         String query="SELECT Title, Author, Genre, Publisher, PubYear, OwnerId, Status, BookId, Price FROM Book_table " +
-                "WHERE Title LIKE "+"'%"+word+"%' AND(Status='available' OR Status='give away')";
+                "WHERE Title LIKE "+"'%"+word+"%' AND(Status='Available' OR Status='Give-away')";
         Cursor c=sqLiteDatabase.rawQuery(query,null);
         return c;
     }

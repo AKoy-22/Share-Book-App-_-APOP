@@ -41,9 +41,6 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
         btnSearch=findViewById(R.id.btnSearch);
         spnLoc=findViewById(R.id.spnLoc);
         database=new Database(this);
-//        database.addUser();
-//        database.manuallyAddBook();
-//        database.manuallyAddPref();
 
         //Search button will display books in the area chosen
         btnSearch.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +79,7 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
                 else {
                     //fetching the location chosen from the spinner and passing to SQL query
                     inpLoc = spnLoc.getSelectedItem().toString();
-//                    inpLoc.toLowerCase();
+                    inpLoc.toLowerCase();
                     c = database.searchAvailableBooksByLoc(inpLoc);
                     //if SQL returns book information the the books will be displayed
                     if (c.getCount() > 0) {

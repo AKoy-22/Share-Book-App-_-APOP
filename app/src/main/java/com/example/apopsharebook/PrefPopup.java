@@ -18,9 +18,11 @@ import java.util.List;
 public class PrefPopup extends AppCompatActivity {
     ArrayList<String> prefs;
     Database db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_pref_popup);
         prefs = new ArrayList<>();
         db = new Database(this);

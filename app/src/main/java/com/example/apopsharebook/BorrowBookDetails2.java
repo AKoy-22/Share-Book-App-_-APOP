@@ -69,10 +69,10 @@ public class BorrowBookDetails2 extends AppCompatActivity {
             txtPrice.setText("$"+price);
             bookId=getIntent().getIntExtra("bookId",0);
 
-            if(status.equals("available") || status.equals("on loan")){
+            if(status.equals("Available") || status.equals("on loan")){
                 btnBorrow.setVisibility(View.VISIBLE);
             }
-            else if(status.equals("give away")){
+            else if(status.equals("Give-away")){
                 btnGiveAway.setVisibility(View.VISIBLE);
             }
 
@@ -87,8 +87,8 @@ public class BorrowBookDetails2 extends AppCompatActivity {
                 Date retDate = cal.getTime();
 
                 Random r = new Random();
-                int low = 10;
-                int high = 100;
+                int low = 1;
+                int high = 2;
                 int price = r.nextInt(high-low) + low;
 
                 SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(BorrowBookDetails2.this);

@@ -38,7 +38,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@color/white"
+        android:background="@drawable/border_btn_white"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/EditUserId"
@@ -48,7 +48,8 @@
         android:textColorHighlight="@color/dark_blue"
         android:textColorHint="@color/dark_gray"
         android:textColorLink="@color/dark_gray"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
     <TextView
@@ -68,17 +69,18 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@color/white"
+        android:background="@drawable/border_btn_white"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/EditUserPw"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textColor="@color/dark_gray"
         android:textColorHighlight="@color/white"
         android:textColorHint="@color/dark_gray"
         android:textColorLink="@color/dark_gray"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/labelUserReneterPw"
@@ -97,17 +99,18 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@color/white"
+        android:background="@drawable/border_btn_white"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/EditUserRePw"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textColor="@color/dark_gray"
         android:textColorHighlight="@color/white"
         android:textColorHint="@color/dark_gray"
         android:textColorLink="@color/dark_gray"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/labelUserFname"
@@ -126,7 +129,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@color/white"
+        android:background="@drawable/border_btn_white"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/EditUserFName"
@@ -136,7 +139,8 @@
         android:textColorHighlight="@color/dark_blue"
         android:textColorHint="@color/dark_gray"
         android:textColorLink="@color/dark_gray"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
     <TextView
@@ -156,7 +160,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@color/white"
+        android:background="@drawable/border_btn_white"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/EditUserLName"
@@ -166,7 +170,8 @@
         android:textColorHighlight="@color/dark_blue"
         android:textColorHint="@color/dark_gray"
         android:textColorLink="@color/dark_gray"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
 
@@ -187,7 +192,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@color/white"
+        android:background="@drawable/border_btn_white"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/EditUserAdr"
@@ -197,7 +202,8 @@
         android:textColorHighlight="@color/dark_blue"
         android:textColorHint="@color/dark_gray"
         android:textColorLink="@color/dark_gray"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
     <TextView
@@ -217,7 +223,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@color/white"
+        android:background="@drawable/border_btn_white"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/EditUserAge"
@@ -227,7 +233,8 @@
         android:textColorHighlight="@color/dark_blue"
         android:textColorHint="@color/dark_gray"
         android:textColorLink="@color/dark_gray"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
     <Button

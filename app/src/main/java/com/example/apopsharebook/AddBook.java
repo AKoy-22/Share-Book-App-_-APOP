@@ -67,7 +67,7 @@ public class AddBook extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                isInserted = db.addBook(Integer.parseInt(inpIsbn.getText().toString()),
+                isInserted = db.addBook(inpIsbn.getText().toString(),
                         inpTitle.getText().toString(),genre.getSelectedItem().toString(),
                         inpAuthor.getText().toString(),inpPublisher.getText().toString(),inpPubYear.getText().toString(),userId,status.getSelectedItem().toString(),loc.getSelectedItem().toString());
                 if(isInserted){
