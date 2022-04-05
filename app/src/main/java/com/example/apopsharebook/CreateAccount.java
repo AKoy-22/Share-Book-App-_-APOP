@@ -58,8 +58,14 @@ public class CreateAccount extends AppCompatActivity {
                 String firstName = fName.getText().toString();
                 String lastName = lName.getText().toString();
                 String address = add.getText().toString();
-                int userAge = Integer.parseInt(age.getText().toString());
+                int userAge = 0;
 
+                try {
+                     userAge = Integer.parseInt(age.getText().toString());
+                }
+                catch (Exception e){
+                    e.getMessage();
+                }
                 if(TextUtils.isEmpty(username.getText().toString()) || TextUtils.isEmpty(password.getText().toString())  || TextUtils.isEmpty(repassword.getText().toString()) || TextUtils.isEmpty(fName.getText().toString()) || TextUtils.isEmpty(lName.getText().toString()) || TextUtils.isEmpty(add.getText().toString()) || TextUtils.isEmpty(age.getText().toString())) {
                     Toast.makeText(CreateAccount.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
                     if(TextUtils.isEmpty(username.getText().toString())){

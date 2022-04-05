@@ -33,7 +33,6 @@ public class PrefPopup extends AppCompatActivity {
         CheckBox chkBx5 = findViewById(R.id.checkBox5);
         CheckBox chkBx6 = findViewById(R.id.checkBox6);
         Button btnGo = findViewById(R.id.btnGo);
-        TextView out = findViewById(R.id.textView2);
 
         Intent i = getIntent();
         String user = i.getStringExtra("id");
