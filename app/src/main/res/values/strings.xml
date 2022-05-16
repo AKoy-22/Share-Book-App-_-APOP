@@ -34,7 +34,7 @@
     <string name="txtRequestHistory">Request History</string>
     <string name="txtAddBookTrackerPage">Add A Book Tracker</string>
     <string name="txtAdminMenu">Admin Menu</string>
-    <string name="txtAdminCreateUser">Create User</string>
+    <string name="txtAdminCreateUser">Create User Account</string>
     <string name="txtAdminUserList">View User List</string>
 
     <!-- bottom menu bar -->
@@ -63,9 +63,13 @@
     <string-array name="bookStatus">
         <item>Share</item>
         <item>Give-away</item>
-        <item>Available</item>
     </string-array>
 
+    <string-array name="bookStatusForUpdate">
+        <item>Share</item>
+        <item>Give-away</item>
+        <item>On-loan</item>
+    </string-array>
     <!-- Borrow book -->
     <string name="imgBookCover">image of book</string>
     <string name="btnBorrow">Borrow</string>
@@ -210,5 +214,28 @@
         <item>Coquitlam</item>
     </string-array>
 
+    <string name="txtUpdateUser">Update user acoount</string>
+    <string name="txtMsgUser">Message user</string>
+    <string name="btnUpdateUser">Update User</string>
+    <string name="btnSelectUser">Update selected user</string>
+    <string name="txtAdminMsgHint">Write your message for the user here.</string>
     <string name="searchTitle">Search Result</string>
+    <string name="pref">Select preferences</string>
+    <string name="pref1">Fiction</string>
+    <string name="pref2">Sci-Fi</string>
+    <string name="pref3">Crime</string>
+    <string name="pref4">Mystery</string>
+    <string name="pref5">Self Help</string>
+    <string name="pref6">Horror</string>
+    <string name="DeleteBook">Delete Book</string>
+    <string name="title_borrow_request">Title: Borrow Request</string>
+    <string name="borrow_request_has_been_sent_from">Borrow request has been sent from</string>
+    <string name="go">GO!</string>
+    <string name="please_select_the_preferences">Please select the preferences</string>
+    <string name="txtDelUser">DELETE USER</string>
+    <string name="bookId">Book Id</string>
+    <string name="hintBookId">Enter Book ID if Applicable</string>
+    <string name="lblTimeSpent">Time Spent</string>
+
+
 </resources>

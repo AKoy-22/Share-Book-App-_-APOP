@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -66,20 +67,39 @@ public class AddBook extends AppCompatActivity {
             boolean isInserted;
             @Override
             public void onClick(View view) {
-
-                isInserted = db.addBook(inpIsbn.getText().toString(),
-                        inpTitle.getText().toString(),genre.getSelectedItem().toString(),
-                        inpAuthor.getText().toString(),inpPublisher.getText().toString(),inpPubYear.getText().toString(),userId,status.getSelectedItem().toString(),loc.getSelectedItem().toString());
-                if(isInserted){
-                    Toast.makeText(AddBook.this,
-                            Html.fromHtml("<big>Data is added</big>"),
-                            Toast.LENGTH_SHORT).show();
+                if(TextUtils.isEmpty(inpIsbn.getText())|| TextUtils.isEmpty(inpTitle.getText())  || TextUtils.isEmpty(inpAuthor.getText()) || TextUtils.isEmpty(inpPublisher.getText()) ||
+                        TextUtils.isEmpty(inpPubYear.getText()) )
+                {
+                    if(TextUtils.isEmpty(inpIsbn.getText())){
+                        inpIsbn.setError("Please input ISBN");
+                    }
+                    if(TextUtils.isEmpty(inpTitle.getText())){
+                        inpTitle.setError("Please input Title");
+                    }
+                    if(TextUtils.isEmpty(inpAuthor.getText())){
+                        inpAuthor.setError("Please input Author");
+                    }
+                    if(TextUtils.isEmpty(inpPublisher.getText())){
+                        inpPublisher.setError("Please input Publisher");
+                    }
+                    if(TextUtils.isEmpty(inpPubYear.getText())){
+                        inpPubYear.setError("Please input publication year");
+                    }
                 }
                 else{
-                    Toast.makeText(AddBook.this,
-                            "Data is not added", Toast.LENGTH_SHORT).show();
+                    isInserted = db.addBook(inpIsbn.getText().toString(),
+                            inpTitle.getText().toString(),genre.getSelectedItem().toString(),
+                            inpAuthor.getText().toString(),inpPublisher.getText().toString(),inpPubYear.getText().toString(),userId,status.getSelectedItem().toString(),loc.getSelectedItem().toString());
+                    if(isInserted){
+                        Toast.makeText(AddBook.this,
+                                Html.fromHtml("<big>Data is added</big>"),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(AddBook.this,
+                                "Data is not added", Toast.LENGTH_SHORT).show();
+                    }
                 }
-
             }
         });
     }

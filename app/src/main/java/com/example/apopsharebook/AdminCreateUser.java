@@ -2,6 +2,7 @@ package com.example.apopsharebook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class AdminCreateUser extends AppCompatActivity {
 
@@ -18,9 +21,6 @@ public class AdminCreateUser extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_admin_create_user);
-
-		ImageButton btnMessage = findViewById(R.id.btnMessageIcon);
-		ImageButton go_back = findViewById(R.id.btnBack);
 
 		EditText username = findViewById(R.id.editUserId);
 		EditText password = findViewById(R.id.editUserPw);
@@ -33,6 +33,7 @@ public class AdminCreateUser extends AppCompatActivity {
 
 		DB = new Database(this);
 
+		//button event for go back main page
 		createUser.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -43,6 +44,9 @@ public class AdminCreateUser extends AppCompatActivity {
 				String lastName = lName.getText().toString();
 				String address = add.getText().toString();
 				int userAge = Integer.parseInt(age.getText().toString());
+
+
+
 
 				if(TextUtils.isEmpty(username.getText().toString()) || TextUtils.isEmpty(password.getText().toString())  || TextUtils.isEmpty(fName.getText().toString()) || TextUtils.isEmpty(lName.getText().toString()) || TextUtils.isEmpty(add.getText().toString()) || TextUtils.isEmpty(age.getText().toString())) {
 					Toast.makeText(AdminCreateUser.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
@@ -70,6 +74,9 @@ public class AdminCreateUser extends AppCompatActivity {
 						Boolean insert = DB.insertData(user, pass, firstName, lastName, address, userAge);
 						if(insert) {
 							Toast.makeText(AdminCreateUser.this, "User created successfully", Toast.LENGTH_SHORT).show();
+							Intent intent = new Intent(getApplicationContext(),PrefPopup2.class);
+							intent.putExtra("id",user);
+							startActivity(intent);
 						}
 						else{
 							Toast.makeText(AdminCreateUser.this, "Registration failed", Toast.LENGTH_SHORT).show();

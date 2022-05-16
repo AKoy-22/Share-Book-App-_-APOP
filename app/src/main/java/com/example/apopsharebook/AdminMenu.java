@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 
 public class AdminMenu extends AppCompatActivity {
@@ -31,6 +33,8 @@ public class AdminMenu extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(AdminMenu.this, AdminCreateUser.class));
             }
+
+
         });
 
         deleteUser.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +55,7 @@ public class AdminMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                sharedPreferences.edit().remove("userId").commit();
-                startActivity(new Intent(AdminMenu.this,Login.class));
+                startActivity(new Intent(AdminMenu.this,Welcome.class));
             }
         });
 

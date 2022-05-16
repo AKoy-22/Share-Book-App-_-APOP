@@ -12,11 +12,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
+import java.util.Random;
 
 public class ReadingHistoryListAdapter extends ArrayAdapter {
 	Context context;
 	int resource;
 	List<Books> list;
+
+	int[] images = {R.drawable.book_cover_1,R.drawable.book_cover_2,R.drawable.book_cover_3
+			,R.drawable.cover02,R.drawable.cover01,R.drawable.cover03,
+			R.drawable.cover04,R.drawable.cover05,R.drawable.cover06,
+			R.drawable.cover07,R.drawable.cover08,R.drawable.cover09};
+
+
+
 
 	public ReadingHistoryListAdapter(Context context, int resource, List<Books> list) {
 		super(context, resource, list);
@@ -31,6 +40,11 @@ public class ReadingHistoryListAdapter extends ArrayAdapter {
 		LayoutInflater inflater = LayoutInflater.from(context);
 		View view = inflater.inflate(resource,null);
 
+		Random r = new Random();
+		int low = 0;
+		int high = 11;
+		int img = r.nextInt(high-low) + low;
+
 		ImageView cover = view.findViewById(R.id.imgBookCover);
 		TextView title = view.findViewById(R.id.txtBookTitle);
 		TextView author = view.findViewById(R.id.txtBookAuthor);
@@ -39,11 +53,11 @@ public class ReadingHistoryListAdapter extends ArrayAdapter {
 
 		Books bookList = list.get(position);
 
-		cover.setImageResource(R.drawable.book_cover_2);
+		cover.setImageResource(images[img]);
 		title.setText(bookList.getTitle());
 		author.setText(bookList.getAuthor());
 		isbn.setText(bookList.getIsbn());
-		timeSpent.setText(Double.toString(bookList.getTime()));
+		timeSpent.setText(Double.toString(bookList.getTime())+" Hours");
 
 		return view;
 	}

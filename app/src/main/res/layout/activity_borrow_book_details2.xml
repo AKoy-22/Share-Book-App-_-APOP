@@ -336,6 +336,7 @@
         android:layout_marginEnd="14dp"
         android:layout_marginBottom="10dp"
         android:orientation="vertical"
+        android:visibility="invisible"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="@id/btnSubmitMsg"
@@ -356,7 +357,7 @@
             android:inputType="textMultiLine"
             android:textColor="@color/dark_gray"
             android:textSize="15sp"
-            android:visibility="visible"
+            android:visibility="invisible"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
 
     </androidx.cardview.widget.CardView>
@@ -375,7 +376,7 @@
         android:text="@string/btnSendMessage"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@id/nestedScrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

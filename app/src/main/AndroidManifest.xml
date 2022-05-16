@@ -10,7 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APOPShareBook">
         <activity
+            android:name=".PrefPopup2"
+            android:exported="false"
+            android:theme="@style/myPrefPopupTheme"/>
+        <activity
             android:name=".AdminMenu"
+            android:exported="false" />
+        <activity
+            android:name=".AdminCreateUser"
+            android:exported="false" />
+        <activity
+            android:name=".AdminDeleteUser"
+            android:exported="false" />
+        <activity
+            android:name=".AdminMsgUser"
+            android:exported="false" />
+        <activity
+            android:name=".AdminUpdateUser"
+            android:exported="false" />
+        <activity
+            android:name=".AdminUpdateUser2"
             android:exported="false" />
         <activity
             android:name=".SearchOutput"
@@ -18,7 +37,11 @@
         <activity
             android:name=".popup"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.Dialog" />
+            android:theme="@style/myPopupTheme" />
+        <activity
+            android:name=".PrefPopup"
+            android:exported="false"
+            android:theme="@style/myPrefPopupTheme" />
         <activity
             android:name=".MessageDisplay"
             android:exported="false" />

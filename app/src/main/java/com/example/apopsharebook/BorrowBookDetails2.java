@@ -1,6 +1,7 @@
 package com.example.apopsharebook;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -49,6 +50,7 @@ public class BorrowBookDetails2 extends AppCompatActivity {
         Button btnSend=findViewById(R.id.btnSubmitMsg);
         EditText writeMsg=findViewById(R.id.edTxtWriteMsg);
         BottomNavigationView bottom_menu;
+        CardView cardView=findViewById(R.id.cardView2);
 
 
         Intent i= getIntent();
@@ -150,8 +152,9 @@ public class BorrowBookDetails2 extends AppCompatActivity {
             public void onClick(View view) {
                 writeMsg.setVisibility(View.VISIBLE);
                 btnSend.setVisibility(View.VISIBLE);
-              //  btnBorrow.setVisibility(View.GONE);
-               // btnGiveAway.setVisibility(View.GONE);
+                cardView.setVisibility(View.VISIBLE);
+                btnBorrow.setVisibility(View.GONE);
+                btnGiveAway.setVisibility(View.GONE);
             }
         });
       //method to submit personalized message

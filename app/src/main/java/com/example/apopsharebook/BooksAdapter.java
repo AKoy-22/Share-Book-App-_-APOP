@@ -24,14 +24,13 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
     List<Books> booksList;
     private LayoutInflater inflater;
     private ItemClickListener itemClickListener;
-    int[] images = {R.drawable.book_cover_1,R.drawable.book_cover_2,R.drawable.book_cover_3,
-                    R.drawable.cover02,R.drawable.cover01,R.drawable.cover03,
-                    R.drawable.cover04};
+    int[] images = {R.drawable.book_cover_1,R.drawable.book_cover_2,R.drawable.book_cover_3
+            ,R.drawable.cover02,R.drawable.cover01,R.drawable.cover03,
+            R.drawable.cover04,R.drawable.cover05,R.drawable.cover06,
+            R.drawable.cover07,R.drawable.cover08,R.drawable.cover09};
 
-    Random r = new Random();
-    int low = 0;
-    int high = 6;
-    int img = r.nextInt(high-low) + low;
+
+
 
     public BooksAdapter(Context context,List<Books> booksList){
         inflater = LayoutInflater.from(context);
@@ -49,6 +48,10 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull BooksAdapter.ViewHolder holder, int position) {
+        Random r = new Random();
+        int low = 0;
+        int high = 11;
+        int img = r.nextInt(high-low) + low;
         Books book = booksList.get(position);
         holder.bookTitle.setText(book.getTitle());
         holder.bookAuthor.setText(book.getAuthor());

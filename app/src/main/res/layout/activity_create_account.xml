@@ -228,7 +228,7 @@
         android:gravity="center"
         android:hint="@string/EditUserAge"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:textColor="@color/dark_gray"
         android:textColorHighlight="@color/dark_blue"
         android:textColorHint="@color/dark_gray"

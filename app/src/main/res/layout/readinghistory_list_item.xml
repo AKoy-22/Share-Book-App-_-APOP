@@ -69,10 +69,20 @@
             android:orientation="vertical">
             <!-- borrowing time -->
             <TextView
-                android:id="@+id/txtTimeSpent"
-                android:layout_width="wrap_content"
+                android:id="@+id/lblTimeSpent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="viewEnd"
+                android:text="@string/lblTimeSpent"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/txtTimeSpent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:textColor="@color/gray"
                 android:textSize="13sp"
                 tools:ignore="TextContrastCheck" />

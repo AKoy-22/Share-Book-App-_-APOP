@@ -33,10 +33,10 @@ public class EditAccount extends AppCompatActivity {
         EditText editPw=findViewById(R.id.editUserPassword);
         EditText editName=findViewById(R.id.editUserName);
         EditText editAddress=findViewById(R.id.editUserAddress);
-        EditText editEmail=findViewById(R.id.editUserEmail);
+
         EditText editAge=findViewById(R.id.editUserAge);
-        Spinner spnPref=findViewById(R.id.spEditInterest);
-        Button btnSubmitChange=findViewById(R.id.btnEditSubmit);
+       // Spinner spnPref=findViewById(R.id.spEditInterest);
+        Button btnSubmitChange=findViewById(R.id.btnAdminUpdateUser);
 
         database=new Database(this);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -53,7 +53,7 @@ public class EditAccount extends AppCompatActivity {
             }
         }
         //insert current information prior to udpate
-        editEmail.setText(userId);
+       // editEmail.setText(userId);
         editPw.setText(password);
         fullName=FName+" "+LName;
         editName.setText(fullName);
@@ -63,7 +63,7 @@ public class EditAccount extends AppCompatActivity {
         btnSubmitChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newUserId=editEmail.getText().toString();
+               // String newUserId=editEmail.getText().toString();
                 password=editPw.getText().toString();
                 fullName=editName.getText().toString();
                 String nameSplit []=fullName.split(" ");
@@ -72,7 +72,7 @@ public class EditAccount extends AppCompatActivity {
                 Address=editAddress.getText().toString();
                 Age=Integer.parseInt(editAge.getText().toString());
 
-               boolean isInserted=database.updateUserAccount(userId, newUserId,password,FName, LName, Address,Age);
+               boolean isInserted=database.updateUserAccount(userId,password,FName, LName, Address,Age);
 
                 if(isInserted){
                     Toast.makeText(EditAccount.this,"User information had been updated.", Toast.LENGTH_LONG).show();

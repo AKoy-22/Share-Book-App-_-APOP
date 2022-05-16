@@ -5,8 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -43,6 +45,9 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
         spnLoc=findViewById(R.id.spnLoc);
         database=new Database(this);
 
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String userId = sharedPreferences.getString("userId", "NA");
+
         //Search button will display books in the area chosen
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +65,7 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
 
                 //All location chose
                 if(spnLoc.getSelectedItemPosition()==0) {
-                    c = database.searchAllAvailableBooks();
+                    c = database.searchAllAvailableBooks(userId);
                     if (c.getCount() > 0) {
                         while (c.moveToNext()) {
                             bTitles.add(c.getString(0));
@@ -81,7 +86,7 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
                     //fetching the location chosen from the spinner and passing to SQL query
                     inpLoc = spnLoc.getSelectedItem().toString();
                     String location=inpLoc.toLowerCase();
-                    c = database.searchAvailableBooksByLoc(location); //inpLoc
+                    c = database.searchAvailableBooksByLoc(location,userId); //inpLoc
                     //if SQL returns book information the the books will be displayed
                     if (c.getCount() > 0) {
                         while (c.moveToNext()) {
@@ -97,7 +102,7 @@ public class BorrowBook2 extends AppCompatActivity implements RecyclerAdapter.It
                         }
                     }else if(c.getCount()==0){
                         Toast toast= Toast.makeText(BorrowBook2.this, "No books available in the chosen area",Toast.LENGTH_LONG);
-                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL,0,0);
+                        //toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL,0,0);
                         toast.show();
                    }
                 }

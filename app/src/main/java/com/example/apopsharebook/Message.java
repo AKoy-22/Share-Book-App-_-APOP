@@ -127,5 +127,6 @@ public class Message extends AppCompatActivity {
         }
         ImageButton go_back = findViewById(R.id.btnBack);
         go_back.setOnClickListener(v -> startActivity(new Intent(Message.this,MainMenu.class)));
+
     }
 }

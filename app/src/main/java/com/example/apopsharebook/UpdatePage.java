@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -79,18 +80,40 @@ public class UpdatePage extends AppCompatActivity {
             boolean isUpdated;
             @Override
             public void onClick(View view) {
-                isUpdated = db.updateRec(inpTitle.getText().toString(),inpAutor.getText().toString(),
-                        genre.getSelectedItem().toString(), status.getSelectedItem().toString(),
-                        inpYear.getText().toString(),inpIsbn.getText().toString(),
-                        inpPulisher.getText().toString(),bookId);
+                if(TextUtils.isEmpty(inpIsbn.getText())|| TextUtils.isEmpty(inpTitle.getText())  || TextUtils.isEmpty(inpAutor.getText()) || TextUtils.isEmpty(inpPulisher.getText()) ||
+                        TextUtils.isEmpty(inpYear.getText()) )
+                {
+                    if(TextUtils.isEmpty(inpIsbn.getText())){
+                        inpIsbn.setError("Please input ISBN");
+                    }
+                    if(TextUtils.isEmpty(inpTitle.getText())){
+                        inpTitle.setError("Please input Title");
+                    }
+                    if(TextUtils.isEmpty(inpAutor.getText())){
+                        inpAutor.setError("Please input Author");
+                    }
+                    if(TextUtils.isEmpty(inpPulisher.getText())){
+                        inpPulisher.setError("Please input Publisher");
+                    }
+                    if(TextUtils.isEmpty(inpYear.getText())){
+                        inpYear.setError("Please input publication year");
+                    }
+                }
+                else {
+                    isUpdated = db.updateRec(inpTitle.getText().toString(),inpAutor.getText().toString(),
+                            genre.getSelectedItem().toString(), status.getSelectedItem().toString(),
+                            inpYear.getText().toString(),inpIsbn.getText().toString(),
+                            inpPulisher.getText().toString(),bookId);
 
-                if(isUpdated)
-                    Toast.makeText(UpdatePage.this,
-                            Html.fromHtml("<big>record is updated</big>"),
-                            Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(UpdatePage.this, "record is not updated",
-                            Toast.LENGTH_SHORT).show();
+                    if(isUpdated)
+                        Toast.makeText(UpdatePage.this,
+                                Html.fromHtml("<big>record is updated</big>"),
+                                Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(UpdatePage.this, "record is not updated",
+                                Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

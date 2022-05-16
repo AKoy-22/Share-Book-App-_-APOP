@@ -5,8 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -29,17 +31,21 @@ public class SearchOutput extends AppCompatActivity implements RecyclerAdapter.I
     ArrayList<String> bTitles, bAuthors, bGenres, bPub, bPubYear, bOwner, bStatus;
     ArrayList<Integer> bIds, bPrices;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_output);
         database=new Database(this);
 
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String userId = sharedPreferences.getString("userId", "NA");
+
         Intent i=getIntent();
 
            keyword=i.getStringExtra("searchWord");
 
-        c=database.searchBooksByTitle(keyword);
+        c=database.searchBooksByTitle(keyword,userId);
 
         bTitles=new ArrayList<String>();
         bAuthors=new ArrayList<String >();
@@ -79,6 +85,27 @@ public class SearchOutput extends AppCompatActivity implements RecyclerAdapter.I
 
     @Override
     public void onItemClick(View view, int position) {
+        title=bTitles.get(position);
+        author=bAuthors.get(position);
+        genre=bGenres.get(position);
+        pub=bPub.get(position);
+        pubYear=bPubYear.get(position);
+        owner=bOwner.get(position);
+        status=bStatus.get(position);
+        price=bPrices.get(position);
+        bookId=bIds.get(position);
 
+
+        Intent i = new Intent(SearchOutput.this, BorrowBookDetails2.class);
+        i.putExtra("title",title);
+        i.putExtra("author", author);
+        i.putExtra("genre",genre);
+        i.putExtra("pub",pub);
+        i.putExtra("pubYear",pubYear);
+        i.putExtra("owner",owner);
+        i.putExtra("status",status);
+        i.putExtra("price",price);
+        i.putExtra("bookId",bookId);
+        startActivity(i);
     }
 }

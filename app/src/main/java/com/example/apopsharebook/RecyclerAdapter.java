@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter{
@@ -21,6 +22,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
     ArrayList<String> titlesList;
     ArrayList<String> authorsList;
     ArrayList<String> genreList;
+
+    int[] images = {R.drawable.book_cover_1,R.drawable.book_cover_2,R.drawable.book_cover_3
+            ,R.drawable.cover02,R.drawable.cover01,R.drawable.cover03,
+            R.drawable.cover04,R.drawable.cover05,R.drawable.cover06,
+            R.drawable.cover07,R.drawable.cover08,R.drawable.cover09};
+
+
 
     private ItemClickListener iClickListener; //interface object
 
@@ -47,7 +55,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((VH)holder).imgView.setImageResource(R.drawable.book_cover_1);
+        Random r = new Random();
+        int low = 0;
+        int high = 6;
+        int img = r.nextInt(high-low) + low;
+        ((VH)holder).imgView.setImageResource(images[img]);
         TextView title=holder.itemView.findViewById(R.id.bTitle);
         TextView author=holder.itemView.findViewById(R.id.bAuthor);
         TextView genre=holder.itemView.findViewById(R.id.bGenre);
@@ -60,6 +72,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
     public int getItemCount() {
         return titlesList.size();
     }
+
     //setClickListener
     public void setClickListener(ItemClickListener iClickListener){
         this.iClickListener=iClickListener;
